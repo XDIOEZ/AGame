@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class test : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        
+        InputSetting();
     }
-
-    // Update is called once per frame
-    void Update()
+    public void InputSetting()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("¿Õ¸ñ¼ü°´ÏÂ");
+        }
     }
 }
