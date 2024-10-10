@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿// A*寻路算法的导盲杖
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

@@ -1,19 +1,45 @@
-﻿using System.Collections;
+﻿// 全局事件中心
+//
+// 使用场景:(低耦合, 一对多传递信息)
+// 以低耦合度实现跨脚本传递信息
+//
+// 
+// 使用案例:
+// 这里假设我们有一个或多个玩家和一名敌人，当敌人死亡时，玩家需要得到通知。
+// 我们可以通过事件中心来实现这个需求。
+// public class Player
+// {
+//     public Player()
+//     {
+//         EventCenter.Instance.AddEventListener("EnemyDead", OnEnemyDead); // 这里让`OnEnemyDead`订阅敌人死亡事件
+//     }
+//
+//     private void OnEnemyDead(object enemy)
+//     {
+//         Debug.Log("敌人已经被击败"); // 这里假设敌人死后需要在控制台输出一条信息
+//     }
+// }
+//
+// public class Enemy
+// {
+//     public void Die()
+//     {
+//         EventCenter.Instance.EventTrigger("EnemyDead", this); // 触发敌人死亡事件, 这会激发所有订阅了这个事件的函数
+//     }
+// }
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-
-public interface IEventInfo
-{
-
-}
+public interface IEventInfo { }
 
 public class EventInfo<T> : IEventInfo
 {
     public UnityAction<T> actions;
 
-    public EventInfo( UnityAction<T> action)
+    public EventInfo(UnityAction<T> action)
     {
         actions += action;
     }
@@ -28,7 +54,6 @@ public class EventInfo : IEventInfo
         actions += action;
     }
 }
-
 
 /// <summary>
 /// 事件中心 单例模式对象
@@ -52,14 +77,14 @@ public class EventCenter : BaseManager<EventCenter>
     {
         //有没有对应的事件监听
         //有的情况
-        if( eventDic.ContainsKey(name) )
+        if (eventDic.ContainsKey(name))
         {
             (eventDic[name] as EventInfo<T>).actions += action;
         }
         //没有的情况
         else
         {
-            eventDic.Add(name, new EventInfo<T>( action ));
+            eventDic.Add(name, new EventInfo<T>(action));
         }
     }
 
@@ -82,7 +107,6 @@ public class EventCenter : BaseManager<EventCenter>
             eventDic.Add(name, new EventInfo(action));
         }
     }
-
 
     /// <summary>
     /// 移除对应的事件监听
@@ -117,7 +141,7 @@ public class EventCenter : BaseManager<EventCenter>
         if (eventDic.ContainsKey(name))
         {
             //eventDic[name]();
-            if((eventDic[name] as EventInfo<T>).actions != null)
+            if ((eventDic[name] as EventInfo<T>).actions != null)
                 (eventDic[name] as EventInfo<T>).actions.Invoke(info);
             //eventDic[name].Invoke(info);
         }

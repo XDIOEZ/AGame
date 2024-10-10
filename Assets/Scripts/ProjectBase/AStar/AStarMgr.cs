@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿// A*寻路算法核心脚本，与`AStarNode`配合使用
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
