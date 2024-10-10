@@ -1,5 +1,5 @@
-﻿// 使用场景:
-// 比如一个场景中有多个MonoBehaviour，需要实现单例模式，但是又不想去引擎手动挂载，那么可以直接继承这个类，然后在脚本中调用GetInstance方法即可。
+﻿// 使用场景:(可挂载--即可访问场景节点的函数方法，可全局访问，可自动创建)
+// 比如一个场景中有多个MonoBehaviour组件，需要实现单例模式，但是又不想去引擎手动挂载，那么可以直接继承这个类，然后在脚本中调用GetInstance方法即可。
 // 
 // 
 // 使用案例:
@@ -10,12 +10,13 @@
 //     //此处添加自己的函数逻辑, 假设这里有一个方法叫`DoSomething()`
 // }
 // 
-// 然后在需要的地方调用 `MyMono.GetInstance()` 即可获得单例的MyMono对象
+// 然后在需要的地方调用 `MyMono.GetInstance()` 即可获得单例的`MyMono`对象
 // public class Test : MonoBehaviour
 // {
 //     void Start()
 //     {
-//         MyMono.GetInstance().DoSomething();
+//         MyMono.GetInstance().DoSomething();  // 通过静态方法访问
+//         MyMono.Instacne.DoSomething();       // 通过静态属性访问
 //     }
 // }
 
