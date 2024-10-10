@@ -3,13 +3,13 @@
 // 使用场景:(低耦合, 一对多传递信息)
 // 以低耦合度实现跨脚本传递信息
 //
-// 
+//
 // 使用案例:
 // 这里假设我们有一个或多个玩家和一名敌人，当敌人死亡时，玩家需要得到通知。
 // 我们可以通过事件中心来实现这个需求。
 // public class Player
 // {
-//     public Player()
+//     public start()
 //     {
 //         EventCenter.Instance.AddEventListener("EnemyDead", OnEnemyDead); // 这里让`OnEnemyDead`订阅敌人死亡事件
 //     }
