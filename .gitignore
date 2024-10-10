@@ -52,6 +52,7 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
+*.dwlt
 
 # Unity3D generated meta files
 *.pidb.meta
@@ -73,4 +74,4 @@ crashlytics-build.properties
 
 # Windows files
 Thumbs.db
-Desktop.ini 作者：左将军领徐州牧儒东侯 https://www.bilibili.com/read/cv19319343/ 出处：bilibili
+Desktop.ini
