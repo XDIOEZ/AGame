@@ -18,6 +18,4 @@ public class BaseManager<T> where T:new()
     {
         get { return GetInstance(); }
     }
-        
 }
-
