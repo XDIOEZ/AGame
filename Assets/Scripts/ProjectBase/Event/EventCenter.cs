@@ -7,7 +7,7 @@
 // 使用案例:
 // 这里假设我们有一个或多个玩家和一名敌人，当敌人死亡时，玩家需要得到通知。
 // 我们可以通过事件中心来实现这个需求。
-// public class Player
+// public class Player : MonoBehaviour
 // {
 //     public start()
 //     {
@@ -20,7 +20,7 @@
 //     }
 // }
 //
-// public class Enemy
+// public class Enemy : MonoBehaviour
 // {
 //     public void Die()
 //     {
