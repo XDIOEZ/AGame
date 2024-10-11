@@ -76,3 +76,7 @@ crashlytics-build.properties
 # Windows files
 Thumbs.db
 Desktop.ini
+
+# Mac version difference (By NFSW)
+Packages/packages-lock.json
+ProjectSettings/ProjectVersion.txt
