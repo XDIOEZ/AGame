@@ -80,3 +80,6 @@ Desktop.ini
 # Mac version difference (By NFSW)
 Packages/packages-lock.json
 ProjectSettings/ProjectVersion.txt
+
+# VSCode files
+.vscode/
