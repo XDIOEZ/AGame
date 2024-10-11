@@ -1,3 +1,7 @@
+// 数据变化时由EventCenter产生无参通知 --监听事件名为"OnPlayerDataChanged"
+// 
+// 示例:
+// EventCenter.Instance.AddEventListener("OnPlayerDataChanged", () => Debug.Log("Player data changed"));
 public static class FastPlayerData
 {
     private static readonly PlayerData playerDataInstance = PlayerData.Instacne;

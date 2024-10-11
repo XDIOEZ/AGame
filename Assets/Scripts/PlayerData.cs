@@ -57,13 +57,18 @@ public class PlayerData : BaseManager<PlayerData>
     {
         LevelsCompleted++;
         CurrentLevel++;
+        DataChanged();
     }
 
     /// <summary>
     /// 增加击败敌人的数量
     /// </summary>
     /// <param name="amount">增加的数量</param>
-    public void AddEnemieDefeated(int amount = 1) => EnemiesDefeated += amount;
+    public void AddEnemieDefeated(int amount = 1)
+    {
+        EnemiesDefeated += amount;
+        DataChanged();
+    }
 
     /// <summary>
     /// 收集余光，附带增加光能
@@ -73,6 +78,7 @@ public class PlayerData : BaseManager<PlayerData>
     {
         CollectedResidualLight += amount;
         AddLightEnergy(amount * ResidualLightConversionRate);
+        DataChanged();
     }
 
     /// <summary>
@@ -83,6 +89,7 @@ public class PlayerData : BaseManager<PlayerData>
     {
         LittedStarStone += amount;
         MaxLightEnergy += amount * StarStoneConversionRate;
+        DataChanged();
     }
 
     /// <summary>
@@ -95,6 +102,7 @@ public class PlayerData : BaseManager<PlayerData>
         if (CurrentLightEnergy < amount)
             return false;
         CurrentLightEnergy = Math.Max(CurrentLightEnergy - amount, 0);
+        DataChanged();
         return true;
     }
     #endregion
@@ -104,6 +112,13 @@ public class PlayerData : BaseManager<PlayerData>
     private void AddLightEnergy(int amount)
     {
         CurrentLightEnergy = Math.Min(CurrentLightEnergy + amount, MaxLightEnergy);
+    }
+
+    // 方法：数据改变
+    private void DataChanged()
+    {
+        // 通知所有监听器数据改变
+        EventCenter.Instacne.EventTrigger("OnPlayerDataChanged");
     }
     #endregion
 }
