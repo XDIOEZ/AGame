@@ -5,7 +5,7 @@
 [Bb]uild/
 [Bb]uilds/
 [Ll]ogs/
-UserSettings
+UserSettings/
 [Uu]serSettings/
 [Mm]emoryCaptures/
 /ignore.conf
@@ -76,3 +76,10 @@ crashlytics-build.properties
 # Windows files
 Thumbs.db
 Desktop.ini
+
+# Mac version difference (By NFSW)
+Packages/packages-lock.json
+ProjectSettings/ProjectVersion.txt
+
+# VSCode files
+.vscode/
