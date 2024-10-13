@@ -33,54 +33,87 @@ public class PlayerDash_Temp : MonoBehaviour
     }
 
     /// <summary>
-    /// 更新冲刺逻辑，包括地面检测、输入方向记录和冲刺输入处理。
+    /// 每帧更新冲刺逻辑，包括地面检测、输入方向记录和冲刺输入处理。
     /// </summary>
     void Update()
     {
-        // 使用射线检测玩家是否在地面上
-        isGrounded = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
+        CheckGroundStatus(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer); // 检查玩家是否在地面上
+        RecordInputDirection(Input.GetAxisRaw("Horizontal")); // 记录玩家的输入方向
+        HandleDashInput(KeyCode.LeftShift); // 处理冲刺输入
+    }
 
-        // 当玩家在地面上时，重置冲刺状态
+    /// <summary>
+    /// 在物理更新中处理冲刺逻辑。
+    /// </summary>
+    void FixedUpdate()
+    {
+        if (isDashing)
+        {
+            PerformDash(lastInputDirection, dashSpeed, dashUpwardForce); // 执行冲刺
+        }
+    }
+
+    /// <summary>
+    /// 检查玩家是否在地面上，并重置冲刺状态。
+    /// </summary>
+    /// <param name="position">检测起始位置</param>
+    /// <param name="direction">检测方向</param>
+    /// <param name="distance">检测距离</param>
+    /// <param name="layer">检测层</param>
+    private void CheckGroundStatus(Vector3 position, Vector2 direction, float distance, LayerMask layer)
+    {
+        isGrounded = Physics2D.Raycast(position, direction, distance, layer);
+
         if (isGrounded)
         {
             canDash = true;
         }
+    }
 
-        // 记录玩家的输入方向
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
+    /// <summary>
+    /// 记录玩家的输入方向。
+    /// </summary>
+    /// <param name="horizontalInput">水平输入值</param>
+    private void RecordInputDirection(float horizontalInput)
+    {
         if (horizontalInput != 0)
         {
             lastInputDirection = horizontalInput;
-            inputDirectionTimer = inputDirectionCheckTime; // 重置计时器
+            inputDirectionTimer = inputDirectionCheckTime;
         }
         else if (inputDirectionTimer > 0)
         {
-            inputDirectionTimer -= Time.deltaTime; // 减少计时器
+            inputDirectionTimer -= Time.deltaTime;
         }
+    }
 
-        // 处理冲刺输入
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+    /// <summary>
+    /// 处理冲刺输入。
+    /// </summary>
+    /// <param name="dashKey">冲刺按键</param>
+    private void HandleDashInput(KeyCode dashKey)
+    {
+        if (Input.GetKeyDown(dashKey) && canDash)
         {
             StartDash();
         }
     }
 
     /// <summary>
-    /// 在物理更新中处理冲刺逻辑，设置冲刺速度。
+    /// 在物理更新中处理冲刺逻辑。
     /// </summary>
-    void FixedUpdate()
+    /// <param name="direction">冲刺方向</param>
+    /// <param name="speed">冲刺速度</param>
+    /// <param name="upwardForce">斜向上的冲刺力</param>
+    private void PerformDash(float direction, float speed, float upwardForce)
     {
-        if (isDashing)
-        {
-            // 处理冲刺状态，根据记录的输入方向设置冲刺速度
-            float verticalVelocity = applyUpwardForce ? dashUpwardForce : rb.velocity.y;
-            rb.velocity = new Vector2(lastInputDirection * dashSpeed, verticalVelocity);
+        float verticalVelocity = applyUpwardForce ? upwardForce : rb.velocity.y;
+        rb.velocity = new Vector2(direction * speed, verticalVelocity);
 
-            dashTime -= Time.fixedDeltaTime;
-            if (dashTime <= 0)
-            {
-                EndDash();
-            }
+        dashTime -= Time.fixedDeltaTime;
+        if (dashTime <= 0)
+        {
+            EndDash();
         }
     }
 

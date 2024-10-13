@@ -30,34 +30,51 @@ public class PlayerJump_Temp : MonoBehaviour
     /// </summary>
     void Update()
     {
-        // 使用射线检测玩家是否接触地面
-        isGrounded = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
+        CheckGroundStatus(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
+        HandleJumpInput(KeyCode.Space);
+    }
 
-        // 如果玩家接触地面，重置 Coyote Time 计时器
+    /// <summary>
+    /// 检查玩家是否在地面上，并更新 Coyote Time 计时器。
+    /// </summary>
+    /// <param name="position">检测起始位置</param>
+    /// <param name="direction">检测方向</param>
+    /// <param name="distance">检测距离</param>
+    /// <param name="layer">检测层</param>
+    private void CheckGroundStatus(Vector3 position, Vector2 direction, float distance, LayerMask layer)
+    {
+        isGrounded = Physics2D.Raycast(position, direction, distance, layer);
+
         if (isGrounded)
         {
             coyoteTimeCounter = jumpCoyoteTime;
         }
         else
         {
-            // 如果玩家不在地面上，减少 Coyote Time 计时器的值
             coyoteTimeCounter -= Time.deltaTime;
         }
+    }
 
-        // 检测跳跃输入，当玩家按下空格键并且 Coyote Time 计时器大于 0 时允许跳跃
-        if (Input.GetKeyDown(KeyCode.Space) && coyoteTimeCounter > 0)
+    /// <summary>
+    /// 处理跳跃输入。
+    /// </summary>
+    /// <param name="jumpKey">跳跃按键</param>
+    private void HandleJumpInput(KeyCode jumpKey)
+    {
+        if (Input.GetKeyDown(jumpKey) && coyoteTimeCounter > 0)
         {
-            Jump();
+            Jump(jumpForce);
         }
     }
 
     /// <summary>
     /// 处理跳跃动作，修改刚体的垂直速度以实现跳跃。
     /// </summary>
-    void Jump()
+    /// <param name="force">跳跃力度</param>
+    private void Jump(float force)
     {
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce); // 保持水平速度不变，修改垂直速度来实现跳跃
-        coyoteTimeCounter = 0; // 跳跃后立即清零残留时间，防止多次跳跃
+        rb.velocity = new Vector2(rb.velocity.x, force);
+        coyoteTimeCounter = 0;
     }
 
     /// <summary>

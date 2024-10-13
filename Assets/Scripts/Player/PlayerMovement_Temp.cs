@@ -37,9 +37,16 @@ public class PlayerMovement_Temp : MonoBehaviour
     /// </summary>
     void FixedUpdate()
     {
-        // 计算目标速度，水平速度由输入决定，垂直速度保持不变
-        float targetSpeed = movement.x * moveSpeed;
+        UpdatePlayerMovement(movement.x * moveSpeed, damping); // 更新玩家移动
+    }
 
+    /// <summary>
+    /// 更新玩家的移动速度，使用线性插值平滑速度变化。
+    /// </summary>
+    /// <param name="targetSpeed">目标速度</param>
+    /// <param name="damping">阻尼值</param>
+    private void UpdatePlayerMovement(float targetSpeed, float damping)
+    {
         /// <summary>
         /// 使用线性插值（Lerp）来平滑速度的变化，避免突然加速或减速。
         /// </summary>
@@ -48,4 +55,7 @@ public class PlayerMovement_Temp : MonoBehaviour
         // 更新玩家的 Rigidbody2D 的速度
         rb.velocity = new Vector2(newSpeed, rb.velocity.y);
     }
+
+
+    
 }
