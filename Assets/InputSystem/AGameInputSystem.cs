@@ -76,10 +76,19 @@ public partial class @AGameInputSystem: IInputActionCollection2, IDisposable
                     ""name"": ""Move"",
                     ""type"": ""Value"",
                     ""id"": ""08fd0dd7-bd8e-4862-806d-58610047cf0b"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ActDirections"",
+                    ""type"": ""Button"",
+                    ""id"": ""0d3b7771-1876-4389-89d8-9749b7fe6517"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -139,9 +148,9 @@ public partial class @AGameInputSystem: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""57ff2b52-4bef-4a01-94b4-2296e2555b37"",
-                    ""path"": ""2DVector"",
+                    ""name"": ""1D Axis"",
+                    ""id"": ""e01b766b-cc17-4f0a-8ead-812971668913"",
+                    ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -150,30 +159,8 @@ public partial class @AGameInputSystem: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""526c2f2f-6c6e-4694-972e-3344dad45b36"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyBoard"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""5a320155-0095-403d-bd4f-0167cc75ded3"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyBoard"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""bc7a99d7-8800-4050-8a93-2edd97511eee"",
+                    ""name"": ""negative"",
+                    ""id"": ""e77b797a-5489-4e1d-9dcf-723787125495"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -183,8 +170,8 @@ public partial class @AGameInputSystem: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""right"",
-                    ""id"": ""6980a743-cbee-438c-a570-b75add0238f1"",
+                    ""name"": ""positive"",
+                    ""id"": ""91ffe5b1-d811-430e-b92e-4df84bcfe134"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -192,6 +179,28 @@ public partial class @AGameInputSystem: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f7d2e668-88d3-444d-a97d-808a2fe9aa7b"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBoard"",
+                    ""action"": ""ActDirections"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d7f72bcc-fdf6-4f1b-92f3-7e928339721d"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBoard"",
+                    ""action"": ""ActDirections"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -246,6 +255,7 @@ public partial class @AGameInputSystem: IInputActionCollection2, IDisposable
         m_PlayerAction_Dash = m_PlayerAction.FindAction("Dash", throwIfNotFound: true);
         m_PlayerAction_Catch = m_PlayerAction.FindAction("Catch", throwIfNotFound: true);
         m_PlayerAction_Move = m_PlayerAction.FindAction("Move", throwIfNotFound: true);
+        m_PlayerAction_ActDirections = m_PlayerAction.FindAction("ActDirections", throwIfNotFound: true);
         // UIAction
         m_UIAction = asset.FindActionMap("UIAction", throwIfNotFound: true);
         m_UIAction_Back = m_UIAction.FindAction("Back", throwIfNotFound: true);
@@ -316,6 +326,7 @@ public partial class @AGameInputSystem: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerAction_Dash;
     private readonly InputAction m_PlayerAction_Catch;
     private readonly InputAction m_PlayerAction_Move;
+    private readonly InputAction m_PlayerAction_ActDirections;
     public struct PlayerActionActions
     {
         private @AGameInputSystem m_Wrapper;
@@ -326,6 +337,7 @@ public partial class @AGameInputSystem: IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_PlayerAction_Dash;
         public InputAction @Catch => m_Wrapper.m_PlayerAction_Catch;
         public InputAction @Move => m_Wrapper.m_PlayerAction_Move;
+        public InputAction @ActDirections => m_Wrapper.m_PlayerAction_ActDirections;
         public InputActionMap Get() { return m_Wrapper.m_PlayerAction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -353,6 +365,9 @@ public partial class @AGameInputSystem: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @ActDirections.started += instance.OnActDirections;
+            @ActDirections.performed += instance.OnActDirections;
+            @ActDirections.canceled += instance.OnActDirections;
         }
 
         private void UnregisterCallbacks(IPlayerActionActions instance)
@@ -375,6 +390,9 @@ public partial class @AGameInputSystem: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @ActDirections.started -= instance.OnActDirections;
+            @ActDirections.performed -= instance.OnActDirections;
+            @ActDirections.canceled -= instance.OnActDirections;
         }
 
         public void RemoveCallbacks(IPlayerActionActions instance)
@@ -455,6 +473,7 @@ public partial class @AGameInputSystem: IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnCatch(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
+        void OnActDirections(InputAction.CallbackContext context);
     }
     public interface IUIActionActions
     {
