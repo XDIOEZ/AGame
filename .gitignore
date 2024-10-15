@@ -77,10 +77,5 @@ crashlytics-build.properties
 Thumbs.db
 Desktop.ini
 
-# Mac version difference (By NFSW)
-Packages/packages-lock.json
-Packages/manifest.json
-ProjectSettings/ProjectVersion.txt
-
 # VSCode files
 .vscode/
