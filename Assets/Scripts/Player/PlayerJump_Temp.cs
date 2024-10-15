@@ -1,12 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// 控制玩家跳跃行为的类，包含跳跃的力度、地面检测和跳跃残留时间（Coyote Time）逻辑。
 /// </summary>
 public class PlayerJump_Temp : MonoBehaviour
 {
+    PlayerController playerController;
     [SerializeField] private float jumpForce = 5f; // 跳跃的力度
     [SerializeField] private LayerMask groundLayer; // 地面层，用于检测玩家是否在地面上
     [SerializeField] private Transform groundCheck; // 用于检测地面的Transform
@@ -16,12 +19,14 @@ public class PlayerJump_Temp : MonoBehaviour
     [SerializeField] private Rigidbody2D rb; // 玩家刚体组件
     [SerializeField] private bool isGrounded; // 玩家是否在地面上
     [SerializeField] private float coyoteTimeCounter; // 用于计时跳跃残留时间
+    public bool isJumping;
 
     /// <summary>
     /// 初始化玩家的刚体组件。
     /// </summary>
     void Start()
     {
+        playerController = GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -31,7 +36,16 @@ public class PlayerJump_Temp : MonoBehaviour
     void Update()
     {
         CheckGroundStatus(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
-        HandleJumpInput(KeyCode.Space);
+
+        playerController.inputActions.PlayerAction.Jump.started += JumpSetting;
+    }
+
+    private void JumpSetting(InputAction.CallbackContext context)
+    {
+        if ( coyoteTimeCounter > 0)
+        {
+            Jump(jumpForce);
+        }
     }
 
     /// <summary>
@@ -48,6 +62,7 @@ public class PlayerJump_Temp : MonoBehaviour
         if (isGrounded)
         {
             coyoteTimeCounter = jumpCoyoteTime;
+            isJumping = false;
         }
         else
         {
@@ -55,17 +70,8 @@ public class PlayerJump_Temp : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// 处理跳跃输入。
-    /// </summary>
-    /// <param name="jumpKey">跳跃按键</param>
-    private void HandleJumpInput(KeyCode jumpKey)
-    {
-        if (Input.GetKeyDown(jumpKey) && coyoteTimeCounter > 0)
-        {
-            Jump(jumpForce);
-        }
-    }
+   
+   
 
     /// <summary>
     /// 处理跳跃动作，修改刚体的垂直速度以实现跳跃。
@@ -74,6 +80,7 @@ public class PlayerJump_Temp : MonoBehaviour
     private void Jump(float force)
     {
         rb.velocity = new Vector2(rb.velocity.x, force);
+        isJumping = true;
         coyoteTimeCounter = 0;
     }
 

@@ -82,9 +82,18 @@ public partial class @AGameInputSystem: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""ActDirections"",
+                    ""name"": ""UpDirection"",
                     ""type"": ""Button"",
-                    ""id"": ""0d3b7771-1876-4389-89d8-9749b7fe6517"",
+                    ""id"": ""5a8ca880-164d-40eb-9915-69c493584111"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DownDirection"",
+                    ""type"": ""Button"",
+                    ""id"": ""47005b7a-4d8c-4f71-a1b3-276e3cb77ab9"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Hold"",
@@ -182,23 +191,23 @@ public partial class @AGameInputSystem: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f7d2e668-88d3-444d-a97d-808a2fe9aa7b"",
+                    ""id"": ""03cb030b-7a53-4d9c-bb76-e0deed0b2bc5"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyBoard"",
-                    ""action"": ""ActDirections"",
+                    ""action"": ""UpDirection"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d7f72bcc-fdf6-4f1b-92f3-7e928339721d"",
+                    ""id"": ""cf76c09b-910e-4b62-b0b1-3cfafb8e24c9"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyBoard"",
-                    ""action"": ""ActDirections"",
+                    ""action"": ""DownDirection"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -255,7 +264,8 @@ public partial class @AGameInputSystem: IInputActionCollection2, IDisposable
         m_PlayerAction_Dash = m_PlayerAction.FindAction("Dash", throwIfNotFound: true);
         m_PlayerAction_Catch = m_PlayerAction.FindAction("Catch", throwIfNotFound: true);
         m_PlayerAction_Move = m_PlayerAction.FindAction("Move", throwIfNotFound: true);
-        m_PlayerAction_ActDirections = m_PlayerAction.FindAction("ActDirections", throwIfNotFound: true);
+        m_PlayerAction_UpDirection = m_PlayerAction.FindAction("UpDirection", throwIfNotFound: true);
+        m_PlayerAction_DownDirection = m_PlayerAction.FindAction("DownDirection", throwIfNotFound: true);
         // UIAction
         m_UIAction = asset.FindActionMap("UIAction", throwIfNotFound: true);
         m_UIAction_Back = m_UIAction.FindAction("Back", throwIfNotFound: true);
@@ -326,7 +336,8 @@ public partial class @AGameInputSystem: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerAction_Dash;
     private readonly InputAction m_PlayerAction_Catch;
     private readonly InputAction m_PlayerAction_Move;
-    private readonly InputAction m_PlayerAction_ActDirections;
+    private readonly InputAction m_PlayerAction_UpDirection;
+    private readonly InputAction m_PlayerAction_DownDirection;
     public struct PlayerActionActions
     {
         private @AGameInputSystem m_Wrapper;
@@ -337,7 +348,8 @@ public partial class @AGameInputSystem: IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_PlayerAction_Dash;
         public InputAction @Catch => m_Wrapper.m_PlayerAction_Catch;
         public InputAction @Move => m_Wrapper.m_PlayerAction_Move;
-        public InputAction @ActDirections => m_Wrapper.m_PlayerAction_ActDirections;
+        public InputAction @UpDirection => m_Wrapper.m_PlayerAction_UpDirection;
+        public InputAction @DownDirection => m_Wrapper.m_PlayerAction_DownDirection;
         public InputActionMap Get() { return m_Wrapper.m_PlayerAction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -365,9 +377,12 @@ public partial class @AGameInputSystem: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
-            @ActDirections.started += instance.OnActDirections;
-            @ActDirections.performed += instance.OnActDirections;
-            @ActDirections.canceled += instance.OnActDirections;
+            @UpDirection.started += instance.OnUpDirection;
+            @UpDirection.performed += instance.OnUpDirection;
+            @UpDirection.canceled += instance.OnUpDirection;
+            @DownDirection.started += instance.OnDownDirection;
+            @DownDirection.performed += instance.OnDownDirection;
+            @DownDirection.canceled += instance.OnDownDirection;
         }
 
         private void UnregisterCallbacks(IPlayerActionActions instance)
@@ -390,9 +405,12 @@ public partial class @AGameInputSystem: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
-            @ActDirections.started -= instance.OnActDirections;
-            @ActDirections.performed -= instance.OnActDirections;
-            @ActDirections.canceled -= instance.OnActDirections;
+            @UpDirection.started -= instance.OnUpDirection;
+            @UpDirection.performed -= instance.OnUpDirection;
+            @UpDirection.canceled -= instance.OnUpDirection;
+            @DownDirection.started -= instance.OnDownDirection;
+            @DownDirection.performed -= instance.OnDownDirection;
+            @DownDirection.canceled -= instance.OnDownDirection;
         }
 
         public void RemoveCallbacks(IPlayerActionActions instance)
@@ -473,7 +491,8 @@ public partial class @AGameInputSystem: IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnCatch(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
-        void OnActDirections(InputAction.CallbackContext context);
+        void OnUpDirection(InputAction.CallbackContext context);
+        void OnDownDirection(InputAction.CallbackContext context);
     }
     public interface IUIActionActions
     {
