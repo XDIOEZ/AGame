@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"javascript.preferGoToSourceDefinition": true,
+		"typescript.preferGoToSourceDefinition": true,
+		"editor.definitionLinkOpensInPeek": true
+	}
+}

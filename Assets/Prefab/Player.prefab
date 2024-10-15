@@ -167,7 +167,7 @@ MonoBehaviour:
   jumpForce: 10.31
   groundLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1
   groundCheck: {fileID: 4610444868054962585}
   groundCheckDistance: 1.1
   jumpCoyoteTime: 0.2
@@ -207,7 +207,7 @@ MonoBehaviour:
   dashUpwardForce: 1.1
   groundLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1
   groundCheck: {fileID: 4610444868054962585}
   groundCheckDistance: 1.1
   rb: {fileID: 5322353848873529499}

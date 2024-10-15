@@ -8,6 +8,7 @@ using UnityEngine;
 public class PlayerDash_Temp : MonoBehaviour
 {
     [SerializeField] private float dashSpeed = 12f; // 冲刺速度
+    [SerializeField] private float dashSpeedFactor = 1.0f; // 冲刺速度比例因子
     [SerializeField] private float dashDuration = 0.2f; // 冲刺持续时间
     [SerializeField] private float dashUpwardForce = 5f; // 斜向上的冲刺力
     [SerializeField] private LayerMask groundLayer; // 地面层，用于检测玩家是否在地面上
@@ -19,10 +20,10 @@ public class PlayerDash_Temp : MonoBehaviour
     [SerializeField] private bool canDash = true; // 是否可以冲刺
     [SerializeField] private bool isDashing = false; // 是否正在冲刺
     [SerializeField] private float dashTime; // 当前冲刺剩余时间
-    private float lastInputDirection = 0f; // 最近的输入方向
-    private float inputDirectionCheckTime = 0.1f; // 用于检测玩家输入方向的时间
-    private float inputDirectionTimer; // 输入方向计时器
-    private bool applyUpwardForce = false; // 是否应用斜向上的力
+    [SerializeField] private float lastInputDirection = 0f; // 最近的输入方向
+    [SerializeField] private float inputDirectionCheckTime = 0.1f; // 用于检测玩家输入方向的时间
+    [SerializeField] private float inputDirectionTimer; // 输入方向计时器
+    [SerializeField] private bool applyUpwardForce = false; // 是否应用斜向上的力
 
     /// <summary>
     /// 初始化玩家的刚体组件。
@@ -49,7 +50,7 @@ public class PlayerDash_Temp : MonoBehaviour
     {
         if (isDashing)
         {
-            PerformDash(lastInputDirection, dashSpeed, dashUpwardForce); // 执行冲刺
+            PerformDash(lastInputDirection, dashSpeed * dashSpeedFactor, dashUpwardForce); // 执行冲刺
         }
     }
 
@@ -107,8 +108,10 @@ public class PlayerDash_Temp : MonoBehaviour
     /// <param name="upwardForce">斜向上的冲刺力</param>
     private void PerformDash(float direction, float speed, float upwardForce)
     {
-        float verticalVelocity = applyUpwardForce ? upwardForce : rb.velocity.y;
-        rb.velocity = new Vector2(direction * speed, verticalVelocity);
+        Vector2 dashForce = new Vector2(direction * speed, applyUpwardForce ? upwardForce : 0f);
+
+        // 使用Impulse模式来立即应用力，模拟瞬时冲刺效果
+        rb.AddForce(dashForce, ForceMode2D.Impulse);
 
         dashTime -= Time.fixedDeltaTime;
         if (dashTime <= 0)
