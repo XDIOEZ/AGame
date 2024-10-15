@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
     {
         //通过组件控制角色移动
         float newspeed = Mathf.Lerp(rb.velocity.x, inputDirection.x * speed, 1f-damping);
-        rb.velocity = new Vector2(newspeed, inputDirection.y);
+        rb.velocity = new Vector2(newspeed, rb.velocity.y);
 
         //控制角色转向
         if (inputDirection.x != 0 && Mathf.Sign(inputDirection.x) != Mathf.Sign(transform.localScale.x))
