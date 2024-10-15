@@ -60,18 +60,9 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "UpDirection",
+                    "name": "ActDirections",
                     "type": "Button",
-                    "id": "5a8ca880-164d-40eb-9915-69c493584111",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Hold",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "DownDirection",
-                    "type": "Button",
-                    "id": "47005b7a-4d8c-4f71-a1b3-276e3cb77ab9",
+                    "id": "0d3b7771-1876-4389-89d8-9749b7fe6517",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Hold",
@@ -136,23 +127,23 @@
                 },
                 {
                     "name": "",
-                    "id": "03cb030b-7a53-4d9c-bb76-e0deed0b2bc5",
+                    "id": "f7d2e668-88d3-444d-a97d-808a2fe9aa7b",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyBoard",
-                    "action": "UpDirection",
+                    "action": "ActDirections",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "cf76c09b-910e-4b62-b0b1-3cfafb8e24c9",
+                    "id": "d7f72bcc-fdf6-4f1b-92f3-7e928339721d",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyBoard",
-                    "action": "DownDirection",
+                    "action": "ActDirections",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
