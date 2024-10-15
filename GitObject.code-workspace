@@ -4,5 +4,9 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"javascript.preferGoToSourceDefinition": true,
+		"typescript.preferGoToSourceDefinition": true,
+		"editor.definitionLinkOpensInPeek": true
+	}
 }
