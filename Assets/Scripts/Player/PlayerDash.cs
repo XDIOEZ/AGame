@@ -19,7 +19,7 @@ public class PlayerDash : MonoBehaviour
     }
     private void Update()
     {
-        playerController.inputActions.PlayerAction.Dash.started += DashSetting;
+       // playerController.inputActions.PlayerAction.Dash.started += DashSetting;
     }
 
     private void DashSetting(InputAction.CallbackContext context)
