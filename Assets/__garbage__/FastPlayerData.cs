@@ -4,7 +4,7 @@
 // EventCenter.Instance.AddEventListener("OnPlayerDataChanged", () => Debug.Log("Player data changed"));
 public static class FastPlayerData
 {
-    private static readonly PlayerData playerDataInstance = PlayerData.Instacne;
+    private static readonly PlayerData playerDataInstance = PlayerData.Instance;
 
     #region 数据读取
     // 当前光能

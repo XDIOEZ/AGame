@@ -118,7 +118,7 @@ public class PlayerData : BaseManager<PlayerData>
     private void DataChanged()
     {
         // 通知所有监听器数据改变
-        EventCenter.Instacne.EventTrigger("OnPlayerDataChanged");
+        EventCenter.Instance.EventTrigger("OnPlayerDataChanged");
     }
     #endregion
 }
