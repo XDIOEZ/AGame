@@ -174,10 +174,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghost_PTP
       objectReference: {fileID: 0}
-    - target: {fileID: 6324009892485086839, guid: 71680bc3d83f14ce79debcd133248e88, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -343,10 +339,6 @@ PrefabInstance:
     - target: {fileID: 950723477280784493, guid: 4194f4a0b1fad4d9bad52dc887c3fc39, type: 3}
       propertyPath: m_Name
       value: Mirror
-      objectReference: {fileID: 0}
-    - target: {fileID: 950723477280784493, guid: 4194f4a0b1fad4d9bad52dc887c3fc39, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8757927183587260028, guid: 4194f4a0b1fad4d9bad52dc887c3fc39, type: 3}
       propertyPath: m_LocalPosition.x
