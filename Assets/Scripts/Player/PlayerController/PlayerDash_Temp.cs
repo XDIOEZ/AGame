@@ -47,7 +47,7 @@ public class PlayerDash_Temp : MonoBehaviour
         {
             remainingDashes = 1; // 重置冲刺次数
             canDash = true;
-            Debug.Log("Grounded!");
+            //Debug.Log("Grounded!");
         }
         if(remainingDashes <= 0)
         {
@@ -61,6 +61,12 @@ public class PlayerDash_Temp : MonoBehaviour
         if (isDashing)
         {
             PerformDash(lastInputDirection, dashSpeed * dashSpeedFactor, dashUpwardForce);
+            //冲刺时重力为零
+            rb.gravityScale = 0f;
+        }
+        else 
+        {
+            rb.gravityScale = 10f;
         }
     }
 
