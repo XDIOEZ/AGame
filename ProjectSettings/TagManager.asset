@@ -5,7 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - DamageSource
-  - Ground
+  - VLight
+  - Light_Bullet
   layers:
   - Default
   - TransparentFX
@@ -13,7 +14,7 @@ TagManager:
   - Player
   - Water
   - UI
-  - Enemy
+  - 
   - Ground
   - 
   - 
