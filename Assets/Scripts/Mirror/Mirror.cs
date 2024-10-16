@@ -6,7 +6,7 @@ public class Mirror : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // 检查碰撞的物体是否是光线子弹
-        if (collision.CompareTag("LaserBullet"))
+        if (collision.CompareTag("Light_Bullet"))
         {
             Vector2 collisionPoint = collision.ClosestPoint(transform.position);
             Vector2 reflectionNormal = CalculateReflectionNormal(collisionPoint);

@@ -14,12 +14,16 @@ public class PlayerMovement_Temp : MonoBehaviour
     // 用于平滑停止的阻尼参数
     [SerializeField] private float damping = 0.1f; // 阻尼，用于平滑停止
 
+    //朝向
+    public Vector2 lookDirection;
+
     /// <summary>
     /// 初始化玩家的刚体组件。
     /// </summary>
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        lookDirection = new Vector2(1, 0);
     }
 
     /// <summary>
@@ -30,6 +34,8 @@ public class PlayerMovement_Temp : MonoBehaviour
         // 获取水平输入
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = 0f; // 横板游戏不需要垂直移动
+
+        GetDirection();
     }
 
     /// <summary>
@@ -61,7 +67,16 @@ public class PlayerMovement_Temp : MonoBehaviour
             transform.localScale = newScale;
         }
     }
+    
+    //记录玩家输入
 
+    public void GetDirection()
+    {
+        if (movement.x != 0)
+        {
+            lookDirection = movement;
+        }
+    }
 
     
 }
