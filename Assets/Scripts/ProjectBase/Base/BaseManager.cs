@@ -40,7 +40,7 @@ public class BaseManager<T> where T:new()
             instance = new T();
         return instance;
     }
-    public static T Instacne
+    public static T Instance
     {
         get { return GetInstance(); }
     }

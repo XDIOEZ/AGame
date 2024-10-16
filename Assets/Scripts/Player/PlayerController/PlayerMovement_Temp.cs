@@ -8,6 +8,7 @@ using UnityEngine;
 public class PlayerMovement_Temp : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f; // 移动速度
+    [SerializeField] private float acceleration = 10f; // 加速度，用于控制力的大小
     [SerializeField] private Rigidbody2D rb; // 角色的 Rigidbody2D 组件
     [SerializeField] private Vector2 movement; // 移动输入向量
 
@@ -41,21 +42,19 @@ public class PlayerMovement_Temp : MonoBehaviour
     }
 
     /// <summary>
-    /// 更新玩家的移动速度，使用线性插值平滑速度变化。
+    /// 更新玩家的移动速度，使用力来推动玩家而不是直接设置速度。
     /// </summary>
     /// <param name="targetSpeed">目标速度</param>
     /// <param name="damping">阻尼值</param>
     private void UpdatePlayerMovement(float targetSpeed, float damping)
     {
-        /// <summary>
-        /// 使用线性插值（Lerp）来平滑速度的变化，避免突然加速或减速。
-        /// </summary>
-        float newSpeed = Mathf.Lerp(rb.velocity.x, targetSpeed, 1f - damping);
+        // 计算当前速度与目标速度之间的差异
+        float speedDifference = targetSpeed - rb.velocity.x;
 
-        // 更新玩家的 Rigidbody2D 的速度
-        rb.velocity = new Vector2(newSpeed, rb.velocity.y);
+        // 计算所需的力，根据差异来决定
+        float force = speedDifference * acceleration * (1f - damping);
+
+        // 添加瞬时力来更新玩家的速度
+        rb.AddForce(new Vector2(force, 0f), ForceMode2D.Force);
     }
-
-
-    
 }

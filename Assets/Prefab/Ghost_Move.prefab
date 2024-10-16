@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8680909411621433089}
   - component: {fileID: 3867539692812341183}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ghost_Move
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 5905502608812197890}
   - component: {fileID: 4086261386763523705}
   - component: {fileID: 2635983633291414894}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
