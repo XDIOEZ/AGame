@@ -54,6 +54,12 @@ public class PlayerMovement_Temp : MonoBehaviour
 
         // 更新玩家的 Rigidbody2D 的速度
         rb.velocity = new Vector2(newSpeed, rb.velocity.y);
+        if (movement.x != 0 && Mathf.Sign(movement.x) != Mathf.Sign(transform.localScale.x))
+        {
+            Vector3 newScale = transform.localScale;
+            newScale.x *= -1;
+            transform.localScale = newScale;
+        }
     }
 
 
