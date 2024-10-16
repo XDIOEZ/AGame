@@ -167,7 +167,7 @@ MonoBehaviour:
   jumpForce: 10.31
   groundLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 128
   groundCheck: {fileID: 4610444868054962585}
   groundCheckDistance: 1.1
   jumpCoyoteTime: 0.2
@@ -203,11 +203,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashSpeed: 12
+  dashSpeedFactor: 1
   dashDuration: 0.2
   dashUpwardForce: 1.1
   groundLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 128
   groundCheck: {fileID: 4610444868054962585}
   groundCheckDistance: 1.1
   rb: {fileID: 5322353848873529499}
@@ -215,6 +216,10 @@ MonoBehaviour:
   canDash: 1
   isDashing: 0
   dashTime: 0
+  lastInputDirection: 0
+  inputDirectionCheckTime: 0.1
+  inputDirectionTimer: 0
+  applyUpwardForce: 0
 --- !u!114 &5889998199640975380
 MonoBehaviour:
   m_ObjectHideFlags: 0
