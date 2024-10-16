@@ -69,7 +69,7 @@ public class GhostMove : MonoBehaviour
         {
             isChasing = true; // 玩家进入追踪范围
         }
-        else
+        else if (distanceToPlayer > chaseRange * 1.5f)
         {
             isChasing = false; // 玩家离开追踪范围
         }
