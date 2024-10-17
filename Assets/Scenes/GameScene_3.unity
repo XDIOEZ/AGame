@@ -751,11 +751,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7517056749773771848, guid: c638150dd360c674baee8a70d9fc452e, type: 3}
       propertyPath: horizontalDashFactor
-      value: 1
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8429918493319348531, guid: c638150dd360c674baee8a70d9fc452e, type: 3}
       propertyPath: moveSpeed
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9129597863054372833, guid: c638150dd360c674baee8a70d9fc452e, type: 3}
       propertyPath: m_Name
