@@ -7,30 +7,66 @@ using UnityEngine;
 /// </summary>
 public class PlayerDash_Temp : MonoBehaviour
 {
-    [SerializeField] private float dashSpeed = 12f; // 冲刺速度
-    [SerializeField] private float dashSpeedFactor = 1.0f; // 冲刺速度比例因子
-    [SerializeField] private float dashDuration = 0.2f; // 冲刺持续时间
-    [SerializeField] private float dashUpwardForce = 5f; // 斜向上的冲刺力
-    [SerializeField] private float horizontalDashFactor = 1.0f; // 水平冲刺系数
-    [SerializeField] private float verticalDashFactor = 1.0f; // 垂直冲刺系数
-    [SerializeField] private LayerMask Ground; // 地面层，用于检测玩家是否在地面上
-    [SerializeField] private Transform groundCheck; // 用于检测地面的Transform
-    [SerializeField, Range(0.01f, 1.5f)] private float groundCheckDistance = 0.1f; // 射线检测的距离
+    [SerializeField]
+    private float dashSpeed = 12f; // 冲刺速度
 
-    [SerializeField] private float 水平无控制冲刺系数 = 0.5f; // 冲刺冷却时间
+    [SerializeField]
+    private float dashSpeedFactor = 1.0f; // 冲刺速度比例因子
 
-    [SerializeField] private Rigidbody2D rb; // 玩家刚体组件
-    [SerializeField] private bool isGrounded; // 玩家是否在地面上
-    [SerializeField] private bool canDash = true; // 是否可以冲刺
-    [SerializeField] private bool isDashing = false; // 是否正在冲刺
-    [SerializeField] private float dashTime; // 当前冲刺剩余时间
-    [SerializeField] private float lastInputDirection; // 最近的输入方向
-    [SerializeField] private float inputDirectionCheckTime = 0.1f; // 用于检测玩家输入方向的时间
-    [SerializeField] private float inputDirectionTimer; // 输入方向计时器
-    [SerializeField] private bool applyUpwardForce; // 是否应用斜向上的力
+    [SerializeField]
+    private float dashDuration = 0.2f; // 冲刺持续时间
 
+    [SerializeField]
+    private float dashUpwardForce = 5f; // 斜向上的冲刺力
 
-    [SerializeField] private int remainingDashes = 1; // 剩余冲刺次数
+    [SerializeField]
+    private float horizontalDashFactor = 1.0f; // 水平冲刺系数
+
+    [SerializeField]
+    private float verticalDashFactor = 1.0f; // 垂直冲刺系数
+
+    [SerializeField]
+    private LayerMask Ground; // 地面层，用于检测玩家是否在地面上
+
+    [SerializeField]
+    private Transform groundCheck; // 用于检测地面的Transform
+
+    [SerializeField, Range(0.01f, 1.5f)]
+    private float groundCheckDistance = 0.1f; // 射线检测的距离
+
+    // 水平无控制冲刺系数
+    [SerializeField]
+    private float horizontalDashFactorWithoutControl = 0.5f; // 冲刺冷却时间
+
+    [SerializeField]
+    private Rigidbody2D rb; // 玩家刚体组件
+
+    [SerializeField]
+    private bool isGrounded; // 玩家是否在地面上
+
+    [SerializeField]
+    private bool canDash = true; // 是否可以冲刺
+
+    [SerializeField]
+    private bool isDashing = false; // 是否正在冲刺
+
+    [SerializeField]
+    private float dashTime; // 当前冲刺剩余时间
+
+    [SerializeField]
+    private float lastInputDirection; // 最近的输入方向
+
+    [SerializeField]
+    private float inputDirectionCheckTime = 0.1f; // 用于检测玩家输入方向的时间
+
+    [SerializeField]
+    private float inputDirectionTimer; // 输入方向计时器
+
+    [SerializeField]
+    private bool applyUpwardForce; // 是否应用斜向上的力
+
+    [SerializeField]
+    private int remainingDashes = 1; // 剩余冲刺次数
 
     void Start()
     {
@@ -49,7 +85,7 @@ public class PlayerDash_Temp : MonoBehaviour
             canDash = true;
             //Debug.Log("Grounded!");
         }
-        if(remainingDashes <= 0)
+        if (remainingDashes <= 0)
         {
             canDash = false; // 冲刺次数用完
             Debug.Log("No more dashes left!");
@@ -64,7 +100,7 @@ public class PlayerDash_Temp : MonoBehaviour
             //冲刺时重力为零
             rb.gravityScale = 0f;
         }
-        else 
+        else
         {
             rb.gravityScale = 10f;
         }
@@ -73,7 +109,12 @@ public class PlayerDash_Temp : MonoBehaviour
     private void CheckGroundStatus()
     {
         // 检查玩家是否在地面上，但不影响冲刺的能力
-        isGrounded = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, Ground);
+        isGrounded = Physics2D.Raycast(
+            groundCheck.position,
+            Vector2.down,
+            groundCheckDistance,
+            Ground
+        );
     }
 
     private void RecordInputDirection(float horizontalInput)
@@ -184,12 +225,14 @@ public class PlayerDash_Temp : MonoBehaviour
         applyUpwardForce = false;
 
         // 如果落地，重置冲刺次数
-        
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(groundCheck.position, groundCheck.position + Vector3.down * groundCheckDistance);
+        Gizmos.DrawLine(
+            groundCheck.position,
+            groundCheck.position + Vector3.down * groundCheckDistance
+        );
     }
 }
