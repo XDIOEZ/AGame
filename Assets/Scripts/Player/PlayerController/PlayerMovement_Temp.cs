@@ -14,7 +14,7 @@ public class PlayerMovement_Temp : MonoBehaviour
     // 用于平滑停止的阻尼参数
     [SerializeField] private float damping = 0.1f; // 阻尼，用于平滑停止
 
-    //朝向
+    // 朝向
     public Vector2 lookDirection;
 
     /// <summary>
@@ -43,23 +43,26 @@ public class PlayerMovement_Temp : MonoBehaviour
     /// </summary>
     void FixedUpdate()
     {
-        UpdatePlayerMovement(movement.x * moveSpeed, damping); // 更新玩家移动
+        UpdatePlayerMovement(movement.x * moveSpeed); // 更新玩家移动
     }
 
     /// <summary>
-    /// 更新玩家的移动速度，使用线性插值平滑速度变化。
+    /// 更新玩家的移动速度，使用力的方式实现移动。
     /// </summary>
     /// <param name="targetSpeed">目标速度</param>
-    /// <param name="damping">阻尼值</param>
-    private void UpdatePlayerMovement(float targetSpeed, float damping)
+    private void UpdatePlayerMovement(float targetSpeed)
     {
-        /// <summary>
-        /// 使用线性插值（Lerp）来平滑速度的变化，避免突然加速或减速。
-        /// </summary>
-        float newSpeed = Mathf.Lerp(rb.velocity.x, targetSpeed, 1f - damping);
+        // 计算期望的速度和当前速度的差异
+        float speedDifference = targetSpeed - rb.velocity.x;
 
-        // 更新玩家的 Rigidbody2D 的速度
-        rb.velocity = new Vector2(newSpeed, rb.velocity.y);
+        // 将力施加到刚体上，使用阻尼
+        float force = speedDifference / Time.fixedDeltaTime; // 计算需要施加的力
+        force *= (1f - damping); // 应用阻尼
+
+        // 施加力
+        rb.AddForce(new Vector2(force, 0), ForceMode2D.Force);
+
+        // 反转朝向
         if (movement.x != 0 && Mathf.Sign(movement.x) != Mathf.Sign(transform.localScale.x))
         {
             Vector3 newScale = transform.localScale;
@@ -67,9 +70,8 @@ public class PlayerMovement_Temp : MonoBehaviour
             transform.localScale = newScale;
         }
     }
-    
-    //记录玩家输入
 
+    // 记录玩家输入
     public void GetDirection()
     {
         if (movement.x != 0)
@@ -77,6 +79,4 @@ public class PlayerMovement_Temp : MonoBehaviour
             lookDirection = movement;
         }
     }
-
-    
 }

@@ -17,6 +17,13 @@ public class PlayerJump_Temp : MonoBehaviour
     [SerializeField] private bool isGrounded; // 玩家是否在地面上
     [SerializeField] private float coyoteTimeCounter; // 用于计时跳跃残留时间
 
+    // 记录垂直方向的移动
+    [SerializeField]
+    private int verticalMovementDirection = 0; // 1表示向上，-1表示向下，0表示静止
+
+    // 引用冲刺状态的脚本
+    [SerializeField] private PlayerDash_Temp playerDash; // 冲刺控制脚本的引用
+
     /// <summary>
     /// 初始化玩家的刚体组件。
     /// </summary>
@@ -32,6 +39,9 @@ public class PlayerJump_Temp : MonoBehaviour
     {
         CheckGroundStatus(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
         HandleJumpInput(KeyCode.Space);
+        
+        // 更新垂直移动方向的状态
+        UpdateVerticalMovementDirection();
     }
 
     /// <summary>
@@ -61,9 +71,16 @@ public class PlayerJump_Temp : MonoBehaviour
     /// <param name="jumpKey">跳跃按键</param>
     private void HandleJumpInput(KeyCode jumpKey)
     {
+        // 检查是否正在冲刺，若是则不进行跳跃
+        if (playerDash != null && playerDash.isDashing)
+        {
+            return; // 如果正在冲刺，则跳过跳跃处理
+        }
+
         if (Input.GetKeyDown(jumpKey) && coyoteTimeCounter > 0)
         {
             Jump(jumpForce);
+            verticalMovementDirection = 1; // 记录为向上移动
         }
     }
 
@@ -75,6 +92,29 @@ public class PlayerJump_Temp : MonoBehaviour
     {
         rb.velocity = new Vector2(rb.velocity.x, force);
         coyoteTimeCounter = 0;
+    }
+
+    /// <summary>
+    /// 更新垂直移动方向，检查在0.1秒内的运动状态
+    /// </summary>
+    private void UpdateVerticalMovementDirection()
+    {
+        // 根据当前的垂直速度设置方向
+        if (rb.velocity.y > 0.1f)
+        {
+            verticalMovementDirection = 1; // 向上移动
+        }
+        else if (rb.velocity.y < -0.1f)
+        {
+            verticalMovementDirection = -1; // 向下移动
+        }
+        else
+        {
+            verticalMovementDirection = 0; // 静止
+        }
+        
+        // 可选: 你可以在这里输出当前的垂直移动方向到调试日志中
+        Debug.Log("Vertical Movement Direction: " + verticalMovementDirection);
     }
 
     /// <summary>
