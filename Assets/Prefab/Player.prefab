@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 5889998199640975380}
   m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -255,6 +255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 6
+  acceleration: 10
   rb: {fileID: 5322353848873529499}
   movement: {x: 0, y: 0}
   damping: 0.1
@@ -276,11 +277,12 @@ MonoBehaviour:
   dashUpwardForce: 1.1
   horizontalDashFactor: 1
   verticalDashFactor: 1
-  groundLayer:
+  Ground:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   groundCheck: {fileID: 4610444868054962585}
   groundCheckDistance: 1.1
+  "\u6C34\u5E73\u65E0\u63A7\u5236\u51B2\u523A\u7CFB\u6570": 0.5
   rb: {fileID: 5322353848873529499}
   isGrounded: 0
   canDash: 1
@@ -290,6 +292,7 @@ MonoBehaviour:
   inputDirectionCheckTime: 0.1
   inputDirectionTimer: 0
   applyUpwardForce: 0
+  remainingDashes: 1
 --- !u!114 &5889998199640975380
 MonoBehaviour:
   m_ObjectHideFlags: 0
