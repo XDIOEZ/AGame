@@ -8,6 +8,7 @@ TagManager:
   - VLight
   - Light_Bullet
   - DarkWall
+  - StarStone
   layers:
   - Default
   - TransparentFX
