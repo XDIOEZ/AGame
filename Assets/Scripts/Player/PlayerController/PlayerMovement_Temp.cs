@@ -77,6 +77,7 @@ public class PlayerMovement_Temp : MonoBehaviour
         if (movement.x != 0)
         {
             lookDirection = movement;
+            
         }
     }
 }
