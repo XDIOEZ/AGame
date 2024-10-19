@@ -3,11 +3,18 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class Mirror : MonoBehaviour
 {
+    [Header("声音配置")]
+    [Tooltip("击中反射镜的声音")]
+    public string hitSound = "OnHitMirror";
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // 检查碰撞的物体是否是光线子弹
         if (collision.CompareTag("Light_Bullet"))
         {
+            // 播放击中反射镜的声音
+            MusicMgr.Instance.PlaySound(hitSound, false);
+
             Vector2 collisionPoint = collision.ClosestPoint(transform.position);
             Vector2 reflectionNormal = CalculateReflectionNormal(collisionPoint);
 

@@ -46,6 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTag: Player
+  moveAudio: 
+  idleAudio: 
+  deathAudio: OnDead
   moveSpeed: 2
   wanderRange: 5
   chaseRange: 5

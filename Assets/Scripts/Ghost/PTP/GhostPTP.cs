@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GhostPTP : MonoBehaviour
+public class GhostPTP : EnemyHurt
 {
     [Header("节点配置")]
     [Tooltip("所有路径点的父节点")]
@@ -26,6 +26,15 @@ public class GhostPTP : MonoBehaviour
     [Tooltip("移动策略")]
     public IMoveStrategy moveStrategy; // 移动策略
 
+    [Header("声音配置")]
+    [Tooltip("移动声音")]
+    public string moveAudio; // 移动声音
+
+    [Tooltip("静默声音")]
+    public string idleAudio; // 静默声音
+
+    [Tooltip("死亡声音")]
+    public string deathAudio = "OnDead"; // 死亡声音
     private List<Transform> points; // 存储Path下所有的Point
     private int currentPointIndex = 0; // 当前目标点的索引
 
@@ -87,5 +96,10 @@ public class GhostPTP : MonoBehaviour
         }
         yield return new WaitForSeconds(defaultIdleTime + Random.Range(0f, maxIdleTimeRandom)); // 等待随机静默时间
         Moved.position = targetPoint.position; // 确保最终位置到达目标点
+    }
+
+    public override void EnemyDead()
+    {
+        MusicMgr.Instance.PlaySound(deathAudio, false);
     }
 }

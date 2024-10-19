@@ -2,11 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GhostMove : MonoBehaviour
+public class GhostMove : EnemyHurt
 {
     [Header("主要参数")]
     [Tooltip("玩家标签")]
     public string playerTag = "Player"; // 玩家标签
+
+    [Header("声音配置")]
+    [Tooltip("移动声音")]
+    public string moveAudio; // 移动声音
+
+    [Tooltip("静默声音")]
+    public string idleAudio; // 静默声音
+
+    [Tooltip("死亡声音")]
+    public string deathAudio = "OnDead"; // 死亡声音
 
     [Header("可调节参数")]
     [Tooltip("移动速度")]
@@ -187,12 +197,17 @@ public class GhostMove : MonoBehaviour
         );
     }
 
-    private System.Collections.IEnumerator SearchForPlayer()
+    private IEnumerator SearchForPlayer()
     {
-        while (player == null) // 永久轮询
+        while (player == null)
         {
             player = GameObject.FindWithTag(playerTag)?.transform; // 搜索玩家
             yield return new WaitForSeconds(searchInterval);
         }
+    }
+
+    public override void EnemyDead()
+    {
+        MusicMgr.Instance.PlaySound(deathAudio, false);
     }
 }
