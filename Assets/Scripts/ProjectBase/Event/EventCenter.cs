@@ -11,12 +11,12 @@
 // {
 //     public start()
 //     {
-//         EventCenter.Instance.AddEventListener("EnemyDead", OnEnemyDead); // 这里让`OnEnemyDead`订阅敌人死亡事件
+//         EventCenter.Instance.AddEventListener<Enemy>("EnemyDead", OnEnemyDead); // 这里让`OnEnemyDead`订阅敌人死亡事件
 //     }
 //
-//     private void OnEnemyDead(object enemy)
+//     private void OnEnemyDead(Enemy enemy)
 //     {
-//         Debug.Log("敌人已经被击败"); // 这里假设敌人死后需要在控制台输出一条信息
+//         Debug.Log("敌人已经被击败", enemy.gameObject.name); // 这里假设敌人死后需要在控制台输出一条信息
 //     }
 // }
 //
