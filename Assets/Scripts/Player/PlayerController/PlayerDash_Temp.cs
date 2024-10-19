@@ -26,6 +26,7 @@ public class PlayerDash_Temp : MonoBehaviour
     [SerializeField] private float inputDirectionCheckTime = 0.1f; // 用于检测玩家输入方向的时间
     [SerializeField] private float inputDirectionTimer; // 输入方向计时器
     [SerializeField] private bool applyUpwardForce; // 是否应用斜向上的力
+    [SerializeField  ] private float UpDashFactor; // 是否在跳跃
 
     [SerializeField] private int remainingDashes = 1; // 剩余冲刺次数
 
@@ -102,7 +103,7 @@ public class PlayerDash_Temp : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             // 添加向上的力
-            verticalForce = upwardForce * verticalDashFactor;
+            verticalForce = upwardForce * verticalDashFactor* UpDashFactor;
 
             // 如果同时按下 "A" 或 "D"，则在向上力的基础上增加水平力
             if (Input.GetKey(KeyCode.A))
