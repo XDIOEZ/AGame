@@ -29,19 +29,20 @@ public class PlayerDash_Temp : MonoBehaviour
     [SerializeField  ] private float UpDashFactor; // 向上的冲刺系数
 
     [SerializeField] private int remainingDashes = 1; // 剩余冲刺次数
-
+    [SerializeField] private PlayerJump_Temp playerJump; // 跳跃控制脚本的引用
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
+
     void Update()
     {
         CheckGroundStatus();
         RecordInputDirection(Input.GetAxisRaw("Horizontal"));
-        
+
         // 仅在不向上跳跃时处理冲刺输入
-        if (rb.velocity.y <= 15) // 如果玩家的垂直速度为非正值（即不在上升）
+        if (rb.velocity.y <= 15 && (playerJump == null || playerJump.verticalMovementDirection <= 0)) // 如果玩家的垂直速度为非正值（即不在上升）并且不在上升阶段
         {
             HandleDashInput(KeyCode.LeftShift);
         }
