@@ -126,7 +126,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -233,15 +233,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 15
+  jumpCoyoteTime: 0.1
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
   groundCheck: {fileID: 4610444868054962585}
   groundCheckDistance: 1.2
-  jumpCoyoteTime: 0.1
-  rb: {fileID: 5322353848873529499}
-  isGrounded: 0
-  coyoteTimeCounter: 0
+  jumpDuration: 1
   verticalMovementDirection: 0
   playerDash: {fileID: 0}
 --- !u!114 &8429918493319348531
@@ -295,6 +293,7 @@ MonoBehaviour:
   applyUpwardForce: 0
   UpDashFactor: 1
   remainingDashes: 1
+  playerJump: {fileID: 0}
 --- !u!114 &5889998199640975380
 MonoBehaviour:
   m_ObjectHideFlags: 0
