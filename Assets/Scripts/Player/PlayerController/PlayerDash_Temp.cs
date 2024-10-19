@@ -26,7 +26,7 @@ public class PlayerDash_Temp : MonoBehaviour
     [SerializeField] private float inputDirectionCheckTime = 0.1f; // 用于检测玩家输入方向的时间
     [SerializeField] private float inputDirectionTimer; // 输入方向计时器
     [SerializeField] private bool applyUpwardForce; // 是否应用斜向上的力
-    [SerializeField  ] private float UpDashFactor; // 是否在跳跃
+    [SerializeField  ] private float UpDashFactor; // 向上的冲刺系数
 
     [SerializeField] private int remainingDashes = 1; // 剩余冲刺次数
 
@@ -102,19 +102,30 @@ public class PlayerDash_Temp : MonoBehaviour
         // 检查 "W" 键是否按下
         if (Input.GetKey(KeyCode.W))
         {
-            // 添加向上的力
-            verticalForce = upwardForce * verticalDashFactor* UpDashFactor;
-
-            // 如果同时按下 "A" 或 "D"，则在向上力的基础上增加水平力
-            if (Input.GetKey(KeyCode.A))
+            // 如果没有同时按下 "A" 或 "D"，则为纯向上冲刺
+            if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
             {
-                horizontalForce = -horizontalDashFactor * speed; // 左水平冲刺
+                // 添加向上的力，仅受到 UpDashFactor 的影响
+                verticalForce = upwardForce * verticalDashFactor * UpDashFactor;
+                horizontalForce = 0; // 水平力为0
             }
-            else if (Input.GetKey(KeyCode.D))
+            else
             {
-                horizontalForce = horizontalDashFactor * speed; // 右水平冲刺
+                // 如果按下了 "A" 或 "D"，则为斜向冲刺，不受 UpDashFactor 影响
+                verticalForce = upwardForce * verticalDashFactor; // 不乘以 UpDashFactor
+
+                // 判断水平冲刺方向
+                if (Input.GetKey(KeyCode.A))
+                {
+                    horizontalForce = -horizontalDashFactor * speed; // 左水平冲刺
+                }
+                else if (Input.GetKey(KeyCode.D))
+                {
+                    horizontalForce = horizontalDashFactor * speed; // 右水平冲刺
+                }
             }
         }
+
         // 检查 "S" 键是否按下
         else if (Input.GetKey(KeyCode.S))
         {
