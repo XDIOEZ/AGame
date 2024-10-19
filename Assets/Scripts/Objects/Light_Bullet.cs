@@ -7,18 +7,23 @@ using UnityEngine.Events;
 public class Light_Bullet : MonoBehaviour
 {
     Rigidbody2D rb;
+    float destoryTime;
+     
 
-    private void Start()
-    {
-        EventCenter.Instance.AddEventListener<Vector2>(
-            $"{this.gameObject.GetInstanceID()}_OnHitMirror",
-            OnHitMirror
-        );
-    }
+    //private void Start()
+    //{
+    //    EventCenter.Instance.AddEventListener($"{this.gameObject.name}_OnHitMirror", ()=>OnHitMirror());
+    //}
+
+   
 
     public void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
+    private void Update()
+    {
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -27,18 +32,19 @@ public class Light_Bullet : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
+
         }
     }
 
-    public void Lunch(Vector2 direction, float force)
-    {
-        rb.AddForce(direction * force);
-    }
 
-    private void OnHitMirror(Vector2 reflectionNormal)
+    public void Lunch(Vector2 direction,float force)
     {
-        Debug.Log($"撞到镜子，法线向量:{reflectionNormal}");
-        Debug.Log($"hit mirror:{reflectionNormal}");
-        // 这里可以做一些反射相关的处理
+        rb.AddForce(direction*force);
     }
+    //private void OnHitMirror(Vector2 reflectionNormal)
+    //{
+    //    Debug.Log($"撞到镜子，法线向量:{reflectionNormal}");
+    //    // 这里可以做一些反射相关的处理
+    //}
+
 }

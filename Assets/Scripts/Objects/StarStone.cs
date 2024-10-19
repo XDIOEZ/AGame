@@ -19,6 +19,7 @@ public class StarStone : MonoBehaviour
         {
             if (ga != null)
                 ga.SetActive(true);
+            
         }
     }
 
@@ -31,10 +32,10 @@ public class StarStone : MonoBehaviour
         }
     }
 
-    public void FPressed()
-    {
-        Destroy(ga.gameObject);
-    }
+    //public void FPressed()
+    //{
+    //    Destroy(ga.gameObject);
+    //}
 
 
 
