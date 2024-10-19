@@ -40,7 +40,7 @@ public class PlayerDash_Temp : MonoBehaviour
         RecordInputDirection(Input.GetAxisRaw("Horizontal"));
         
         // 仅在不向上跳跃时处理冲刺输入
-        if (rb.velocity.y <= 0) // 如果玩家的垂直速度为非正值（即不在上升）
+        if (rb.velocity.y <= 15) // 如果玩家的垂直速度为非正值（即不在上升）
         {
             HandleDashInput(KeyCode.LeftShift);
         }

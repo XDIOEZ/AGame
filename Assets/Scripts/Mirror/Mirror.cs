@@ -13,7 +13,7 @@ public class Mirror : MonoBehaviour
 
             // 触发事件并传递法线
             EventCenter.Instance.EventTrigger(
-                $"{collision.gameObject.name}_OnHitMirror",
+                $"{collision.gameObject.GetInstanceID()}_OnHitMirror",
                 reflectionNormal
             );
         }
