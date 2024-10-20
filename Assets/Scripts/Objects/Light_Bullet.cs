@@ -16,7 +16,7 @@ public class Light_Bullet : MonoBehaviour
 
     private void Start()
     {
-        EventCenter.Instance.AddEventListener<Vector2>(
+        EventCenter.Instance.AddEventListener<HitInfo>(
             $"{this.gameObject.name}_OnHitMirror",
             OnHitMirror
         );
@@ -38,7 +38,7 @@ public class Light_Bullet : MonoBehaviour
         rb.AddForce(direction * force);
     }
 
-    private void OnHitMirror(Vector2 reflectionNormal)
+    private void OnHitMirror(HitInfo hitInfo)
     {
         if (rb != null)
         {
@@ -46,7 +46,10 @@ public class Light_Bullet : MonoBehaviour
             Vector2 incomingDirection = rb.velocity;
 
             // 计算反射后的方向
-            Vector2 reflectedDirection = Vector2.Reflect(incomingDirection, reflectionNormal);
+            Vector2 reflectedDirection = Vector2.Reflect(
+                incomingDirection,
+                hitInfo.ReflectionNormal
+            );
 
             // 反射方向近似到四向
             if (Mathf.Abs(reflectedDirection.x) < 0.1f)
@@ -58,8 +61,14 @@ public class Light_Bullet : MonoBehaviour
                 reflectedDirection.y = 0;
             }
 
-            // 更新光线子弹的速度
+            // 更新光线子弹的速度为反射方向
             rb.velocity = reflectedDirection;
+
+            // 更新子弹朝向为反射方向
+            transform.right = reflectedDirection;
+
+            // 更新子弹位置到撞击点
+            transform.position = hitInfo.CollisionPoint;
         }
     }
 }

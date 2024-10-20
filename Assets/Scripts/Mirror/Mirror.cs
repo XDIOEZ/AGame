@@ -1,5 +1,18 @@
 using UnityEngine;
 
+[System.Serializable]
+public struct HitInfo
+{
+    public Vector2 ReflectionNormal;
+    public Vector2 CollisionPoint;
+
+    public HitInfo(Vector2 reflectionNormal, Vector2 collisionPoint)
+    {
+        ReflectionNormal = reflectionNormal;
+        CollisionPoint = collisionPoint;
+    }
+}
+
 [RequireComponent(typeof(BoxCollider2D))]
 public class Mirror : MonoBehaviour
 {
@@ -18,10 +31,13 @@ public class Mirror : MonoBehaviour
             Vector2 collisionPoint = collision.ClosestPoint(transform.position);
             Vector2 reflectionNormal = CalculateReflectionNormal(collisionPoint);
 
+            // 构造击中反射镜的事件数据
+            HitInfo hitInfo = new HitInfo(reflectionNormal, collisionPoint);
+
             // 触发事件并传递法线
             EventCenter.Instance.EventTrigger(
                 $"{collision.gameObject.GetInstanceID()}_OnHitMirror",
-                reflectionNormal
+                hitInfo
             );
         }
     }
