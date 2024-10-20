@@ -8,23 +8,21 @@ public class Light_Bullet : MonoBehaviour
 {
     Rigidbody2D rb;
     float destoryTime;
-     
-
-    //private void Start()
-    //{
-    //    EventCenter.Instance.AddEventListener($"{this.gameObject.name}_OnHitMirror", ()=>OnHitMirror());
-    //}
-
-   
 
     public void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    private void Update()
+
+    private void Start()
     {
-        
+        EventCenter.Instance.AddEventListener<HitInfo>(
+            $"{gameObject.GetInstanceID()}_OnHitMirror",
+            OnHitMirror
+        );
     }
+
+    private void Update() { }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -32,19 +30,45 @@ public class Light_Bullet : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
-
         }
     }
 
-
-    public void Lunch(Vector2 direction,float force)
+    public void Lunch(Vector2 direction, float force)
     {
-        rb.AddForce(direction*force);
+        rb.AddForce(direction * force);
     }
-    //private void OnHitMirror(Vector2 reflectionNormal)
-    //{
-    //    Debug.Log($"ײ�����ӣ���������:{reflectionNormal}");
-    //    // ���������һЩ������صĴ���
-    //}
 
+    private void OnHitMirror(HitInfo hitInfo)
+    {
+        if (rb != null)
+        {
+            // 获取光线子弹的当前速度
+            Vector2 incomingDirection = rb.velocity;
+
+            // 计算反射后的方向
+            Vector2 reflectedDirection = Vector2.Reflect(
+                incomingDirection,
+                hitInfo.ReflectionNormal
+            );
+
+            // 反射方向近似到四向
+            if (Mathf.Abs(reflectedDirection.x) < 0.1f)
+            {
+                reflectedDirection.x = 0;
+            }
+            if (Mathf.Abs(reflectedDirection.y) < 0.1f)
+            {
+                reflectedDirection.y = 0;
+            }
+
+            // 更新光线子弹的速度为反射方向
+            rb.velocity = reflectedDirection;
+
+            // 更新子弹朝向为反射方向
+            transform.right = reflectedDirection;
+
+            // 更新子弹位置到撞击点
+            transform.position = hitInfo.CollisionPoint;
+        }
+    }
 }

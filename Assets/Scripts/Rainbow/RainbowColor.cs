@@ -1,4 +1,6 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 [System.Serializable]
 public enum RainbowColorType
@@ -12,9 +14,10 @@ public enum RainbowColorType
     Purple,
 }
 
-public class RainbowColor : MonoBehaviour
+public class RainbowColor : MonoBehaviour, IToggleable
 {
     private Renderer objectRenderer;
+    private Light2D light2D;
 
     #region 颜色属性
     public RainbowColorType CurrentColorType
@@ -35,8 +38,13 @@ public class RainbowColor : MonoBehaviour
     #endregion
     private void Start()
     {
+        light2D = GetComponent<Light2D>(); // 获取 Light2D 组件
         objectRenderer = GetComponent<Renderer>();
         audioSource = GetComponent<AudioSource>(); // 获取 AudioSource 组件
+    }
+
+    private void OnEnable()
+    {
         ChangeColor(currentColorType);
     }
 
@@ -85,9 +93,14 @@ public class RainbowColor : MonoBehaviour
         if (objectRenderer != null)
         {
             objectRenderer.material.color = color; // 改变物体颜色
-            currentColorType = colorType; // 记录当前颜色
         }
 
+        if (light2D != null)
+        {
+            light2D.color = color; // 改变光源颜色
+        }
+
+        currentColorType = colorType; // 记录当前颜色
         PlayColorChangeSound(); // 播放颜色变化音效
     }
 
@@ -105,5 +118,15 @@ public class RainbowColor : MonoBehaviour
         {
             audioSource.PlayOneShot(colorChangeClip); // 播放音效
         }
+    }
+
+    public void Toggle()
+    {
+        this.gameObject.SetActive(!this.gameObject.activeSelf);
+    }
+
+    public void ToggleOff()
+    {
+        this.gameObject.SetActive(false);
     }
 }

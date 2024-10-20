@@ -10,6 +10,8 @@ TagManager:
   - DarkWall
   - StarStone
   - Ground
+  - ReflectionMirror
+  - Enemy
   layers:
   - Default
   - TransparentFX

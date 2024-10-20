@@ -16,10 +16,14 @@ public class PolygonMirror : MonoBehaviour
             MusicMgr.Instance.PlaySound(hitSound, false);
             Vector2 collisionPoint = collision.ClosestPoint(transform.position);
             Vector2 reflectionNormal = CalculateReflectionNormal(collisionPoint);
+
+            // 构造击中反射镜的事件数据
+            HitInfo hitInfo = new HitInfo(reflectionNormal, collisionPoint);
+
             // 触发事件并传递法线
             EventCenter.Instance.EventTrigger(
                 $"{collision.gameObject.GetInstanceID()}_OnHitMirror",
-                reflectionNormal
+                hitInfo
             );
         }
     }
