@@ -8,23 +8,21 @@ public class Light_Bullet : MonoBehaviour
 {
     Rigidbody2D rb;
     float destoryTime;
-     
-
-    //private void Start()
-    //{
-    //    EventCenter.Instance.AddEventListener($"{this.gameObject.name}_OnHitMirror", ()=>OnHitMirror());
-    //}
-
-   
 
     public void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    private void Update()
+
+    private void Start()
     {
-        
+        EventCenter.Instance.AddEventListener<Vector2>(
+            $"{this.gameObject.name}_OnHitMirror",
+            OnHitMirror
+        );
     }
+
+    private void Update() { }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -32,19 +30,36 @@ public class Light_Bullet : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
-
         }
     }
 
-
-    public void Lunch(Vector2 direction,float force)
+    public void Lunch(Vector2 direction, float force)
     {
-        rb.AddForce(direction*force);
+        rb.AddForce(direction * force);
     }
-    //private void OnHitMirror(Vector2 reflectionNormal)
-    //{
-    //    Debug.Log($"×²µ½¾µ×Ó£¬·¨ÏßÏòÁ¿:{reflectionNormal}");
-    //    // ÕâÀï¿ÉÒÔ×öÒ»Ğ©·´ÉäÏà¹ØµÄ´¦Àí
-    //}
 
+    private void OnHitMirror(Vector2 reflectionNormal)
+    {
+        if (rb != null)
+        {
+            // è·å–å…‰çº¿å­å¼¹çš„å½“å‰é€Ÿåº¦
+            Vector2 incomingDirection = rb.velocity;
+
+            // è®¡ç®—åå°„åçš„æ–¹å‘
+            Vector2 reflectedDirection = Vector2.Reflect(incomingDirection, reflectionNormal);
+
+            // åå°„æ–¹å‘è¿‘ä¼¼åˆ°å››å‘
+            if (Mathf.Abs(reflectedDirection.x) < 0.1f)
+            {
+                reflectedDirection.x = 0;
+            }
+            if (Mathf.Abs(reflectedDirection.y) < 0.1f)
+            {
+                reflectedDirection.y = 0;
+            }
+
+            // æ›´æ–°å…‰çº¿å­å¼¹çš„é€Ÿåº¦
+            rb.velocity = reflectedDirection;
+        }
+    }
 }
