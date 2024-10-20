@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class TeleportDoor : MonoBehaviour
 {
@@ -16,6 +18,37 @@ public class TeleportDoor : MonoBehaviour
         speedMultiplier = GetComponentInParent<CrystalMirror>().speedMultiplier;
     }
 
+    private void BeforTeleport(Collider2D collision)
+    {
+        Renderer renderer = collision.GetComponent<Renderer>();
+        // 确保Renderer组件存在
+        if (renderer != null)
+        {
+            // 获取材质
+            Material material = renderer.material;
+            material.SetVector("_DoorPos", pairedDoor.transform.position);
+            material.SetVector(
+                "_DoorNormal",
+                (pairedDoor.gameObject.name == "LeftDoor")
+                    ? -pairedDoor.transform.right
+                    : pairedDoor.transform.right
+            );
+        }
+    }
+
+    private void AfterTeleport(Collider2D collision)
+    {
+        Renderer renderer = collision.GetComponent<Renderer>();
+        // 确保Renderer组件存在
+        if (renderer != null)
+        {
+            // 获取材质
+            Material material = renderer.material;
+            material.SetVector("_DoorPos", new Vector3(0, -int.MaxValue, 0));
+            material.SetVector("_DoorNormal", new Vector3(0, 1, 0));
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // 检查是否需要忽略该对象
@@ -28,6 +61,8 @@ public class TeleportDoor : MonoBehaviour
             // 如果对象标签匹配，则执行传送
             if (collision.CompareTag(tag))
             {
+                BeforTeleport(collision);
+                Debug.Log("传送 " + collision.name + " -> " + pairedDoor.name);
                 Teleport(collision);
                 break; // 找到匹配的标签后可以退出循环
             }
@@ -84,6 +119,8 @@ public class TeleportDoor : MonoBehaviour
         if (ignoreID.Contains(collision.GetInstanceID()))
         {
             ignoreID.Remove(collision.GetInstanceID());
+            Debug.Log(collision.name + " 已离开传送出口 " + pairedDoor.name);
+            AfterTeleport(collision);
         }
     }
 }
