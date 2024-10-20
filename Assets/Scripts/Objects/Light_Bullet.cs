@@ -17,7 +17,7 @@ public class Light_Bullet : MonoBehaviour
     private void Start()
     {
         EventCenter.Instance.AddEventListener<HitInfo>(
-            $"{this.gameObject.name}_OnHitMirror",
+            $"{gameObject.GetInstanceID()}_OnHitMirror",
             OnHitMirror
         );
     }
