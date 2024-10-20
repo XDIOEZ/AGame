@@ -6,17 +6,24 @@ using UnityEngine.Video;
 public class TeleportDoor : MonoBehaviour
 {
     public TeleportDoor pairedDoor; // 配对的传送门
-
+    #region 动态属性
     [HideInInspector]
     public List<int> ignoreID = new List<int>(); // 用于忽略碰撞的对象ID组
-    private string[] acceptedTags; // 接受的标签
-    private float speedMultiplier = 1.0f; // 速度变化倍数
 
-    private void Start()
+    // 接受的标签
+    private string[] AcceptedTags
     {
-        acceptedTags = GetComponentInParent<CrystalMirror>().acceptedTags;
-        speedMultiplier = GetComponentInParent<CrystalMirror>().speedMultiplier;
+        get => GetComponentInParent<CrystalMirror>().acceptedTags;
+        set => GetComponentInParent<CrystalMirror>().acceptedTags = value;
     }
+
+    // 速度变化倍数
+    private float SpeedMultiplier
+    {
+        get => GetComponentInParent<CrystalMirror>().speedMultiplier;
+        set => GetComponentInParent<CrystalMirror>().speedMultiplier = value;
+    }
+    #endregion
 
     private void BeforTeleport(Collider2D collision)
     {
@@ -56,7 +63,7 @@ public class TeleportDoor : MonoBehaviour
             return;
 
         // 检查对象的标签是否在接受的标签数组中
-        foreach (string tag in acceptedTags)
+        foreach (string tag in AcceptedTags)
         {
             // 如果对象标签匹配，则执行传送
             if (collision.CompareTag(tag))
@@ -102,7 +109,7 @@ public class TeleportDoor : MonoBehaviour
             rb.position = targetPosition;
 
             // 更新对象的速度
-            rb.velocity = Quaternion.Euler(0, 0, angleDifference) * rb.velocity * speedMultiplier;
+            rb.velocity = Quaternion.Euler(0, 0, angleDifference) * rb.velocity * SpeedMultiplier;
 
             // 更新对象的旋转
             float newAngle = currentAngle + angleDifference;
