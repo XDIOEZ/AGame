@@ -1034,7 +1034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pairedDoor: {fileID: 2095175668}
-  ignoreID: 
+  teleportingID: 
 --- !u!61 &1514910226
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1067,7 +1067,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.125, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0.5}
@@ -1127,7 +1127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pairedDoor: {fileID: 1852699702}
-  ignoreID: 
+  teleportingID: 
 --- !u!61 &1646834763
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1160,7 +1160,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.125, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 1, y: 0.5}
@@ -1306,7 +1306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pairedDoor: {fileID: 1646834762}
-  ignoreID: 
+  teleportingID: 
 --- !u!61 &1852699703
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1339,7 +1339,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.125, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0.5}
@@ -1518,7 +1518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pairedDoor: {fileID: 1514910225}
-  ignoreID: 
+  teleportingID: 
 --- !u!61 &2095175669
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1551,7 +1551,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.125, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 1, y: 0.5}

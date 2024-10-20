@@ -2,18 +2,20 @@
 // 传送时更新可隆体
 // 传送后交换对象与克隆体的位置
 // TODO 创建多个传送任务
+// TODO 判断是否需要交换位置: 检查法线
+// TODO 克隆体不受重力
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class TeleportDoor : MonoBehaviour
 {
+    #region 属性
     public TeleportDoor pairedDoor; // 配对的传送门
     private bool inTeleport; // 是否在传送中
-    #region 动态属性
+
     [HideInInspector]
-    public List<int> ignoreID = new List<int>(); // 用于忽略碰撞的对象ID组
+    public List<int> teleportingID = new List<int>(); // 正在传送的主体对象ID
 
     // 接受的标签
     private string[] AcceptedTags
@@ -30,15 +32,23 @@ public class TeleportDoor : MonoBehaviour
     }
     #endregion
 
-    #region 传送回调
+    #region 功能主体
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // 检查对象的标签是否在接受的标签数组中
+        foreach (string tag in AcceptedTags)
+        {
+            // 如果对象标签匹配，则执行传送
+            if (collision.CompareTag(tag))
+            {
+                BeforTeleport(collision);
+                break; // 找到匹配的标签后即可退出匹配
+            }
+        }
+    }
+
     private void BeforTeleport(Collider2D collision)
     {
-        // 给出口设置忽略碰撞
-        pairedDoor.ignoreID.Add(collision.GetInstanceID());
-
-        // 开始传送
-        inTeleport = true;
-
         // 设置本体参数
         if (collision.TryGetComponent<Renderer>(out var renderer))
         {
@@ -68,43 +78,36 @@ public class TeleportDoor : MonoBehaviour
             );
         }
 
+        // 给出口设置忽略碰撞
+        Physics2D.IgnoreCollision(
+            clonedObject.GetComponent<Collider2D>(),
+            pairedDoor.GetComponent<Collider2D>(),
+            true
+        );
+
+        // 开始传送
+        inTeleport = true;
+
+        // 记录正在传送的主体对象ID
+        teleportingID.Add(collision.GetInstanceID());
+
         // 同步协程
         StartCoroutine(SynchronizeCoroutine(collision.gameObject, clonedObject));
     }
 
     private void AfterTeleport(Collider2D collision)
     {
-        // 结束传送
-        inTeleport = false;
+        // 移除正在传送的主体对象ID(传送结束)
+        teleportingID.Remove(collision.GetInstanceID());
 
-        // 移除忽略的碰撞
-        ignoreID.Remove(collision.GetInstanceID());
-    }
-    #endregion
-
-    #region 功能主体
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        // 检查是否需要忽略该对象
-        if (ignoreID.Count > 0 && ignoreID.Contains(collision.GetInstanceID()))
-            return;
-
-        // 检查对象的标签是否在接受的标签数组中
-        foreach (string tag in AcceptedTags)
-        {
-            // 如果对象标签匹配，则执行传送
-            if (collision.CompareTag(tag))
-            {
-                BeforTeleport(collision);
-                break; // 找到匹配的标签后即可退出匹配
-            }
-        }
+        if (teleportingID.Count <= 0)
+            inTeleport = false;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        // 当被传送对象离开出口的触发器时，恢复与出口传送门的碰撞
-        if (ignoreID.Contains(collision.GetInstanceID()))
+        // 如果该对象正在传送，则结束
+        if (teleportingID.Contains(collision.GetInstanceID()))
         {
             AfterTeleport(collision);
         }
@@ -136,8 +139,6 @@ public class TeleportDoor : MonoBehaviour
         // {
         //     Destroy(customComponent);
         // }
-
-        clonedObject.SetActive(false); // 克隆对象默认隐藏
 
         return clonedObject;
     }
@@ -185,14 +186,8 @@ public class TeleportDoor : MonoBehaviour
                 float newAngle = currentAngle + angleDifference;
                 clonedGameObject.transform.rotation = Quaternion.Euler(0, 0, newAngle);
 
-                // 确保克隆体可见
-                if (clonedGameObject.activeSelf == false)
-                {
-                    clonedGameObject.SetActive(true);
-                }
-
                 // 延迟一帧
-                yield return new WaitForFixedUpdate();
+                // yield return new WaitForFixedUpdate();
 
                 // 反向计算并更新本体的位置、速度、旋转
                 // Vector3 clonedToCollider = clonedGameObject.transform.position - exitPosition;
