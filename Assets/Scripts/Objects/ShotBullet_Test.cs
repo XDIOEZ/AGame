@@ -12,13 +12,16 @@ public class ShotBullet_Test : MonoBehaviour
 
     Rigidbody2D rb;   //获取刚体以确定当前位置
     PlayerMovement_Temp Player;//获取Player Movement_Temp组件
+    PlayerData_Temp bulletData;//获取PlayerData_Temp组件
     float force=500f;//发射子弹的力
+    
     
 
     private void Awake()//在函数中实例化刚体与父物体玩家上的
     {
         rb = GetComponent<Rigidbody2D>();
         Player = father.GetComponent<PlayerMovement_Temp>();
+        bulletData = father.GetComponent<PlayerData_Temp>();
        
     }
 
@@ -26,9 +29,11 @@ public class ShotBullet_Test : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.J))
         {
+            
             if (Input.GetKey(KeyCode.W))
             {
                 ShotUp();
+                bulletData.ChangeAmmo(-1);
             }
             else if (Input.GetKey(KeyCode.S))
             {

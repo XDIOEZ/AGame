@@ -7,7 +7,9 @@ using UnityEngine.Events;
 public class Light_Bullet : MonoBehaviour
 {
     Rigidbody2D rb;
-    float destoryTime;
+   [SerializeField] float destoryTime=2.0f;
+    float destoryTimer;
+    
 
     public void Awake()
     {
@@ -20,9 +22,23 @@ public class Light_Bullet : MonoBehaviour
             $"{gameObject.GetInstanceID()}_OnHitMirror",
             OnHitMirror
         );
+        destoryTimer = destoryTime;
+
     }
 
-    private void Update() { }
+    private void Update()
+    {
+
+        if (destoryTimer > 0)
+        {
+            destoryTimer -= Time.deltaTime;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -31,7 +47,13 @@ public class Light_Bullet : MonoBehaviour
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
+        else if (collision.CompareTag("Enemy"))
+        {
+            collision.GetComponent<EnemyHurt>().EnemyDestroy();
+            Destroy(gameObject);
+        }
     }
+    
 
     public void Lunch(Vector2 direction, float force)
     {

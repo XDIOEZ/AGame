@@ -6,12 +6,20 @@ public class StarStone : MonoBehaviour
 {
     
     public GameObject ga;
-    
+    public Color newColor;
     
     private void Start()
     {
         
         ga.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (ga == null)
+        {
+            ChangeColor();
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -30,6 +38,12 @@ public class StarStone : MonoBehaviour
             if(ga!=null)
             ga.SetActive(false);
         }
+    }
+
+    void ChangeColor()
+    {
+        Renderer renderer = GetComponent<Renderer>();
+        renderer.material.color = newColor;
     }
 
     //public void FPressed()

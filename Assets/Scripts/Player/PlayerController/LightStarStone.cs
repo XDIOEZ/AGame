@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class LightStarStone : MonoBehaviour
 {
-    public GameObject targetObject;
+    public GameObject targetObject;//获取物体，物体为星石上的Canvas组件
 
     //判定条件
-    [SerializeField] bool isInArea;
+    [SerializeField] bool isInArea;//判断是否到达星石的判断区域
     
     
     
