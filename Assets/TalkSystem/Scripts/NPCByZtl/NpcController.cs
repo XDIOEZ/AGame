@@ -11,7 +11,7 @@ public class NpcController : SingletonAutoMono<NpcController>
     private int currentPointIndex = 0; // 当前巡逻点的索引
     private Rigidbody2D rb; // 2D刚体组件
     public float jumpForce = 10f; // 跳跃力
-    private bool isWaiting = false; // 是否在等待
+    private bool isWaiting = true; // 是否在等待
     private bool isJumping = false; // 是否在跳跃
     private SpriteRenderer spriteRenderer; // SpriteRenderer组件
 
@@ -34,6 +34,21 @@ public class NpcController : SingletonAutoMono<NpcController>
         {
             Vector2 direction = patrolPoints[currentPointIndex].position - transform.position;
             rb.velocity = direction.normalized * 2.5f; // 设置移动速度
+
+            float distance = Vector2.Distance(patrolPoints[currentPointIndex].position, transform.position);
+            if (distance<0.5)
+            {
+                MoveToNextPoint();
+            }
+            if (direction.x > 0)
+            {
+                spriteRenderer.flipX = false;
+            }
+            else if (direction.x < 0)
+            {
+                spriteRenderer.flipX = true;
+            }
+
         }
     }
 
@@ -44,6 +59,7 @@ public class NpcController : SingletonAutoMono<NpcController>
         if (currentPointIndex < patrolPoints.Length - 1)
         {
             currentPointIndex++;
+
         }
         else
         {
@@ -78,20 +94,12 @@ public class NpcController : SingletonAutoMono<NpcController>
 
     IEnumerator WaitAtPoint()
     {
-        isWaiting = false;
-        // 根据移动方向设置镜像反转
-        rb.velocity = Vector2.zero; // 停止移动
-        yield return new WaitForSeconds(waitTime); // 等待一段时间
-        if (spriteRenderer.flipX == false)
-        {
-            spriteRenderer.flipX = true;
-        }
-        else if (spriteRenderer.flipX == true)
-        {
-            spriteRenderer.flipX = false;
-        }
+        float Waittimer = Random.Range(waitTime/2, waitTime*2);
         isWaiting = true;
-        yield return new WaitForSeconds(waitTime);
+        rb.velocity = Vector2.zero; // 停止移动
+        yield return new WaitForSeconds(Waittimer); // 等待一段时间
+        isWaiting = false;
+        yield return new WaitForSeconds(Waittimer);
         MoveToNextPoint(); // 移动到下一个点
     }
 }
