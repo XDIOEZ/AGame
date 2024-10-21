@@ -2,8 +2,7 @@
 // 传送时更新可隆体
 // 传送后交换对象与克隆体的位置
 // TODO 创建多个传送任务
-// TODO 判断是否需要交换位置: 检查法线
-// TODO 克隆体不受重力
+// TODO 克隆体反作用于本体
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -61,11 +60,7 @@ public class TeleportDoor : MonoBehaviour
         }
 
         // 设置克隆对象参数
-        GameObject clonedObject = CloneObject(
-            collision.gameObject,
-            pairedDoor.transform.position,
-            pairedDoor.transform.rotation
-        );
+        GameObject clonedObject = CloneObject(collision.gameObject);
         if (clonedObject.TryGetComponent<Renderer>(out var clonedRenderer))
         {
             Material clonedMaterial = clonedRenderer.material;
@@ -115,30 +110,22 @@ public class TeleportDoor : MonoBehaviour
     #endregion
 
     #region 辅助方法
-    private GameObject CloneObject(GameObject objectToClone, Vector3 position, Quaternion rotation)
+    private GameObject CloneObject(GameObject objectToClone)
     {
         // 创建克隆对象的实例
-        GameObject clonedObject = Instantiate(objectToClone, position, rotation);
+        GameObject clonedObject = Instantiate(objectToClone);
 
         // 检查组件
-        // Rigidbody2D rb = clonedObject.GetComponent<Rigidbody2D>();
-        // if (rb != null)
-        // {
-        //     rb.isKinematic = true;
-        // }
-        // Collider2D collider = clonedObject.GetComponent<Collider2D>();
-        // if (collider != null)
-        // {
-        //     collider.enabled = false;
-        // }
-
-        // 如果有其他不需要的组件，可以继续添加类似的检查和删除
-        // 例如：如果需要删除某个自定义组件
-        // MyCustomComponent customComponent = clonedObject.GetComponent<MyCustomComponent>();
-        // if (customComponent != null)
-        // {
-        //     Destroy(customComponent);
-        // }
+        if (clonedObject.TryGetComponent<Rigidbody2D>(out var rb))
+        {
+            rb.gravityScale = 0; // 克隆体不受重力
+            rb.isKinematic = true; // 克隆体不受物理影响
+        }
+        Collider2D collider = clonedObject.GetComponent<Collider2D>();
+        if (collider != null)
+        {
+            collider.enabled = false; // 克隆体不受碰撞
+        }
 
         return clonedObject;
     }
@@ -185,51 +172,45 @@ public class TeleportDoor : MonoBehaviour
                 // 更新克隆体的旋转
                 float newAngle = currentAngle + angleDifference;
                 clonedGameObject.transform.rotation = Quaternion.Euler(0, 0, newAngle);
-
-                // 延迟一帧
-                // yield return new WaitForFixedUpdate();
-
-                // 反向计算并更新本体的位置、速度、旋转
-                // Vector3 clonedToCollider = clonedGameObject.transform.position - exitPosition;
-                // Vector3 newRelativePosition2 =
-                //     Quaternion.Euler(0, 0, -angleDifference) * clonedToCollider;
-                // Vector3 targetPosition2 = entryPosition + newRelativePosition2;
-                // rb.position = targetPosition2;
-                // rb.velocity =
-                //     Quaternion.Euler(0, 0, -angleDifference) * clonedRb.velocity * SpeedMultiplier;
-                // float newAngle2 = currentAngle - angleDifference;
-                // gameObject.transform.rotation = Quaternion.Euler(0, 0, newAngle2);
             }
             yield return null;
         }
 
-        // 交换本体与克隆体的位置、旋转
-        gameObject.transform.GetPositionAndRotation(out Vector3 position, out Quaternion rotation);
-        gameObject.transform.SetPositionAndRotation(
-            clonedGameObject.transform.position,
-            clonedGameObject.transform.rotation
-        );
-        clonedGameObject.transform.SetPositionAndRotation(position, rotation);
-
-        // 交换本体与克隆体的速度
-        Rigidbody2D rb1 = gameObject.GetComponent<Rigidbody2D>();
-        Rigidbody2D rb2 = clonedGameObject.GetComponent<Rigidbody2D>();
-        if (rb1 != null && rb2 != null)
-        {
-            Vector3 velocity1 = rb1.velocity;
-            Vector3 velocity2 = rb2.velocity;
-            rb1.velocity = velocity2;
-            rb2.velocity = velocity1;
-        }
-
-        // 销毁克隆体
-        Destroy(clonedGameObject);
-
-        // 确保Renderer组件存在
+        // 如果本体不在入口的可见方向上则交换位置
         if (gameObject.TryGetComponent<Renderer>(out var renderer))
         {
-            // 获取材质
             Material material = renderer.material;
+            Vector3 doorNormal = material.GetVector("_DoorNormal");
+
+            if (Vector3.Dot(doorNormal, gameObject.transform.position - transform.position) < 0)
+            {
+                // 交换本体与克隆体的位置、旋转
+                gameObject.transform.GetPositionAndRotation(
+                    out Vector3 position,
+                    out Quaternion rotation
+                );
+                gameObject.transform.SetPositionAndRotation(
+                    clonedGameObject.transform.position,
+                    clonedGameObject.transform.rotation
+                );
+                clonedGameObject.transform.SetPositionAndRotation(position, rotation);
+
+                // 交换本体与克隆体的速度
+                Rigidbody2D rb1 = gameObject.GetComponent<Rigidbody2D>();
+                Rigidbody2D rb2 = clonedGameObject.GetComponent<Rigidbody2D>();
+                if (rb1 != null && rb2 != null)
+                {
+                    Vector3 velocity1 = rb1.velocity;
+                    Vector3 velocity2 = rb2.velocity;
+                    rb1.velocity = velocity2;
+                    rb2.velocity = velocity1;
+                }
+            }
+
+            // 销毁克隆体
+            Destroy(clonedGameObject);
+
+            // 调整可见范围到完全可见
             material.SetVector("_DoorPos", new Vector3(0, -int.MaxValue, 0));
             material.SetVector("_DoorNormal", new Vector3(0, 1, 0));
         }
