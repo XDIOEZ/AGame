@@ -1,10 +1,8 @@
-using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class Test : MonoBehaviour
+public class BlackRayShooter : MonoBehaviour
 {
     public float maxLength = 10.0f; // 最大长度
     public float lengthIncreaseSpeed = 1.0f; // 长度增加速度
@@ -43,21 +41,21 @@ public class Test : MonoBehaviour
         }
 
         Ray ray = new Ray(transform.position, transform.right); // 从物体的位置向右发射射线
-        RaycastHit2D hit= Physics2D.Raycast(transform.position, transform.right, currentLength, playerLayer); ;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, currentLength, playerLayer); ;
 
         // 检测碰撞
-            if (hit.collider != null)
-            {
-                // 如果射线与物体碰撞，打印碰撞信息
-                Debug.Log("Hit " + hit.collider.name);
+        if (hit.collider != null)
+        {
+            // 如果射线与物体碰撞，打印碰撞信息
+            Debug.Log("Hit " + hit.collider.name);
 
-                // 如果碰撞到玩家，造成伤害
-                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Player"))
-                {
+            // 如果碰撞到玩家，造成伤害
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Player"))
+            {
                 // hit.collider.GetComponent<PlayerHealth>().TakeDamage(damage);
                 Destroy(hit.collider.gameObject);
                 Destroy(gameObject);
-                }
             }
+        }
     }
 }
