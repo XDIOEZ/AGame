@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -15,8 +16,12 @@ public class UI_Dialog : MonoBehaviour
     private Transform Options;
     private GameObject prefab_OptionItem;
 
-    private DialogConf currConf;
-    private int currIndex;
+    public DialogConf currConf;
+    public int currIndex;
+
+    [LabelText("NPC配置文件")]
+    public int talkCount;
+
 
     private void Awake()
     {
@@ -39,14 +44,14 @@ public class UI_Dialog : MonoBehaviour
     /// </summary>
     private void TestDialog()
     {
-        currConf=GameManager.Instance.GetDialogConf(0);
+        currConf=GameManager.Instance.GetDialogConf(talkCount);
 
         currIndex = 0;
 
         StartDialog(currConf, currIndex);
     }
 
-    private void StartDialog(DialogConf conf,int index)
+    public void StartDialog(DialogConf conf,int index)
     {
         DialogModel model = conf.DialogModels[index];
         head.sprite = model.NPCConf.head;
@@ -98,7 +103,7 @@ public class UI_Dialog : MonoBehaviour
     /// <summary>
     /// 下一条
     /// </summary>
-    void NextDialoigEvent()
+    public void NextDialoigEvent()
     {
         currIndex += 1;
         StartDialog(currConf, currIndex);
