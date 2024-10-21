@@ -279,7 +279,7 @@ LightingSettings:
   m_PVRTiledBaking: 0
   m_NumRaysToShootPerTexel: -1
   m_RespectSceneVisibilityWhenBakingGI: 0
---- !u!1001 &7384246620492375310
+--- !u!1001 &2022719762
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -371,6 +371,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7464040169869618122, guid: 96d893d882834be42adc101cd46e290b, type: 3}
+      propertyPath: talkCount
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -381,4 +385,4 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
-  - {fileID: 7384246620492375310}
+  - {fileID: 2022719762}

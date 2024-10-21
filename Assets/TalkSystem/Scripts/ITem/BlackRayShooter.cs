@@ -4,53 +4,58 @@ using UnityEngine;
 
 public class BlackRayShooter : MonoBehaviour
 {
-    public float speed;
-    public float maxDistance;
-    public float damage;
-    public Color startColor = Color.clear;
-    public Color endColor = Color.black;
+    public float maxLength = 10.0f; // 最大长度
+    public float lengthIncreaseSpeed = 1.0f; // 长度增加速度
+    public float damage = 10.0f; // 碰撞到玩家造成的伤害
+    public LayerMask playerLayer; // 玩家的碰撞层
 
-    private SpriteRenderer spriteRenderer;
-    private Vector2 direction;
-    private float distanceTraveled;
+
+    public ParticleSystem effct;
+    private LineRenderer lineRenderer;
+    private float currentLength = 0.0f;
 
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        direction = transform.right; // 假设射线初始方向是向右
-        distanceTraveled = 0f;
+        // 获取LineRenderer组件
+        lineRenderer = GetComponent<LineRenderer>();
+
+        // 设置线的起始和结束位置
+        lineRenderer.SetPosition(0, transform.position);
+        lineRenderer.SetPosition(1, transform.position);
+        lineRenderer.startWidth = 0.2f;
     }
 
     void Update()
     {
-        // 更新射线的位置
-        //transform.position += (Vector3)direction * speed * Time.deltaTime;
-        distanceTraveled += speed * Time.deltaTime;
-        Debug.Log(distanceTraveled);
-        // 如果射线的距离超过了最大距离，则销毁它
-        if (distanceTraveled >= maxDistance)
+        // 更新线的长度
+        currentLength += lengthIncreaseSpeed * Time.deltaTime;
+        Vector3 endPosition = transform.position + transform.right * currentLength;
+        lineRenderer.SetPosition(1, endPosition);
+
+
+        effct.transform.position = endPosition;
+        // 如果长度超过最大长度，停止线
+        if (currentLength > maxLength)
         {
             Destroy(gameObject);
         }
 
-        // 检测射线是否与玩家碰撞
+        Ray ray = new Ray(transform.position, transform.right); // 从物体的位置向右发射射线
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, currentLength, playerLayer); ;
 
-
-        // 更新射线的长度和颜色
-        float t = Mathf.Clamp01(distanceTraveled / maxDistance);
-        // spriteRenderer.color = Color.Lerp(startColor, endColor, t);
-        transform.localScale = new Vector3(t, 1, 1);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
+        // 检测碰撞
+        if (hit.collider != null)
         {
-            Debug.Log("001");
-            // 对玩家造成伤害
-            // hit.collider.GetComponent<PlayerHealth>().TakeDamage(damage);
-            Destroy(gameObject);
-           // Destroy(collision);
+            // 如果射线与物体碰撞，打印碰撞信息
+            Debug.Log("Hit " + hit.collider.name);
+
+            // 如果碰撞到玩家，造成伤害
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Player"))
+            {
+                // hit.collider.GetComponent<PlayerHealth>().TakeDamage(damage);
+                Destroy(hit.collider.gameObject);
+                Destroy(gameObject);
+            }
         }
     }
 }

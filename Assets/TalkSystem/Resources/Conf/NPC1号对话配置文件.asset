@@ -13,12 +13,25 @@ MonoBehaviour:
   m_Name: "NPC1\u53F7\u5BF9\u8BDD\u914D\u7F6E\u6587\u4EF6"
   m_EditorClassIdentifier: 
   DialogModels:
-  - NPCConf: {fileID: 11400000, guid: 78b514dfe82a18248bc44f69e9244f8e, type: 2}
-    NPChead: {fileID: 21300000, guid: 1fa3e4204a0bb52448b6d867422b2399, type: 3}
-    NPCContent: "\u6211\u662FGG\u6CA1\u6709bond\u634F"
+  - NPCConf: {fileID: 11400000, guid: b2c8120519f84ff43a91c7e580b3fb35, type: 2}
+    NPChead: {fileID: 21300000, guid: d8a46e0e74ccb9c4098b2a699a741c38, type: 3}
+    NPCContent: "\u6211\u80FD\u8BF4\u5565\uFF1F"
     DialogEventModels: []
     dialogPlayerSelects:
-    - Conent: "\u79BB\u5F00\u5BF9\u8BDD"
+    - Conent: "\u4E0B\u4E00\u6761\u5BF9\u8BDD"
+      DialogEventMpdles:
+      - DialogEvent: 0
+        Args: 
+    - Conent: "\u9000\u51FA\u5BF9\u8BDD"
       DialogEventMpdles:
       - DialogEvent: 1
         Args: 
+  - NPCConf: {fileID: 11400000, guid: b2c8120519f84ff43a91c7e580b3fb35, type: 2}
+    NPChead: {fileID: 21300000, guid: d8a46e0e74ccb9c4098b2a699a741c38, type: 3}
+    NPCContent: "\u8FD8\u8BA9\u6211\u8BF4\uFF1F"
+    DialogEventModels: []
+    dialogPlayerSelects:
+    - Conent: "\u4E0B\u4E00\u6761\u5BF9\u8BDD"
+      DialogEventMpdles:
+      - DialogEvent: 1
+        Args: "\u6CA1\u8BDD\u8BF4\u561E"

@@ -16,8 +16,8 @@ public class UI_Dialog : MonoBehaviour
     private Transform Options;
     private GameObject prefab_OptionItem;
 
-    public DialogConf currConf;
-    public int currIndex;
+    private DialogConf currConf;
+    private int currIndex;
 
     [LabelText("NPC配置文件")]
     public int talkCount;
@@ -36,6 +36,7 @@ public class UI_Dialog : MonoBehaviour
         content = transform.Find("Main/Scroll View/Viewport/Content").GetComponent<RectTransform>();
         Options = transform.Find("Options");
         prefab_OptionItem = Resources.Load<GameObject>("Options_Item");
+        Debug.Log(prefab_OptionItem);
         TestDialog();
     }
 
@@ -103,7 +104,7 @@ public class UI_Dialog : MonoBehaviour
     /// <summary>
     /// 下一条
     /// </summary>
-    public void NextDialoigEvent()
+    void NextDialoigEvent()
     {
         currIndex += 1;
         StartDialog(currConf, currIndex);
