@@ -34,7 +34,13 @@ public class PlayerLittleState : MonoBehaviour
         // 启用小人状态的组件
         GetComponent<SpriteRenderer>().enabled = true; // 启用小人状态的SpriteRenderer
         GetComponent<CapsuleCollider2D>().enabled = true; // 启用小人状态的Collider
-        GetComponentInParent<PlayerMovement_Temp>().enabled = false; // 禁用大人状态的移动组件
+        GetComponentInParent<PlayerMove>().isLockingMove = true; // 禁用大人状态的移动组件
+
+        GetComponentInParent<PlayerMove>().isJumping = false; // 禁用大人状态的移动组件
+        GetComponentInParent<PlayerMove>().isDashing = false; // 禁用大人状态的移动组件
+        GetComponentInParent<PlayerMove>().isMoving = false; // 禁用大人状态的移动组件
+            GetComponentInParent<PlayerMove>().moveDirection = Vector2.zero; // 禁用大人状态的移动组件
+
         GetComponent<LittleStateMovement>().enabled = true; // 启用小人状态的移动组件
         isLittle = true; // 更新状态为小人
         Debug.Log("切换到小人状态"); // 调试信息
@@ -53,7 +59,7 @@ public class PlayerLittleState : MonoBehaviour
             // 关闭小人状态的组件
             GetComponent<SpriteRenderer>().enabled = false; // 关闭小人状态的SpriteRenderer
             GetComponent<CapsuleCollider2D>().enabled = false; // 关闭小人状态的Collider
-            GetComponentInParent<PlayerMovement_Temp>().enabled = true; // 启用大人状态的移动组件
+            GetComponentInParent<PlayerMove>().isLockingMove = false; // 启用大人状态的移动组件
             GetComponent<LittleStateMovement>().enabled = false; // 关闭小人状态的移动组件
             isLittle = false; // 更新状态为大人
             Debug.Log("切换到大人状态"); // 调试信息
@@ -64,9 +70,18 @@ public class PlayerLittleState : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.C)) // 切换状态
+        if (Input.GetKeyDown(KeyCode.Mouse0)) // 切换状态
         {
             SwitchPlayerState();
+
+        }
+        if(isLittle && GetComponentInParent<PlayerMove>().dashCount<=0 )
+        {
+            GetComponentInParent<PlayerMove>().dashCount++;
+        }
+        if (isLittle && GetComponentInParent<PlayerMove>().jumpCount <= 0)
+        {
+            GetComponentInParent<PlayerMove>().jumpCount++;
         }
     }
 
@@ -86,7 +101,9 @@ public class PlayerLittleState : MonoBehaviour
         rb2D.gravityScale = 0; // 设置父对象的重力为0
         rb2D.drag = 0; // 设置摩擦力为0，确保速度恒定
     }
-
+    /// <summary>
+    /// 切换玩家状态函数
+    /// </summary>
     public void SwitchPlayerState()
     {
 
