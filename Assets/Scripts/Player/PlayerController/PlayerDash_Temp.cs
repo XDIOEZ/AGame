@@ -51,7 +51,7 @@ public class PlayerDash_Temp : MonoBehaviour
         {
             remainingDashes = 1; // ÷ÿ÷√≥Â¥Ã¥Œ ˝
             canDash = true;
-            Debug.Log("Grounded!");
+           // //Debug.Log("Grounded!");
         }
         if (remainingDashes <= 0)
         {
