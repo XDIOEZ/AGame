@@ -145,7 +145,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleTag: Light_Bullet
-  lightSource: []
+  lightSource:
+  - {fileID: 0}
 --- !u!1 &7333923308399536619
 GameObject:
   m_ObjectHideFlags: 0

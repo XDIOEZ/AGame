@@ -1,6 +1,18 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+
+public static class ComponentExtensions
+{
+    // 尝试获取多个组件的扩展方法
+    public static bool TryGetComponents<T>(this GameObject gameObject, out T[] components)
+        where T : Component
+    {
+        components = gameObject.GetComponents<T>();
+        return components.Length > 0;
+    }
+}
 
 [System.Serializable]
 public enum RainbowColorType
@@ -16,7 +28,9 @@ public enum RainbowColorType
 
 public class RainbowColor : MonoBehaviour, IToggleable
 {
-    private Renderer objectRenderer;
+    [Tooltip("多个音色?")]
+    public bool isPolyphonic = true;
+    private Renderer[] objectRenderers;
     private Light2D light2D;
 
     #region 颜色属性
@@ -35,11 +49,14 @@ public class RainbowColor : MonoBehaviour, IToggleable
 
     [SerializeField]
     private AudioClip colorChangeClip; // 颜色变化时的音效
+
+    [SerializeField]
+    private AudioClip[] colorChangeClips; // 颜色变化时的音效数组
     #endregion
     private void Start()
     {
         light2D = GetComponent<Light2D>(); // 获取 Light2D 组件
-        objectRenderer = GetComponent<Renderer>();
+        objectRenderers = GetComponents<Renderer>();
         audioSource = GetComponent<AudioSource>(); // 获取 AudioSource 组件
     }
 
@@ -48,11 +65,14 @@ public class RainbowColor : MonoBehaviour, IToggleable
         ChangeColor(currentColorType);
     }
 
+#if UNITY_EDITOR
     // 当属性在检查器中变化时调用
     private void OnValidate()
     {
-        ChangeColor(currentColorType);
+        if (Application.isPlaying && gameObject.activeSelf)
+            ChangeColor(currentColorType);
     }
+#endif
 
     public void ChangeColor(RainbowColorType colorType)
     {
@@ -90,25 +110,39 @@ public class RainbowColor : MonoBehaviour, IToggleable
                 break;
         }
 
-        if (objectRenderer != null)
+        if (objectRenderers != null)
         {
-            objectRenderer.material.color = color; // 改变物体颜色
+            foreach (Renderer renderer in objectRenderers)
+            {
+                renderer.material.color = color; // 改变子物体颜色
+            }
+        }
+        else if (gameObject.TryGetComponents(out objectRenderers))
+        {
+            foreach (Renderer renderer in objectRenderers)
+            {
+                renderer.material.color = color; // 改变子物体颜色
+            }
         }
 
         if (light2D != null)
         {
             light2D.color = color; // 改变光源颜色
         }
+        else if (TryGetComponent(out light2D))
+        {
+            light2D.color = color; // 改变光源颜色
+        }
 
         currentColorType = colorType; // 记录当前颜色
-        PlayColorChangeSound(); // 播放颜色变化音效
-    }
 
-    private void SetPitch(float pitch)
-    {
-        if (audioSource != null)
+        if (isPolyphonic)
         {
-            audioSource.pitch = pitch; // 设置音调
+            PlayColorChangeSound(colorType); // 播放颜色变化音效
+        }
+        else
+        {
+            PlayColorChangeSound(); // 播放颜色变化音效
         }
     }
 
@@ -117,6 +151,60 @@ public class RainbowColor : MonoBehaviour, IToggleable
         if (audioSource != null && colorChangeClip != null)
         {
             audioSource.PlayOneShot(colorChangeClip); // 播放音效
+        }
+    }
+
+    private void PlayColorChangeSound(RainbowColorType colorType)
+    {
+        StartCoroutine(CreateAndPlaySound(colorType));
+    }
+
+    private IEnumerator CreateAndPlaySound(RainbowColorType colorType)
+    {
+        // 等待下一帧
+        yield return null;
+
+        // 新建一个 GameObject 用于 AudioSource
+        GameObject audioObject = new GameObject("AudioSourceObject");
+        AudioSource newAudioSource = audioObject.AddComponent<AudioSource>();
+
+        switch (colorType)
+        {
+            case RainbowColorType.Red:
+                newAudioSource.clip = colorChangeClips[0];
+                break;
+            case RainbowColorType.Orange:
+                newAudioSource.clip = colorChangeClips[1];
+                break;
+            case RainbowColorType.Yellow:
+                newAudioSource.clip = colorChangeClips[2];
+                break;
+            case RainbowColorType.Green:
+                newAudioSource.clip = colorChangeClips[3];
+                break;
+            case RainbowColorType.Cyan:
+                newAudioSource.clip = colorChangeClips[4];
+                break;
+            case RainbowColorType.Blue:
+                newAudioSource.clip = colorChangeClips[5];
+                break;
+            case RainbowColorType.Purple:
+                newAudioSource.clip = colorChangeClips[6];
+                break;
+        }
+
+        // 播放音效
+        newAudioSource.Play();
+
+        // 销毁 GameObject，避免内存泄漏
+        Destroy(audioObject, newAudioSource.clip.length);
+    }
+
+    private void SetPitch(float pitch)
+    {
+        if (audioSource != null)
+        {
+            audioSource.pitch = pitch; // 设置音调
         }
     }
 

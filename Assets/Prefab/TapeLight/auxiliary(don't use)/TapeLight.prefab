@@ -145,6 +145,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentColorType: 0
   colorChangeClip: {fileID: 8300000, guid: 7104f01aa0a29400f8c086b68039fb51, type: 3}
+  colorChangeClips:
+  - {fileID: 8300000, guid: fa13673841c6449fea7b58aedc5ccd14, type: 3}
+  - {fileID: 8300000, guid: 5e5dfd57a59e0492890a98b67713edc2, type: 3}
+  - {fileID: 8300000, guid: 2a79f5502621849a08f9823dc2c190a3, type: 3}
+  - {fileID: 8300000, guid: d1a42145dfa0e4bff91bbbe1c17ea9f9, type: 3}
+  - {fileID: 8300000, guid: 6e7adcfbcf494489cb7e7ad5d2bc99c7, type: 3}
+  - {fileID: 8300000, guid: 4be7d6abd4fca49b6ab78dae26510116, type: 3}
+  - {fileID: 8300000, guid: 504a086cdccd94a1e8ccf8a84833935e, type: 3}
 --- !u!114 &768741272855468346
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ public class LightToggle : MonoBehaviour
     public string toggleTag = "Light_Bullet"; // 触发开关的标签
     public RainbowColor[] lightSource; // 灯光源
 
-    private void Start()
+    private void OnEnable()
     {
         foreach (var source in lightSource)
         {

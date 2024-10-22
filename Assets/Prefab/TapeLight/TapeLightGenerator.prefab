@@ -121,8 +121,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.48825, y: 0.0036000013, z: 0}
-    m_Extent: {x: 0.96554995, y: 0.9647, z: 0}
+    m_Center: {x: -0.47789997, y: -0.0013999939, z: 0}
+    m_Extent: {x: 0.9659, y: 0.9741, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -187,10 +187,6 @@ PrefabInstance:
     - target: {fileID: 6088565763909606948, guid: 89e18c10094674d05a7ff57dbf60ce1d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 8937812078552913194, guid: 89e18c10094674d05a7ff57dbf60ce1d, type: 3}
-      propertyPath: lightSource.Array.size
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8937812078552913194, guid: 89e18c10094674d05a7ff57dbf60ce1d, type: 3}
       propertyPath: lightSource.Array.data[0]
