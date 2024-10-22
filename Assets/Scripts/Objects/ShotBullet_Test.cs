@@ -17,7 +17,7 @@ public class ShotBullet_Test : MonoBehaviour
     
     
 
-    private void Awake()//在函数中实例化刚体与父物体玩家上的
+    private void Awake()//在函数中实例化刚体与父物体玩家上的组件
     {
         rb = GetComponent<Rigidbody2D>();
         Player = father.GetComponent<PlayerMovement_Temp>();
@@ -27,38 +27,45 @@ public class ShotBullet_Test : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.J)&&bulletData.ammo>0)//按下J键时判断射击条件与射击角度
         {
             
             if (Input.GetKey(KeyCode.W))
             {
+                bulletData.ChangeAmmo(-1);//调用相应函数并传递适当参数
                 ShotUp();
-                bulletData.ChangeAmmo(-1);
+                
             }
             else if (Input.GetKey(KeyCode.S))
             {
+                bulletData.ChangeAmmo(-1);
                 ShotDown();
+                
                 
             }
             else
-            Shot();
+            {
+                bulletData.ChangeAmmo(-1);
+                Shot();
+               
+            }
         }
     }
 
-    private void Shot()
+    private void Shot()//水平射击
     {
          GameObject ga= Instantiate(light_Bullet, rb.position, Quaternion.identity);//函数被调用时生成以预制体light_Bullet为主体的物体ga
         Light_Bullet bullet = ga.GetComponent<Light_Bullet>();//获取ga上的Light_Bullet组件
         bullet.Lunch(Player.lookDirection,force);//调用Launch函数
     }
-    private void ShotUp()
+    private void ShotUp()//向上射击
     {
         GameObject ga = Instantiate(light_Bullet_Up, rb.position, Quaternion.identity);//同上
         Light_Bullet bullet = ga.GetComponent<Light_Bullet>();
         bullet.Lunch(new Vector2(0,1), force);
     }
 
-    private void ShotDown()
+    private void ShotDown()//向下射击
     {
         GameObject ga = Instantiate(light_Bullet_Up, rb.position, Quaternion.identity);
         Light_Bullet bullet = ga.GetComponent<Light_Bullet>();
