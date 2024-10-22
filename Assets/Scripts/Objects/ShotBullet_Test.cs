@@ -49,6 +49,7 @@ public class ShotBullet_Test : MonoBehaviour
                 Shot();
                
             }
+
         }
     }
 

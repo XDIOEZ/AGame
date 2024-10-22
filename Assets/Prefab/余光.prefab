@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 8682702597934533988}
   - component: {fileID: 1618123426423233481}
   - component: {fileID: 8495158346236760337}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: "\u4F59\u5149"
-  m_TagString: Untagged
+  m_TagString: VLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -195,6 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2402828a3307c3a4db5a0166b6211505, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  energy: 1
 --- !u!58 &8495158346236760337
 CircleCollider2D:
   m_ObjectHideFlags: 0
