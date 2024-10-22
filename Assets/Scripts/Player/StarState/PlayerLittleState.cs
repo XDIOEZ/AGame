@@ -63,24 +63,10 @@ public class PlayerLittleState : MonoBehaviour
 
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.C)) // 切换状态
         {
-            if (isLittle)
-            {
-                ChangeToBig(); // 当前是小人，切换到大人
-            }
-            else
-            {
-                ChangeToLittle(); // 当前是大人，切换到小人
-            }
-        }
-
-        if (isLittle)
-        {
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-            { Debug.Log("按下左Shift");
-                ChangeToBig(); // 切换状态
-            } // 切换状态
+            SwitchPlayerState();
         }
     }
 
@@ -99,5 +85,18 @@ public class PlayerLittleState : MonoBehaviour
         var rb2D = GetComponentInParent<Rigidbody2D>(); // 获取父对象的 Rigidbody2D 组件
         rb2D.gravityScale = 0; // 设置父对象的重力为0
         rb2D.drag = 0; // 设置摩擦力为0，确保速度恒定
+    }
+
+    public void SwitchPlayerState()
+    {
+
+        if (isLittle)
+        {
+            ChangeToBig(); // 当前是小人，切换到大人
+        }
+        else
+        {
+            ChangeToLittle(); // 当前是大人，切换到小人
+        }
     }
 }
