@@ -12,15 +12,19 @@ public class LittleStateMovement : MonoBehaviour
     [SerializeField] private Vector2 moveDirection; // 移动方向
     [SerializeField] private PlayerLittleState playerLittleState; // 引用 PlayerLittleState 组件
     [SerializeField] private Rigidbody2D rb2D; // 父对象的 Rigidbody2D 组件
+    public PlayerMove playerMove;
 
     void Start()
     {
         playerLittleState = GetComponent<PlayerLittleState>(); // 获取 PlayerLittleState 组件
+        //获取父对象的PlayerMove组件
+         playerMove = GetComponentInParent<PlayerMove>();
     }
 
     void OnEnable()
     {
         canMove = true; // 激活组件时允许移动
+
     }
 
     void OnDisable()
@@ -32,6 +36,16 @@ public class LittleStateMovement : MonoBehaviour
     void Update()
     {
         ProcessInput(); // 处理输入
+        if (playerMove.isDashing ==true)
+        {
+            playerMove.dashCount++;
+            playerLittleState.ChangeToBig();
+        }
+        if (playerMove.isJumping == true)
+        {
+            playerMove.jumpCount++;
+            playerLittleState.ChangeToBig();
+        }
     }
 
     private void ProcessInput()

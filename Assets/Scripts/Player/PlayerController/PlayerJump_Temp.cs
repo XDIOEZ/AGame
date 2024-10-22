@@ -112,7 +112,7 @@ public class PlayerJump_Temp : MonoBehaviour
             verticalMovementDirection = -1; // 向下移动
 
         // 可选: 你可以在这里输出当前的垂直移动方向到调试日志中
-        Debug.Log("Vertical Movement Direction: " + verticalMovementDirection);
+        //Debug.Log("Vertical Movement Direction: " + verticalMovementDirection);
     }
 
 
