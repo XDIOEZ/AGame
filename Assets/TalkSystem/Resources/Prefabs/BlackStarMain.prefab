@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3963206601874348967}
   - component: {fileID: 8097699152377461107}
   - component: {fileID: 1255996360484059996}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ParticleWake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4838,7 +4838,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2156609983591413915}
   - component: {fileID: 1726560889449875332}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BlackStar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4924,7 +4924,7 @@ GameObject:
   - component: {fileID: 8709774019922703613}
   - component: {fileID: 2985365794591663054}
   - component: {fileID: 1442678996947296948}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BlackStarMain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5037,7 +5037,7 @@ GameObject:
   - component: {fileID: 6130719778222417543}
   - component: {fileID: 4779889727163678150}
   - component: {fileID: 3238179566837273896}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ParticleWakeline
   m_TagString: Untagged
   m_Icon: {fileID: 0}

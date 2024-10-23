@@ -42,11 +42,18 @@ public class BlackStar : MonoBehaviour
         }
         else
         {
-            // 否则，停止物体的移动
-            Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            rb.velocity = Vector2.zero;
-            rotationSpeed = 0;
-            Destroy(effect,0.05f);
+            if (!collision.gameObject.CompareTag("Ground"))
+            {
+                //不反应
+            }
+            else
+            {
+                // 否则，停止物体的移动
+                Rigidbody2D rb = GetComponent<Rigidbody2D>();
+                rb.velocity = Vector2.zero;
+                rotationSpeed = 0;
+                Destroy(effect, 0.05f);
+            }
         }
     }
 }

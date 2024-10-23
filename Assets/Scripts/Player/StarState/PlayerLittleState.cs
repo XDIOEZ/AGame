@@ -75,14 +75,7 @@ public class PlayerLittleState : MonoBehaviour
             SwitchPlayerState();
 
         }
-        if(isLittle && GetComponentInParent<PlayerMove>().dashCount<=0 )
-        {
-            GetComponentInParent<PlayerMove>().dashCount++;
-        }
-        if (isLittle && GetComponentInParent<PlayerMove>().jumpCount <= 0)
-        {
-            GetComponentInParent<PlayerMove>().jumpCount++;
-        }
+
     }
 
     public void ChangeToBigAboutGravity()
@@ -114,6 +107,15 @@ public class PlayerLittleState : MonoBehaviour
         else
         {
             ChangeToLittle(); // 当前是大人，切换到小人
+        }
+
+        if (isLittle && GetComponentInParent<PlayerMove>().dashCount <= 0)
+        {
+            GetComponentInParent<PlayerMove>().dashCount++;
+        }
+        if (isLittle && GetComponentInParent<PlayerMove>().jumpCount <= 0)
+        {
+            GetComponentInParent<PlayerMove>().jumpCount++;
         }
     }
 }
