@@ -14,6 +14,7 @@ public class PlayerMove : MonoBehaviour
     public Vector2 moveDirection;
     public Vector2 dashDirection;
     public int PlayerDirection; // 玩家方向
+    private int lastPlayerDirection; // 上一次的方向
 
     [Header("时间设置")]
     public float dashDuration = 0.2f;     // 冲刺持续时间
@@ -45,6 +46,7 @@ public class PlayerMove : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();  // 获取 Rigidbody2D 组件
         groundCheckPoint = transform; // 默认地面检测点为玩家脚下位置
+        lastPlayerDirection = PlayerDirection; // 初始化上一次的方向
     }
 
     private void Update()
@@ -103,16 +105,32 @@ public class PlayerMove : MonoBehaviour
         moveDirection = new Vector2(moveInput * moveSpeed, rb2d.velocity.y);
 
         // 设置玩家方向
+        int lastPlayerDirection = PlayerDirection; // 记录上一次的方向
+
         if (moveInput != 0)
         {
             PlayerDirection = moveInput > 0 ? 1 : -1; // 1表示右，-1表示左
             isMoving = true; // 玩家正在移动
+
+            // 检查方向是否改变
+            if (PlayerDirection != lastPlayerDirection)
+            {
+                EventCenter.Instance.EventTrigger<object>("PlayerDirectionChanged", this);
+                Debug.Log("PlayerDirectionChanged");
+                lastPlayerDirection = PlayerDirection; // 更新上一次的方向
+            }
+
+            // 根据玩家的方向来翻转角色的Transform
+            Vector3 localScale = transform.localScale;
+            localScale.x = PlayerDirection > 0 ? Mathf.Abs(localScale.x) : -Mathf.Abs(localScale.x);
+            transform.localScale = localScale;
         }
         else
         {
             isMoving = false; // 玩家停止移动
         }
     }
+
 
     void Jump()
     {
@@ -140,6 +158,7 @@ public class PlayerMove : MonoBehaviour
 
         // 冲刺状态
         isDashing = true;
+
         dashCount--; // 每次冲刺减少一次冲刺次数
         dashTimer = dashDuration;
     }
@@ -147,28 +166,24 @@ public class PlayerMove : MonoBehaviour
     void EndDash()
     {
         isDashing = false;
-        // 冲刺次数在地面上恢复
+        // 冲刺结束后的状态恢复
     }
 
     // 射线检测玩家是否在地面上
     void CheckIfGrounded()
     {
-        // 只有在跳跃计时器为零时才进行地面检测
         if (jumpTimer <= 0)
         {
-            // 发射一条从玩家脚部向下的射线，检测是否接触到地面
             RaycastHit2D hit = Physics2D.Raycast(groundCheckPoint.position, Vector2.down, groundCheckRadius, groundLayer);
             isGrounded = hit.collider != null;
 
             if (isGrounded)
             {
-                jumpCount = 1; // 玩家接触地面时恢复跳跃次数
-                dashCount = 1; // 玩家接触地面时恢复冲刺次数
-                isJumping = false; // 玩家接触地面时重置跳跃状态
+                jumpCount = 1; // 恢复跳跃次数
+                dashCount = 1; // 恢复冲刺次数
+                isJumping = false; // 重置跳跃状态
             }
         }
-
-        // 绘制射线用于调试
         Debug.DrawLine(groundCheckPoint.position, groundCheckPoint.position + Vector3.down * groundCheckRadius, Color.red);
     }
 }

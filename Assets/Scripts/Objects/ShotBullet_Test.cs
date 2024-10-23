@@ -11,7 +11,8 @@ public class ShotBullet_Test : MonoBehaviour
     public GameObject light_Bullet_Up;//获取垂直方向上的子弹预制体
 
     Rigidbody2D rb;   //获取刚体以确定当前位置
-    PlayerMovement_Temp Player;//获取Player Movement_Temp组件
+    PlayerMove Player;//获取Player Movement_Temp组件
+    Vector2 Bulletdirection; //子弹方向
     PlayerData_Temp bulletData;//获取PlayerData_Temp组件
     float force=500f;//发射子弹的力
     
@@ -20,9 +21,19 @@ public class ShotBullet_Test : MonoBehaviour
     private void Awake()//在函数中实例化刚体与父物体玩家上的组件
     {
         rb = GetComponent<Rigidbody2D>();
-        Player = father.GetComponent<PlayerMovement_Temp>();
+        Player = father.GetComponent<PlayerMove>();
         bulletData = father.GetComponent<PlayerData_Temp>();
-       
+
+        EventCenter.Instance.AddEventListener<object>("PlayerDirectionChanged", (object obj) =>
+        {
+            PlayerMove move = obj as PlayerMove; // 将 obj 转换为 PlayerMove
+            if (move != null)
+            {
+                Debug.Log(move.PlayerDirection);
+
+                Bulletdirection = new Vector2(move.PlayerDirection, 0);
+            }
+        });
     }
 
     private void Update()
@@ -53,11 +64,12 @@ public class ShotBullet_Test : MonoBehaviour
         }
     }
 
+
     private void Shot()//水平射击
     {
-         GameObject ga= Instantiate(light_Bullet, rb.position, Quaternion.identity);//函数被调用时生成以预制体light_Bullet为主体的物体ga
-        Light_Bullet bullet = ga.GetComponent<Light_Bullet>();//获取ga上的Light_Bullet组件
-        bullet.Lunch(Player.lookDirection,force);//调用Launch函数
+        GameObject ga = Instantiate(light_Bullet, rb.position, Quaternion.identity); // 生成以预制体 light_Bullet 为主体的物体 ga
+        Light_Bullet bullet = ga.GetComponent<Light_Bullet>(); // 获取 ga 上的 Light_Bullet 组件
+        bullet.Lunch(Bulletdirection, force); // 调用 Lunch 函数
     }
     private void ShotUp()//向上射击
     {

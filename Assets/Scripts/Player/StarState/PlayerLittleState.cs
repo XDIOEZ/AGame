@@ -70,7 +70,7 @@ public class PlayerLittleState : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Mouse0)) // ÇÐ»»×´Ì¬
+        if (Input.GetKeyDown(KeyCode.C)) // ÇÐ»»×´Ì¬
         {
             SwitchPlayerState();
 
