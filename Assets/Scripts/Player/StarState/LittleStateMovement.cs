@@ -52,6 +52,14 @@ public class LittleStateMovement : MonoBehaviour
             playerMove.jumpCount++;
             playerLittleState.ChangeToBig();
         }
+        归位();
+    }
+    private void 归位()
+    {
+        上 = false;
+        下 = false;
+        左 = false;
+        右 = false;
     }
     private float 方向转换(bool 正, bool 反)
     {
