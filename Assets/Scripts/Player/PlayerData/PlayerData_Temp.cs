@@ -29,19 +29,9 @@ public class PlayerData_Temp : MonoBehaviour
         Debug.Log("Player Ammo: " + ammo);
         Debug.Log("Player lightEnergyLimation:" + lightEnergyLimation);
 
-        
+   
 
     }
-
-
-
-
-    // Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
-
     /// <summary>
     /// 更改玩家的血量
     /// </summary>
@@ -50,6 +40,7 @@ public class PlayerData_Temp : MonoBehaviour
     {
         health += amount;
         Debug.Log("Updated Health: " + health);
+        
     }
 
     /// <summary>
@@ -79,5 +70,14 @@ public class PlayerData_Temp : MonoBehaviour
     {
         lightEnergyLimation++;
         Debug.Log("Player lightEnergyLimation:" + lightEnergyLimation);
+    }
+    public void PlayerDeadCheck()
+    {
+        Debug.Log("Player Dead");
+        if (health <= 0)
+        {
+            EventCenter.Instance.EventTrigger("PlayerDead");
+        }
+       
     }
 }
