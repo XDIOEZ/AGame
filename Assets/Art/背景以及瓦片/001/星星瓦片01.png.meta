@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 9646dd04655170d47aa6516cc3b25ac0
-=======
-guid: 2d9eb4b2a4024e64b9f67dbb9f81bcbb
->>>>>>> b411e1e069eabecbc4db9e9d9a7ce65b820cf546
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -52,11 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
   spritePixelsToUnits: 600
-=======
-  spritePixelsToUnits: 100
->>>>>>> b411e1e069eabecbc4db9e9d9a7ce65b820cf546
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -80,11 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-<<<<<<< HEAD
     textureCompression: 0
-=======
-    textureCompression: 1
->>>>>>> b411e1e069eabecbc4db9e9d9a7ce65b820cf546
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -106,48 +94,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-<<<<<<< HEAD
-=======
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
->>>>>>> b411e1e069eabecbc4db9e9d9a7ce65b820cf546
     buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -162,7 +108,6 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-<<<<<<< HEAD
     sprites:
     - serializedVersion: 2
       name: "\u661F\u661F\u74E6\u724701_0"
@@ -1613,9 +1558,6 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-=======
-    sprites: []
->>>>>>> b411e1e069eabecbc4db9e9d9a7ce65b820cf546
     outline: []
     physicsShape: []
     bones: []
@@ -1626,7 +1568,6 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-<<<<<<< HEAD
     nameFileIdTable:
       "\u661F\u661F\u74E6\u724701_0": 20364544
       "\u661F\u661F\u74E6\u724701_1": -1291279875
@@ -1697,9 +1638,6 @@ TextureImporter:
       "\u661F\u661F\u74E6\u724701_7": 446146577
       "\u661F\u661F\u74E6\u724701_8": 1223377689
       "\u661F\u661F\u74E6\u724701_9": 1433637619
-=======
-    nameFileIdTable: {}
->>>>>>> b411e1e069eabecbc4db9e9d9a7ce65b820cf546
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
