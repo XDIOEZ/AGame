@@ -15,7 +15,8 @@ public class ShotBullet_Test : MonoBehaviour
     Vector2 Bulletdirection; //子弹方向
     PlayerData_Temp bulletData;//获取PlayerData_Temp组件
     float force=500f;//发射子弹的力
-    
+
+    public string OnShoot = "OnShoot";
     
 
     private void Awake()//在函数中实例化刚体与父物体玩家上的组件
@@ -40,6 +41,7 @@ public class ShotBullet_Test : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.J)&&bulletData.ammo>0)//按下J键时判断射击条件与射击角度
         {
+            MusicMgr.Instance.PlaySound(OnShoot, false);
             
             if (Input.GetKey(KeyCode.W))
             {
