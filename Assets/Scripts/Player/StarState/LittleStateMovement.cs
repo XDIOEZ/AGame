@@ -14,6 +14,12 @@ public class LittleStateMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb2D; // 父对象的 Rigidbody2D 组件
     public PlayerMove playerMove;
 
+    [Header("光球移动方向")]
+    public bool 上 = false;
+    public bool 下 = false;
+    public bool 左 = false;
+    public bool 右 = false;
+
     void Start()
     {
         playerLittleState = GetComponent<PlayerLittleState>(); // 获取 PlayerLittleState 组件
@@ -47,14 +53,19 @@ public class LittleStateMovement : MonoBehaviour
             playerLittleState.ChangeToBig();
         }
     }
-
+    private float 方向转换(bool 正, bool 反)
+    {
+        if (正 && !反) return -1;
+        if (反 && !正) return 1;
+        return 0;
+    }
     private void ProcessInput()
     {
         if (canMove)
         {
             // 获取 WASD 输入
-            float horizontalInput = Input.GetAxisRaw("Horizontal");
-            float verticalInput = Input.GetAxisRaw("Vertical");
+            float horizontalInput = 方向转换(左 ,右);
+            float verticalInput = 方向转换(下,上);
 
             // 仅允许朝一个方向移动
             if (horizontalInput != 0)
