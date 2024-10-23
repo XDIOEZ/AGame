@@ -47,7 +47,7 @@ public class Light_Bullet : MonoBehaviour
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
-        else if (collision.CompareTag("Enemy"))
+        else if (collision.CompareTag("Enemy")&&collision!=null)
         {
             collision.GetComponent<EnemyHurt>().EnemyDestroy();
            

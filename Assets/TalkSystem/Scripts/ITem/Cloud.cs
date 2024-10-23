@@ -10,12 +10,23 @@ public class Cloud : MonoBehaviour
 
     private bool isContacted = false;
     private float contactTimer = 0f;
+    private bool effeckey=true;
+
+    private ParticleSystem EffectOne;
+    private ParticleSystem EffectTwo;
+
+
+    private void Start()
+    {
+        EffectOne = GameObject.Find("CloudDieEffect01").gameObject.GetComponentInParent<ParticleSystem>();
+        EffectTwo = GameObject.Find("CloudDieEffect02").gameObject.GetComponentInParent<ParticleSystem>();
+    }
+
 
     private void Update()
     {
         if (isContacted)
         {
-            Debug.Log(contactTimer);
             contactTimer += Time.deltaTime;
             if (contactTimer >= contactTime)
             {
@@ -54,6 +65,13 @@ public class Cloud : MonoBehaviour
             timer += Time.deltaTime;
             float alpha = Mathf.Lerp(startColor.a, endColor.a, timer / disappearTime);
             spriteRenderer.color = new Color(startColor.r, startColor.g, startColor.b, alpha);
+
+            if (effeckey)
+            {
+                EffectOne.Play();
+                EffectTwo.Play();
+                effeckey=false;
+            }
             yield return null;
         }
 
