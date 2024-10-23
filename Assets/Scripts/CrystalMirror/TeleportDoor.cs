@@ -35,6 +35,7 @@ public class TeleportDoor : MonoBehaviour
             // 如果对象标签匹配，则执行传送
             if (collision.CompareTag(tag))
             {
+                EventCenter.Instance.EventTrigger($"Teleport_{tag}");
                 BeforTeleport(collision);
                 break; // 找到匹配的标签后即可退出匹配
             }
