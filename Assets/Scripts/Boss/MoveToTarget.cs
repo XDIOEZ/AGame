@@ -34,9 +34,14 @@ public class MoveToTarget : StateMachineBehaviour
         // 确保移动速度在指定范围内
         moveSpeed = Mathf.Clamp(moveSpeed, speedRange.x, aiData.entity.Data.MoveSpeed);
 
-        // 如果目标位置存在，则开始移动
+    }
+
+    // 在状态更新时检查是否到达目标位置
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
         if (aiData.enemyTargetPosition != null)
         {
+            Debug.Log("Boss开始移动");
             Vector3 targetPosition = aiData.enemyTargetPosition.position;
             float distance = Vector3.Distance(aiData.transform.position, targetPosition);
             float duration = distance / moveSpeed; // 根据距离计算动画持续时间
@@ -54,6 +59,7 @@ public class MoveToTarget : StateMachineBehaviour
                 });
         }
     }
+
 
     // 在退出状态时停止移动
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

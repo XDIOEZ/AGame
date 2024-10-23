@@ -209,5 +209,6 @@ public class GhostMove : EnemyHurt
     public override void EnemyDead()
     {
         MusicMgr.Instance.PlaySound(deathAudio, false);
+        Destroy(gameObject);
     }
 }

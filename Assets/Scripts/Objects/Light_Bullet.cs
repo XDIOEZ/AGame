@@ -50,7 +50,7 @@ public class Light_Bullet : MonoBehaviour
         else if (collision.CompareTag("Enemy")&&collision!=null)
         {
             collision.GetComponent<EnemyHurt>().EnemyDestroy();
-            Destroy(gameObject);
+           
         }
     }
     

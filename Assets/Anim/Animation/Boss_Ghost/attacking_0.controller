@@ -89,7 +89,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5daf23c5a9ccaa34797f6513ace44bc8, type: 3}
   m_Name: 
@@ -99,6 +99,20 @@ MonoBehaviour:
   turnCounter: 3
   minTurnDuration: 0.5
   maxTurnDuration: 1.5
+--- !u!114 &-7195523164043570358
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f107f0146d185e4fbe97376bfcca7a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip:
+  - {fileID: 8300000, guid: 29b9e0a94bf004f4f961afa3cda074a2, type: 3}
 --- !u!114 &-6937108783970254180
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -205,6 +219,20 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-4515755723782086929
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f107f0146d185e4fbe97376bfcca7a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip:
+  - {fileID: 8300000, guid: 7904f0ec9f3724c4abe34269700e65ad, type: 3}
 --- !u!1101 &-4199071534369415471
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -230,19 +258,35 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!114 &-3681499653933382059
+--- !u!114 &-3556846736597294013
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0190348ecad20f45b48a30a78cb8670, type: 3}
+  m_Script: {fileID: 11500000, guid: ecaa7921bb98da44691c585e97b46bc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiData: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: b2bbdc9cccc792043839e6815a637ede, type: 3}
+--- !u!114 &-2924760705130730986
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85cc43116a8300246813d7f973565281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EndAction: 
+  arrivalThreshold: 0.1
+  speedRange: {x: 0, y: 0}
+  moveSpeed: 0
 --- !u!114 &-2805811226722359558
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -278,6 +322,7 @@ AnimatorState:
   - {fileID: 529649756972975441}
   - {fileID: 3013125033957103379}
   - {fileID: 366494642433986305}
+  - {fileID: -3556846736597294013}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -477,7 +522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c2b309cf85d6cd4b9e5d3e9302d2d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  searchRadius: 10
+  searchRadius: 24
   enemyLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -510,6 +555,8 @@ AnimatorState:
   - {fileID: -4199071534369415471}
   m_StateMachineBehaviours:
   - {fileID: 1088382796381095512}
+  - {fileID: 4192477051901125369}
+  - {fileID: -4515755723782086929}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -524,6 +571,22 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &1274895148930108695
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f107f0146d185e4fbe97376bfcca7a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip:
+  - {fileID: 8300000, guid: 74c9f9c3fdc7b1d46bb09992ade71929, type: 3}
+  - {fileID: 8300000, guid: 6be607c1f685418468d3f99530f7f77b, type: 3}
+  - {fileID: 8300000, guid: e0e200f5e1a913840b69f7a80056f9be, type: 3}
 --- !u!114 &1389817129240321604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -564,6 +627,8 @@ AnimatorState:
   - {fileID: 8611683605882548546}
   m_StateMachineBehaviours:
   - {fileID: -6937108783970254180}
+  - {fileID: -7195523164043570358}
+  - {fileID: -2924760705130730986}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -610,22 +675,22 @@ MonoBehaviour:
   skillCheckTimer: 0
   SkillList:
   - skillName: Attack_1
-    coolDownTime: 0.5
+    coolDownTime: 1
     triggerProbability: 0.25
-    attackCoolDownTime: 0
+    attackCoolDownTime: 0.66
     releaseDistanceRange: {x: 0, y: 3}
   - skillName: Attack_2
-    coolDownTime: 0.5
+    coolDownTime: 1
     triggerProbability: 0.25
     attackCoolDownTime: 0
     releaseDistanceRange: {x: 0, y: 3}
   - skillName: Skill_1
-    coolDownTime: 5
+    coolDownTime: 10
     triggerProbability: 0.25
     attackCoolDownTime: 0
     releaseDistanceRange: {x: 2, y: 10}
   - skillName: Skill_2
-    coolDownTime: 5
+    coolDownTime: 30
     triggerProbability: 0.25
     attackCoolDownTime: 0
     releaseDistanceRange: {x: 4, y: 16}
@@ -644,6 +709,7 @@ AnimatorState:
   m_StateMachineBehaviours:
   - {fileID: 1389817129240321604}
   - {fileID: 2927252799000602649}
+  - {fileID: 4844562695621872599}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -658,6 +724,22 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &4192477051901125369
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85cc43116a8300246813d7f973565281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EndAction: 
+  arrivalThreshold: 0.1
+  speedRange: {x: 0, y: 0}
+  moveSpeed: 0
 --- !u!114 &4414338642086739949
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -670,13 +752,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c2b309cf85d6cd4b9e5d3e9302d2d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  searchRadius: 20
+  searchRadius: 24
   enemyLayer:
     serializedVersion: 2
     m_Bits: 8
   aiData: {fileID: 0}
   searchInterval: 1
   FoundAction: Move
+--- !u!114 &4844562695621872599
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f107f0146d185e4fbe97376bfcca7a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip:
+  - {fileID: 8300000, guid: e0e200f5e1a913840b69f7a80056f9be, type: 3}
+  - {fileID: 8300000, guid: 6be607c1f685418468d3f99530f7f77b, type: 3}
 --- !u!1102 &6495381603088345861
 AnimatorState:
   serializedVersion: 6
@@ -692,7 +789,7 @@ AnimatorState:
   m_StateMachineBehaviours:
   - {fileID: -1481380949518299435}
   - {fileID: 7346811038517613119}
-  - {fileID: -3681499653933382059}
+  - {fileID: 1274895148930108695}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -721,7 +818,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EndAction: 
   arrivalThreshold: 0.5
-  speedRange: {x: 1, y: 2}
+  speedRange: {x: 5, y: 5}
   moveSpeed: 0
 --- !u!1101 &7623353426877757760
 AnimatorStateTransition:
