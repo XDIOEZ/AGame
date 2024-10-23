@@ -217,9 +217,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7121211540209902292}
   - component: {fileID: 1727587419912075693}
+  - component: {fileID: 4615578973244510632}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -274,6 +275,19 @@ CapsuleCollider2D:
   m_Offset: {x: -0.1951189, y: 0.1445322}
   m_Size: {x: 0.6589861, y: 2.358605}
   m_Direction: 0
+--- !u!114 &4615578973244510632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4131441887628354298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317213a14b39f294db2abc225b6019a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 30
 --- !u!1 &4500302107480234968
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,7 +304,7 @@ GameObject:
   - component: {fileID: 4360899759243007883}
   m_Layer: 0
   m_Name: Boss_Ghost
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -327,7 +341,7 @@ MonoBehaviour:
     currentSpeed: 0
   Data:
     Health: 100
-    MoveSpeed: 5
+    MoveSpeed: 7
   rb: {fileID: 1440250069550491128}
 --- !u!50 &1440250069550491128
 Rigidbody2D:
@@ -488,6 +502,52 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &4754631895123130276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4435732985593869787}
+  - component: {fileID: 247400280463017376}
+  m_Layer: 0
+  m_Name: Check_Skill_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4435732985593869787
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4754631895123130276}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.3900001, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4062112735805472508}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &247400280463017376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4754631895123130276}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8768b182af161a64680354baf6d636fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 5
+  Enemys: {fileID: 873355641021177665, guid: adcfcdf00f6f74d0b96dcb5ada04b54f, type: 3}
 --- !u!1 &8451365442949088285
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,6 +584,7 @@ Transform:
   - {fileID: 1312669940195463798}
   - {fileID: 7794759831026614881}
   - {fileID: 1649199762738695847}
+  - {fileID: 4435732985593869787}
   - {fileID: 7121211540209902292}
   m_Father: {fileID: 1444030395505614196}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

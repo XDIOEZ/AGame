@@ -493,7 +493,7 @@ MonoBehaviour:
   father: {fileID: 6851822341427866402}
   light_Bullet: {fileID: 443453627535818478, guid: ed8e7a4173e72ce4d8448ecfa9619fa1, type: 3}
   light_Bullet_Up: {fileID: 9145123515903626049, guid: 7b536e01a249a4643a623785eea157eb, type: 3}
-  force: 500
+  OnShoot: OnShoot
 --- !u!1 &8739958301755786812
 GameObject:
   m_ObjectHideFlags: 0
