@@ -117,6 +117,7 @@ public class PlayerMove : MonoBehaviour
             {
                 EventCenter.Instance.EventTrigger<object>("PlayerDirectionChanged", this);
                 Debug.Log("PlayerDirectionChanged");
+
                 lastPlayerDirection = PlayerDirection; // 更新上一次的方向
             }
 
