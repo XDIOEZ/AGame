@@ -14,7 +14,7 @@ public class ShotBullet_Test : MonoBehaviour
     PlayerMove Player;//获取Player Movement_Temp组件
     Vector2 Bulletdirection; //子弹方向
     PlayerData_Temp bulletData;//获取PlayerData_Temp组件
-    float force=500f;//发射子弹的力
+    public float force=100f;//发射子弹的力
     
     
 
