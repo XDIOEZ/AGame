@@ -20,6 +20,10 @@ public class PlayerData_Temp : MonoBehaviour
     /// </summary>
     /// 
     public  int lightEnergyLimation=3;
+    /// <summary>
+    /// 玩家死亡条件
+    /// </summary>
+    public bool ifDead;
 
 
     void Start()
@@ -76,8 +80,17 @@ public class PlayerData_Temp : MonoBehaviour
         Debug.Log("Player Dead");
         if (health <= 0)
         {
+            ifDead = true;
             EventCenter.Instance.EventTrigger("PlayerDead");
         }
        
+    }
+    public void PlayerDeadOnce()
+    {
+        ifDead = true;
+        Debug.Log("Player Dead");
+        MusicMgr.Instance.PlaySound("OnDead", false);
+
+        EventCenter.Instance.EventTrigger("PlayerDead");
     }
 }

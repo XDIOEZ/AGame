@@ -52,6 +52,10 @@ public class Light_Bullet : MonoBehaviour
             collision.GetComponent<EnemyHurt>().EnemyDestroy();
            
         }
+        else if (collision.CompareTag("Ground"))
+        {
+            Destroy(gameObject);
+        }
     }
     
 
