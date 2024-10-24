@@ -6,31 +6,38 @@ using UnityEngine.EventSystems;
 public class ButtonMoveWall : MonoBehaviour
 {
     private GameObject MoveWall;
-    private GameObject Button;
-    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRendererOne;
+    private SpriteRenderer spriteRendererTwo;
     private ParticleSystem Effect;
 
     public Color pressedColor;
-    private Transform PointEnd;
 
+    public Transform StartPoint;
+    public Transform EndPoint;
+
+    private Transform PointEnd;
     private Transform PointStart;
 
     public float speed=1;
     private bool Movekey=false;
+    public bool isStart;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        Effect = transform.Find("ButtonEffect").gameObject.GetComponent<ParticleSystem>();
+        Effect = GameObject.Find("ButtonEffect").gameObject.GetComponent<ParticleSystem>();
 
-        spriteRenderer = transform.Find("Button").gameObject.GetComponent<SpriteRenderer>();
+        spriteRendererOne = gameObject.GetComponent<SpriteRenderer>();
 
-        MoveWall = transform.Find("CanMoveWall").gameObject;
 
-        PointEnd = transform.Find("End").transform;
+        MoveWall = GameObject.Find("CanMoveWall").gameObject;
 
-        PointStart = transform.Find("Start").transform;
+
+
+        PointStart = StartPoint;
+
+        PointEnd = EndPoint;
 
         pressedColor = Color.yellow;
     }
@@ -46,8 +53,9 @@ public class ButtonMoveWall : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Effect.transform.position = transform.position;
         Effect.Play();
-        spriteRenderer.color = pressedColor;
+        spriteRendererOne.color = pressedColor;
         if (collision.gameObject.CompareTag("Player")) 
         {
             Movekey = true;
@@ -55,7 +63,14 @@ public class ButtonMoveWall : MonoBehaviour
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        MoveWallBack();
+        if (isStart)
+        {
+            MoveWallGo();
+        }
+        else
+        {
+            MoveWallBack();
+        }
     }
 
 
@@ -77,6 +92,16 @@ public class ButtonMoveWall : MonoBehaviour
 
     private void MoveWallBack()
     {
+        Vector2 direction = PointStart.position - MoveWall.transform.position;
 
+        float dinstace = Vector2.Distance(MoveWall.transform.position, PointEnd.position);
+        if (dinstace < 1.5)
+        {
+            Movekey = false;
+        }
+        else
+        {
+            MoveWall.transform.Translate(direction * speed * Time.deltaTime);
+        }
     }
 }
