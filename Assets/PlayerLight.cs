@@ -26,6 +26,6 @@ public class PlayerLight : MonoBehaviour
         int ammos = playerData.ammo;
         int maxAmmo = playerData.lightEnergyLimation;
 
-        playerLight.falloffIntensity = 1- ammos / maxAmmo *0.5f;
+        playerLight.falloffIntensity =  ammos / maxAmmo *0.5f;
     }
 }       

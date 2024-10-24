@@ -40,7 +40,7 @@ public class PlayerData_Temp : MonoBehaviour
     {
         health += amount;
         Debug.Log("Updated Health: " + health);
-        
+        PlayerDeadCheck();
     }
 
     /// <summary>
