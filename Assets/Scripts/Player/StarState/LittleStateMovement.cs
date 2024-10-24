@@ -7,30 +7,38 @@ using UnityEngine;
 /// </summary>
 public class LittleStateMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5f; // 移动速度
-    [SerializeField] private bool canMove = true; // 表示玩家是否可以移动
-    [SerializeField] private Vector2 moveDirection; // 移动方向
-    [SerializeField] private PlayerLittleState playerLittleState; // 引用 PlayerLittleState 组件
-    [SerializeField] private Rigidbody2D rb2D; // 父对象的 Rigidbody2D 组件
+    [SerializeField]
+    private float moveSpeed = 5f; // 移动速度
+
+    [SerializeField]
+    private bool canMove = true; // 表示玩家是否可以移动
+
+    [SerializeField]
+    private Vector2 moveDirection; // 移动方向
+
+    [SerializeField]
+    private PlayerLittleState playerLittleState; // 引用 PlayerLittleState 组件
+
+    [SerializeField]
+    private Rigidbody2D rb2D; // 父对象的 Rigidbody2D 组件
     public PlayerMove playerMove;
 
     [Header("光球移动方向")]
-    public bool 上 = false;
-    public bool 下 = false;
-    public bool 左 = false;
-    public bool 右 = false;
+    public bool isUp = false; // 上
+    public bool isDown = false; // 下
+    public bool isLeft = false; // 左
+    public bool isRight = false; // 右
 
     void Start()
     {
         playerLittleState = GetComponent<PlayerLittleState>(); // 获取 PlayerLittleState 组件
-        //获取父对象的PlayerMove组件
-         playerMove = GetComponentInParent<PlayerMove>();
+        // 获取父对象的 PlayerMove 组件
+        playerMove = GetComponentInParent<PlayerMove>();
     }
 
     void OnEnable()
     {
         canMove = true; // 激活组件时允许移动
-
     }
 
     void OnDisable()
@@ -42,7 +50,7 @@ public class LittleStateMovement : MonoBehaviour
     void Update()
     {
         ProcessInput(); // 处理输入
-        if (playerMove.isDashing ==true)
+        if (playerMove.isDashing == true)
         {
             playerMove.dashCount++;
             playerLittleState.ChangeToBig();
@@ -52,28 +60,33 @@ public class LittleStateMovement : MonoBehaviour
             playerMove.jumpCount++;
             playerLittleState.ChangeToBig();
         }
-        归位();
+        ResetDirection(); // 归位
     }
-    private void 归位()
+
+    private void ResetDirection()
     {
-        上 = false;
-        下 = false;
-        左 = false;
-        右 = false;
+        isUp = false;
+        isDown = false;
+        isLeft = false;
+        isRight = false;
     }
-    private float 方向转换(bool 正, bool 反)
+
+    private float DirectionTransform(bool positive, bool negative)
     {
-        if (正 && !反) return -1;
-        if (反 && !正) return 1;
+        if (positive && !negative)
+            return -1;
+        if (negative && !positive)
+            return 1;
         return 0;
     }
+
     private void ProcessInput()
     {
         if (canMove)
         {
             // 获取 WASD 输入
-            float horizontalInput = 方向转换(左 ,右);
-            float verticalInput = 方向转换(下,上);
+            float horizontalInput = DirectionTransform(isLeft, isRight);
+            float verticalInput = DirectionTransform(isDown, isUp);
 
             // 仅允许朝一个方向移动
             if (horizontalInput != 0)
