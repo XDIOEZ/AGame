@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8937812078552913194}
   m_Layer: 0
   m_Name: LightToggle
-  m_TagString: Untagged
+  m_TagString: Toggle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
