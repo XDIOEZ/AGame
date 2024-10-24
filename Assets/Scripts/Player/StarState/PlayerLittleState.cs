@@ -52,6 +52,9 @@ public class PlayerLittleState : MonoBehaviour
         var rb2D = GetComponentInParent<Rigidbody2D>();
         initialGravityScale = rb2D.gravityScale;
         initialDrag = rb2D.drag;
+
+        EventCenter.GetInstance().AddEventListener("主角状态切换", SwitchPlayerState);
+
     }
 
     // 玩家切换到小人状态
@@ -129,6 +132,8 @@ public class PlayerLittleState : MonoBehaviour
         rb2D.gravityScale = 0; // 设置父对象的重力为0
         rb2D.drag = 0; // 设置摩擦力为0，确保速度恒定
     }
+
+
 
     /// <summary>
     /// 切换玩家状态函数
