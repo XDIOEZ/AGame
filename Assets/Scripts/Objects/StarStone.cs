@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class StarStone : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class StarStone : MonoBehaviour
         if (ga == null)
         {
             ChangeColor();
+            GetComponent<Light2D>().enabled = true;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

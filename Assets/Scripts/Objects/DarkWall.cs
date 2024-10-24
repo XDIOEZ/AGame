@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class DarkWall : MonoBehaviour
 {
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<PlayerData_Temp>().ChangeHealth(-1);
+            collision.GetComponent<PlayerData_Temp>().PlayerDeadOnce();
         }
         if (collision.CompareTag("Light_Bullet"))
         {

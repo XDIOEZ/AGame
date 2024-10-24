@@ -28,6 +28,7 @@ public class LightStarStone : MonoBehaviour
                 {
                     playerData.ChangeLightEnergyLimation();
                     Destroy(targetObject);
+                    playerData.ammo = playerData.lightEnergyLimation;
                 }
             }
         }
