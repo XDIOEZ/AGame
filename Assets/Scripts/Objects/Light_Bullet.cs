@@ -40,27 +40,25 @@ public class Light_Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Ground"))
+        switch (collision.tag)
         {
-            Destroy(gameObject);
-        }
-
-        if (collision.CompareTag("Toggle"))
-        {
-            Destroy(gameObject);
-        }
-        if (collision.CompareTag("DarkWall"))
-        {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-        }
-        else if (collision.CompareTag("Enemy") && collision != null)
-        {
-            collision.GetComponent<EnemyHurt>().EnemyDestroy();
-        }
-        else if (collision.CompareTag("Ground"))
-        {
-            Destroy(gameObject);
+            case "MovableRock":
+            case "Ground":
+            case "Toggle":
+                Destroy(gameObject);
+                break;
+            case "DarkWall":
+                Destroy(collision.gameObject);
+                Destroy(gameObject);
+                break;
+            case "Enemy":
+                if (collision != null)
+                {
+                    collision.GetComponent<EnemyHurt>().EnemyDestroy();
+                }
+                break;
+            default:
+                break;
         }
     }
 
