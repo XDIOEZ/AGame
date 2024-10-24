@@ -8,8 +8,6 @@ using UnityEngine.UI;
 
 public class UI_Dialog : MonoBehaviour
 {
-    private GameObject[] TalkSystem;
-
     public static UI_Dialog Instance;
     private Image head;
     private Text nameText;
@@ -31,8 +29,6 @@ public class UI_Dialog : MonoBehaviour
     }
     private void Start()
     {
-        TalkSystem = GameObject.FindGameObjectsWithTag("Canvas");
-
         head = transform.Find("Main/Head").GetComponent<Image>();
         nameText= transform.Find("Main/Name").GetComponent<Text>();
         //mainText = transform.Find("Main/MainText").GetComponent<Text>();
@@ -119,11 +115,6 @@ public class UI_Dialog : MonoBehaviour
     /// </summary>
     void ExitDialoigEvent()
     {
-        foreach (GameObject go in TalkSystem)
-        {
-            go.SetActive(false);
-            // 处理每个"Canvans"游戏对象
-        }
         Debug.Log("离开成功");
     }
 

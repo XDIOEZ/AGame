@@ -4964,8 +4964,6 @@ MonoBehaviour:
   speed: 5
   angle: -125
   rotationSpeed: 100
-  Timer: 2
-  vlight: {fileID: 1714264935236131347, guid: e4abf85b45a1a6f4daf942bf79af9fbd, type: 3}
 --- !u!50 &2985365794591663054
 Rigidbody2D:
   serializedVersion: 4
