@@ -16,7 +16,7 @@ public abstract class EnemyHurt : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Bullet"))
+        if (other.CompareTag("Light_Bullet"))
         {
             Debug.Log("子弹击中敌人: EnemyHurt.cs: OnTriggerEnter2D: Bullet");
             Destroy(other.gameObject);
