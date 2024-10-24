@@ -33,7 +33,11 @@ public class PlayerData_Temp : MonoBehaviour
         Debug.Log("Player Ammo: " + ammo);
         Debug.Log("Player lightEnergyLimation:" + lightEnergyLimation);
 
-   
+        EventCenter.Instance.AddEventListener("KillPlayer", () =>
+        {
+            EventCenter.Instance.EventTrigger("PlayerDead");
+            Debug.Log("Player Dead");
+        });
 
     }
     /// <summary>
@@ -44,7 +48,8 @@ public class PlayerData_Temp : MonoBehaviour
     {
         health += amount;
         Debug.Log("Updated Health: " + health);
-        
+        PlayerDeadCheck();
+
     }
 
     /// <summary>

@@ -11,11 +11,13 @@ public class BlackStarSpawn : MonoBehaviour
     public float maxX = 5f; // 生成区域的最大 x 坐标
     public float minY = -5f; // 生成区域的最小 y 坐标
     public float maxY = 5f; // 生成区域的最大 y 坐标
+    public float cycleTimer;
+    public float GameTimerStart;
 
     void Start()
     {
-        // 每 10 秒调用一次 RandomSpawnObjects 方法
-        InvokeRepeating("RandomSpawnObjects", 0f, 5f);
+        // 每 x 秒调用一次 RandomSpawnObjects 方法
+        InvokeRepeating("RandomSpawnObjects", GameTimerStart, cycleTimer);
     }
 
     void RandomSpawnObjects()

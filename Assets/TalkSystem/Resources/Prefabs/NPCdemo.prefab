@@ -414,7 +414,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TalkSystem: {fileID: 1800901267812063117}
-  player: {fileID: 9129597863054372833, guid: c638150dd360c674baee8a70d9fc452e, type: 3}
   timer: 0
   distances: 0
 --- !u!1 &9055622924931726776
@@ -703,8 +702,16 @@ PrefabInstance:
       value: -236
       objectReference: {fileID: 0}
     - target: {fileID: 5996717516355875184, guid: 96d893d882834be42adc101cd46e290b, type: 3}
+      propertyPath: m_Name
+      value: Canvass
+      objectReference: {fileID: 0}
+    - target: {fileID: 5996717516355875184, guid: 96d893d882834be42adc101cd46e290b, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5996717516355875184, guid: 96d893d882834be42adc101cd46e290b, type: 3}
+      propertyPath: m_TagString
+      value: Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 6261584037900676086, guid: 96d893d882834be42adc101cd46e290b, type: 3}
       propertyPath: m_LocalScale.x

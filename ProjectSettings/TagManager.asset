@@ -15,6 +15,9 @@ TagManager:
   - Obstacle
   - DeadZone
   - Toggle
+  - Canvas
+  - BlackStar
+  - MovableRock
   layers:
   - Default
   - TransparentFX
@@ -26,9 +29,9 @@ TagManager:
   - Ground
   - Enemy
   - VLight
+  - MovableRock
   - 
-  - 
-  - 
+  - SpecialPlayer
   - 
   - 
   - 
