@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GhostPTP : EnemyHurt
+public class GhostPTP : MonoBehaviour
 {
     [Header("节点配置")]
     [Tooltip("所有路径点的父节点")]
@@ -98,8 +98,9 @@ public class GhostPTP : EnemyHurt
         Moved.position = targetPoint.position; // 确保最终位置到达目标点
     }
 
-    public override void EnemyDead()
+    public void EnemyDead()
     {
         MusicMgr.Instance.PlaySound(deathAudio, false);
+        Destroy(gameObject);
     }
 }

@@ -3,7 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 小人状态下玩家的移动控制类.
+/// LittleStateMovement类控制小人状态下玩家的移动行为。
+/// <para>使用说明：</para>
+/// <para>1. 将此脚本挂载到玩家的小人状态游戏对象上。</para>
+/// <para>2. 在Unity编辑器中，确保将PlayerLittleState和PlayerMove组件的引用正确设置。</para>
+/// <para>3. 调整moveSpeed属性以更改移动速度。</para>
+/// <para>4. 通过设置上下左右的布尔值（isUp, isDown, isLeft, isRight）来控制移动方向。</para>
+/// <para>5. 确保在需要移动的情况下调用ProcessInput()方法来处理输入。</para>
+/// <para>6. 当玩家触发冲刺或跳跃时，组件自动切换回大人状态。</para>
 /// </summary>
 public class LittleStateMovement : MonoBehaviour
 {

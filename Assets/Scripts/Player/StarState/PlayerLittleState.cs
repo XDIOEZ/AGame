@@ -1,5 +1,15 @@
 using UnityEngine;
 
+/// <summary>
+/// PlayerLittleState类控制玩家在两种状态间的切换：大人状态和小人状态。
+/// <para>使用说明：</para>
+/// <para>1. 将此脚本挂载到玩家游戏对象上。</para>
+/// <para>2. 在Unity编辑器中，确保将大人状态的SpriteRenderer和Collider、
+///      小人状态的SpriteRenderer和Collider等通过SerializeField属性进行初始化。</para>
+/// <para>3. 调用ChangeToLittle()方法以切换到小人状态，调用ChangeToBig()方法以切换回大人状态。</para>
+/// <para>4. 确保在适当的时候调用Update()方法，以监测玩家状态和切换。</para>
+/// <para>5. 使用SwitchPlayerState()方法来根据条件自动切换状态。</para>
+/// </summary>
 public class PlayerLittleState : MonoBehaviour
 {
     [SerializeField]

@@ -7,7 +7,6 @@ public abstract class EnemyHurt : MonoBehaviour
     public void EnemyDestroy()
     {
         EnemyDead();
-        
     }
 
     public abstract void EnemyDead(); // 处理死亡逻辑，包含声音播放等
