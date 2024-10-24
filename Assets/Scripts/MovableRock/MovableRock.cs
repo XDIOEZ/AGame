@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector.Editor.Validation;
 using UnityEngine;
 
 public class MovableRock : MonoBehaviour
@@ -9,6 +10,7 @@ public class MovableRock : MonoBehaviour
     private bool isPlayerInRange = false;
     private bool isInteracting = false;
     private Rigidbody2D rb;
+    private Rigidbody2D playerRb;
 
     void Awake()
     {
@@ -17,22 +19,34 @@ public class MovableRock : MonoBehaviour
 
     void Update()
     {
-        if (isPlayerInRange && player != null && isInteracting)
+        if (isPlayerInRange && playerRb != null && isInteracting)
         {
-            float targetX = player.transform.position.x + offset.x;
-            // Vector2 currentVelocity = rb.velocity;
+            Vector2 currentVelocity = rb.velocity;
+            rb.velocity = new Vector2(playerRb.velocity.x, currentVelocity.y);
+            // float targetX = player.transform.position.x + offset.x;
             // rb.velocity = new Vector2(targetX - transform.position.x, currentVelocity.y);
-            rb.MovePosition(new Vector2(targetX, transform.position.y));
+            // rb.MovePosition(new Vector2(targetX, transform.position.y));
         }
 
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.F))
         {
             isInteracting = !isInteracting;
 
-            if (player != null && player.TryGetComponent(out PlayerMove playerMove))
+            if (
+                isInteracting
+                && player != null
+                && player.TryGetComponent(out PlayerMove playerMove)
+            )
             {
-                oldSpeed = playerMove.moveSpeed;
-                playerMove.moveSpeed = speed;
+                if (player.TryGetComponent(out playerRb))
+                {
+                    oldSpeed = playerMove.moveSpeed;
+                    playerMove.moveSpeed = speed;
+                }
+                else
+                {
+                    isInteracting = false;
+                }
             }
 
             if (isInteracting)

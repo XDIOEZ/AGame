@@ -17,6 +17,7 @@ TagManager:
   - Toggle
   - Canvas
   - BlackStar
+  - MovableRock
   layers:
   - Default
   - TransparentFX
