@@ -31,7 +31,7 @@ public class UI_Dialog : MonoBehaviour
     }
     private void Start()
     {
-        TalkSystem = GameObject.FindGameObjectsWithTag("Canvas");
+        TalkSystem = GameObject.FindGameObjectsWithTag("Canvass");
 
         head = transform.Find("Main/Head").GetComponent<Image>();
         nameText= transform.Find("Main/Name").GetComponent<Text>();

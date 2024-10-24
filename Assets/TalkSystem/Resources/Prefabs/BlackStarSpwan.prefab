@@ -44,10 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1cdbb5a1187e7b469d091197454c411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blackStar: {fileID: 6509937380078022386, guid: 91339a45c28bd324b9f6d4b3589893e3, type: 3}
+  blackStar: {fileID: 6509937380078022386, guid: bfca107c6500501428bb772cba8e1dee, type: 3}
   minCount: 10
   maxCount: 15
   minX: -100
   maxX: 100
   minY: -20
   maxY: 40
+  cycleTimer: 15
+  GameTimerStart: 0

@@ -702,6 +702,10 @@ PrefabInstance:
       value: -236
       objectReference: {fileID: 0}
     - target: {fileID: 5996717516355875184, guid: 96d893d882834be42adc101cd46e290b, type: 3}
+      propertyPath: m_Name
+      value: Canvass
+      objectReference: {fileID: 0}
+    - target: {fileID: 5996717516355875184, guid: 96d893d882834be42adc101cd46e290b, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
