@@ -7,7 +7,8 @@ public class BlackStar : MonoBehaviour
     public float speed = 5f;
     public float angle = 45f; // 角度，单位是度
     public float rotationSpeed = 100f; // 旋转速度
-    public float Timer=2;
+    public float lifeTimer;
+    public int damage;
 
 
     private GameObject blackStars;
@@ -37,12 +38,17 @@ public class BlackStar : MonoBehaviour
         blackStars.transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
     }
 
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("玩家受伤: BlackStar.cs: OnCollisionEnter2D: Player");
-            Destroy(gameObject);
+            if (collision.gameObject.TryGetComponent(out PlayerData_Temp playerData))
+            {
+                playerData.ChangeHealth(-damage);
+                Debug.Log("玩家受伤: BlackStar.cs: OnCollisionEnter2D: Player");
+                Destroy(gameObject);
+            }
         }
         else
         {
@@ -52,7 +58,8 @@ public class BlackStar : MonoBehaviour
             }
             else
             {
-                Invoke("EnemyDead", Timer);
+                Debug.Log(collision.gameObject);
+                Invoke("EnemyDead", lifeTimer);
                 // 否则，停止物体的移动
                 Rigidbody2D rb = GetComponent<Rigidbody2D>();
                 rb.velocity = Vector2.zero;

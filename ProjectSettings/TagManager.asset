@@ -16,6 +16,7 @@ TagManager:
   - DeadZone
   - Toggle
   - Canvas
+  - BlackStar
   layers:
   - Default
   - TransparentFX

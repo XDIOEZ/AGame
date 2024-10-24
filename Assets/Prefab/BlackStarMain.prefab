@@ -4924,9 +4924,10 @@ GameObject:
   - component: {fileID: 8709774019922703613}
   - component: {fileID: 2985365794591663054}
   - component: {fileID: 1442678996947296948}
+  - component: {fileID: 6414332925261426530}
   m_Layer: 7
   m_Name: BlackStarMain
-  m_TagString: Untagged
+  m_TagString: BlackStar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4964,6 +4965,9 @@ MonoBehaviour:
   speed: 5
   angle: -125
   rotationSpeed: 100
+  lifeTimer: 0.7
+  damage: 1
+  vlight: {fileID: 1714264935236131347, guid: e4abf85b45a1a6f4daf942bf79af9fbd, type: 3}
 --- !u!50 &2985365794591663054
 Rigidbody2D:
   serializedVersion: 4
@@ -5026,6 +5030,41 @@ CircleCollider2D:
   m_Offset: {x: -0.4516182, y: 0.037338853}
   serializedVersion: 2
   m_Radius: 0.33589685
+--- !u!58 &6414332925261426530
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6509937380078022386}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.42, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.52
 --- !u!1 &8108941705865144908
 GameObject:
   m_ObjectHideFlags: 0
