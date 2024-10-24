@@ -105,6 +105,10 @@ MonoBehaviour:
   playerLittleState: {fileID: 4245915170115100963}
   rb2D: {fileID: 8763650936685393180}
   playerMove: {fileID: 4393518748687702332}
+  isUp: 0
+  isDown: 0
+  isLeft: 0
+  isRight: 0
 --- !u!114 &4245915170115100963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,11 +121,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 761453b8ac34ea9439608b50e16b841d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ManSpriteRenderer: {fileID: 7530361243481807019}
-  ManCollider: {fileID: 7750317770112988450}
+  manSpriteRenderer: {fileID: 0}
+  manCollider: {fileID: 0}
   isLittle: 0
   initialGravityScale: 0
   initialDrag: 0
+  offset: {x: 0, y: 0}
+  detectionRange: 0
+  detectionObjects:
+    serializedVersion: 2
+    m_Bits: 0
+  isContact: 0
+  canTransformToLightBall: 0
+  isLightBallState: 0
 --- !u!70 &8034108561651768417
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -409,6 +421,7 @@ MonoBehaviour:
   health: 100
   ammo: 10
   lightEnergyLimation: 10
+  ifDead: 0
 --- !u!114 &4393518748687702332
 MonoBehaviour:
   m_ObjectHideFlags: 0
