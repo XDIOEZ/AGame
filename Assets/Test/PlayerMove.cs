@@ -56,7 +56,7 @@ public class PlayerMove : MonoBehaviour
             EventCenter.Instance.EventTrigger("KillPlayer");
         }
         // ÒÆ¶¯
-        if (  !isLockingMove)
+        if (!isDashing&&!isLockingMove)
         {
             rb2d.velocity = new Vector2(moveDirection.x, rb2d.velocity.y);
             Move();
