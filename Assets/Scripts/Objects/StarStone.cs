@@ -8,6 +8,7 @@ public class StarStone : MonoBehaviour
     
     public GameObject ga;
     public Color newColor;
+    PlayerData_Temp player;
     
     private void Start()
     {
@@ -19,6 +20,7 @@ public class StarStone : MonoBehaviour
     {
         if (ga == null)
         {
+           
             ChangeColor();
             GetComponent<Light2D>().enabled = true;
         }
@@ -28,7 +30,11 @@ public class StarStone : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             if (ga != null)
+            {
+                
                 ga.SetActive(true);
+            }
+                
             
         }
     }

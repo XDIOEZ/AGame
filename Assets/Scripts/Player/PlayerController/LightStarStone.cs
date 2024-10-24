@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LightStarStone : MonoBehaviour
 {
-    //public GameObject targetObject;//获取物体，物体为星石上的Canvas组件
+    
     PlayerData_Temp playerData;
     StarStone starStone;
 
@@ -14,7 +14,7 @@ public class LightStarStone : MonoBehaviour
     private void Awake()
     {
         playerData = GetComponent<PlayerData_Temp>();
-        
+
     }
 
 
@@ -26,10 +26,12 @@ public class LightStarStone : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F))
             {
 
-               if (starStone.ga != null)    //如果targetObject没有销毁执行以下函数
+               if (starStone.ga )    //如果targetObject没有销毁执行以下函数
                 {
-                    playerData.ChangeLightEnergyLimation();
                     Destroy(starStone.ga);
+
+                    playerData.ChangeLightEnergyLimation();
+
                     playerData.ammo = playerData.lightEnergyLimation;
                 }
             }
