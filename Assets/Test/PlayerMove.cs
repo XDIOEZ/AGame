@@ -71,6 +71,7 @@ public class PlayerMove : MonoBehaviour
         }
 
         // ³å´Ì×´Ì¬¸üÐÂ
+        EventCenter.Instance.EventTrigger<object>("IsDashValue", this);
         if (isDashing)
         {
             dashTimer -= Time.deltaTime;

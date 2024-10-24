@@ -7,9 +7,10 @@ using UnityEngine.Events;
 public class Light_Bullet : MonoBehaviour
 {
     Rigidbody2D rb;
-   [SerializeField] float destoryTime=2.0f;
+
+    [SerializeField]
+    float destoryTime = 2.0f;
     float destoryTimer;
-    
 
     public void Awake()
     {
@@ -23,12 +24,10 @@ public class Light_Bullet : MonoBehaviour
             OnHitMirror
         );
         destoryTimer = destoryTime;
-
     }
 
     private void Update()
     {
-
         if (destoryTimer > 0)
         {
             destoryTimer -= Time.deltaTime;
@@ -39,25 +38,31 @@ public class Light_Bullet : MonoBehaviour
         }
     }
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Ground"))
+        {
+            Destroy(gameObject);
+        }
+
+        if (collision.CompareTag("Toggle"))
+        {
+            Destroy(gameObject);
+        }
         if (collision.CompareTag("DarkWall"))
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
-        else if (collision.CompareTag("Enemy")&&collision!=null)
+        else if (collision.CompareTag("Enemy") && collision != null)
         {
             collision.GetComponent<EnemyHurt>().EnemyDestroy();
-           
         }
         else if (collision.CompareTag("Ground"))
         {
             Destroy(gameObject);
         }
     }
-    
 
     public void Lunch(Vector2 direction, float force)
     {

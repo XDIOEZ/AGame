@@ -280,7 +280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2088615683826529565, guid: 71680bc3d83f14ce79debcd133248e88, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.43
+      value: -4.34
       objectReference: {fileID: 0}
     - target: {fileID: 2088615683826529565, guid: 71680bc3d83f14ce79debcd133248e88, type: 3}
       propertyPath: m_LocalPosition.z
@@ -395,7 +395,7 @@ GameObject:
   - component: {fileID: 707661265}
   m_Layer: 7
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
