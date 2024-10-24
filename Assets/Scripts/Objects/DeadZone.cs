@@ -7,9 +7,9 @@ public class DeadZone : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
-            EventCenter.Instance.EventTrigger("PlayerDead");
+            collision.GetComponent<PlayerData_Temp>().PlayerDeadOnce();
         }
     }
 }

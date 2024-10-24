@@ -51,8 +51,12 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            EventCenter.Instance.EventTrigger("KillPlayer");
+        }
         // ÒÆ¶¯
-        if (!isDashing && !isLockingMove)
+        if (  !isLockingMove)
         {
             rb2d.velocity = new Vector2(moveDirection.x, rb2d.velocity.y);
             Move();
