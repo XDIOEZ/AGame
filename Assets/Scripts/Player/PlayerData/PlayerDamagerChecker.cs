@@ -10,7 +10,7 @@ public class PlayerDamagerChecker : MonoBehaviour
     [SerializeField]
     private PlayerData_Temp playerData; // 引用玩家数据组件
 
-    // Start is called before the first frame update
+    // Start is called before the first frame update        
     void Start()
     {
         // 获取父对象的 PlayerData_Temp 组件

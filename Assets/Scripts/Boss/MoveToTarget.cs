@@ -9,8 +9,8 @@ public class MoveToTarget : StateMachineBehaviour
     [SerializeField]
     private string EndAction; // 移动到目标位置后切换的动作
 
-    [SerializeField]
-    private float arrivalThreshold = 0.1f; // 到达目标位置的阈值
+    //[SerializeField]
+    //private float arrivalThreshold = 0.1f; // 到达目标位置的阈值
     [SerializeField]
     private Vector2 speedRange = new Vector2(0.5f, 5f); // 移动速度范围（最小和最大速度）
     [SerializeField]
