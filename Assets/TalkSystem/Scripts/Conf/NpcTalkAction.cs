@@ -6,7 +6,7 @@ public class NpcTalkAction : MonoBehaviour
 {
     public static NpcTalkAction instance;
     public GameObject TalkSystem;
-    public GameObject player;
+    private GameObject player;
     public float timer;
 
     public float distances;
@@ -18,6 +18,8 @@ public class NpcTalkAction : MonoBehaviour
 
     void Start()
     {
+
+        player = GameObject.Find("PlayerRemake");
         TalkSystem.SetActive(false);
     }
 
