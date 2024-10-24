@@ -12,15 +12,15 @@ public class PlayerData_Temp : MonoBehaviour
     /// <summary>
     /// 玩家弹药
     /// </summary>
-    public int ammo ;
+    public int ammo;
+
     // Start is called before the first frame update
 
     /// <summary>
     /// 玩家光能上限
     /// </summary>
-    /// 
-    public  int lightEnergyLimation=3;
-
+    ///
+    public int lightEnergyLimation = 3;
 
     void Start()
     {
@@ -28,10 +28,8 @@ public class PlayerData_Temp : MonoBehaviour
         Debug.Log("Player Health: " + health);
         Debug.Log("Player Ammo: " + ammo);
         Debug.Log("Player lightEnergyLimation:" + lightEnergyLimation);
-
-   
-
     }
+
     /// <summary>
     /// 更改玩家的血量
     /// </summary>
@@ -40,7 +38,7 @@ public class PlayerData_Temp : MonoBehaviour
     {
         health += amount;
         Debug.Log("Updated Health: " + health);
-        
+        PlayerDeadCheck();
     }
 
     /// <summary>
@@ -49,28 +47,30 @@ public class PlayerData_Temp : MonoBehaviour
     /// <param name="amount">要更改的弹药值</param>
     public void ChangeAmmo(int amount)
     {
-        if (amount>0)                   
+        if (amount > 0)
         {
-            if (ammo < lightEnergyLimation)//判断当前子弹数量是否小于光能上限
+            if (ammo < lightEnergyLimation) //判断当前子弹数量是否小于光能上限
             {
                 ammo += amount;
             }
- 
+
             Debug.Log("Updated Ammo: " + ammo);
         }
-        else if(amount<0)
+        else if (amount < 0)
         {
-            if (ammo <= 0) return;
+            if (ammo <= 0)
+                return;
             ammo += amount;
             Debug.Log("Updated Ammo: " + ammo);
         }
-       
     }
+
     public void ChangeLightEnergyLimation()
     {
         lightEnergyLimation++;
         Debug.Log("Player lightEnergyLimation:" + lightEnergyLimation);
     }
+
     public void PlayerDeadCheck()
     {
         Debug.Log("Player Dead");
@@ -78,6 +78,5 @@ public class PlayerData_Temp : MonoBehaviour
         {
             EventCenter.Instance.EventTrigger("PlayerDead");
         }
-       
     }
 }
