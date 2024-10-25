@@ -19,7 +19,7 @@ public class PlayerLittleState : MonoBehaviour
     private BoxCollider2D manCollider; // 大人状态的 CapsuleCollider2D
 
     [SerializeField]
-    private bool isLittle = false; // 跟踪当前状态，默认为大人状态
+    public bool isLittle = false; // 跟踪当前状态，默认为大人状态
 
     [SerializeField]
     private float initialGravityScale; // 初始重力缩放值

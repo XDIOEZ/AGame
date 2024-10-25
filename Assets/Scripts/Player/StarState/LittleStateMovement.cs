@@ -26,7 +26,7 @@ public class LittleStateMovement : MonoBehaviour
     private float moveSpeed = 5f; // 移动速度
 
     [SerializeField]
-    private bool canMove = true; // 表示玩家是否可以移动
+    public bool canMove = true; // 表示玩家是否可以移动
 
     [SerializeField]
     private Vector2 moveDirection; // 移动方向
