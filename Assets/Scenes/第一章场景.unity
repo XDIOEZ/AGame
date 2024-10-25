@@ -599,6 +599,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4245915170115100963, guid: ff0a0e82578379c4fb2f19453c96ce6c, type: 3}
+      propertyPath: offset.y
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245915170115100963, guid: ff0a0e82578379c4fb2f19453c96ce6c, type: 3}
       propertyPath: manCollider
       value: 
       objectReference: {fileID: 2023968670}
@@ -616,7 +620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4245915170115100963, guid: ff0a0e82578379c4fb2f19453c96ce6c, type: 3}
       propertyPath: detectionRange
-      value: 0.55
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4245915170115100963, guid: ff0a0e82578379c4fb2f19453c96ce6c, type: 3}
       propertyPath: manSpriteRenderer
