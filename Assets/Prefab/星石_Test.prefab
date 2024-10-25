@@ -164,7 +164,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.11, y: -1.4399, z: 0}
-  m_LocalScale: {x: 1, y: 3.46373, z: 1}
+  m_LocalScale: {x: 0.58457, y: 2.0247927, z: 0.58457}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7981459090087095924}
@@ -320,7 +320,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 1.78
+  m_PointLightOuterRadius: 10.83
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1

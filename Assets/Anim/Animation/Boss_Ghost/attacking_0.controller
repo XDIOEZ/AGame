@@ -506,7 +506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c2b309cf85d6cd4b9e5d3e9302d2d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  searchRadius: 24
+  searchRadius: 16
   enemyLayer:
     serializedVersion: 2
     m_Bits: 8
