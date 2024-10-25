@@ -426,7 +426,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   groundCheckPoint: {fileID: 0}
-  groundCheckRadius: 1.5
+  groundCheckRadius: 1.2
   rb2d: {fileID: 0}
   jumpGraceTime: 0.1
   isLockingMove: 0

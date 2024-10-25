@@ -71,7 +71,7 @@ public class PlayerMove : MonoBehaviour
         }
 
         // ³å´Ì
-        if (Input.GetKeyDown(KeyCode.LeftShift) && dashCount > 0 && !isDashing && !isLockingDash)
+        if (Input.GetKeyDown(KeyCode.LeftShift)|| Input.GetKeyDown(KeyCode.K) && dashCount > 0 && !isDashing && !isLockingDash)
         {
             Dash();
         }
