@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2720285557192159646}
   - component: {fileID: 3400505731339732759}
   - component: {fileID: 9059488493273873498}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CloudDieEffect01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4898,7 +4898,7 @@ GameObject:
   - component: {fileID: 4262603127804466330}
   - component: {fileID: 8354108622487684462}
   - component: {fileID: 3072392747669445881}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cloud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4914,8 +4914,8 @@ Transform:
   m_GameObject: {fileID: 5573901437279892006}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.43, y: 21.05, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 28.3226, y: 21.05, z: 0}
+  m_LocalScale: {x: 2.785248, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2720285557192159646}
@@ -4986,9 +4986,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 270a0e8766192974684615a572454b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contactTime: 1
-  disappearTime: 3
-  fadeSpeed: 1
+  contactTime: 0
+  disappearTime: 1
+  fadeSpeed: 0.3
 --- !u!61 &3072392747669445881
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5045,7 +5045,7 @@ GameObject:
   - component: {fileID: 6576922425407961349}
   - component: {fileID: 1680580148388216808}
   - component: {fileID: 8818430852665994961}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CloudDieEffect02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
