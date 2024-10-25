@@ -6,6 +6,7 @@ using UnityEngine;
 public class BossActive : MonoBehaviour
 {
     public GameObject boss;
+    public GameObject bossEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +14,7 @@ public class BossActive : MonoBehaviour
         {
          //¼¤»îboss
         boss.SetActive(true);
-
+            bossEffect.SetActive(true);
         });
     }
 

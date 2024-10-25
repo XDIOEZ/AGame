@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -10,7 +9,7 @@ public class GameManager : MonoBehaviour
     private DialogConf[] dialogConfs;
 
 
-    [MenuItem("Tools/对话数据配置")]
+    
     public static void CheckDialogConfs()
     {
         DialogConf[] dialogConfs = Resources.LoadAll<DialogConf>("Conf");
