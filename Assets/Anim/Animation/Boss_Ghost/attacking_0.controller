@@ -307,6 +307,7 @@ AnimatorState:
   - {fileID: 529649756972975441}
   - {fileID: 3013125033957103379}
   - {fileID: 366494642433986305}
+  - {fileID: 1059398845700652077}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -387,7 +388,7 @@ AnimatorStateMachine:
     m_Position: {x: -10, y: 560, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2648890874620440608}
-    m_Position: {x: 300, y: 450, z: 0}
+    m_Position: {x: 300, y: 460, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -506,13 +507,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c2b309cf85d6cd4b9e5d3e9302d2d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  searchRadius: 16
+  searchRadius: 32
   enemyLayer:
     serializedVersion: 2
     m_Bits: 8
   aiData: {fileID: 0}
   searchInterval: 1
   FoundAction: 
+--- !u!114 &1059398845700652077
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb81c86bc2fcac248afef9cb120c717a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1088382796381095512
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -33,12 +33,12 @@ public class MoveToTarget : StateMachineBehaviour
         moveSpeed = Random.Range(speedRange.x, speedRange.y);
         // 确保移动速度在指定范围内
         moveSpeed = Mathf.Clamp(moveSpeed, speedRange.x, aiData.entity.Data.MoveSpeed);
-
     }
 
     // 在状态更新时检查是否到达目标位置
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // 检查目标位置是否存在
         if (aiData.enemyTargetPosition != null)
         {
             Debug.Log("Boss开始移动");
@@ -47,19 +47,33 @@ public class MoveToTarget : StateMachineBehaviour
             float duration = distance / moveSpeed; // 根据距离计算动画持续时间
 
             // 使用 DOTween 实现平滑移动
-            moveTweener = aiData.transform.DOMove(targetPosition, duration)
-                .SetEase(Ease.Linear) // 线性插值，保持恒定速度
-                .OnComplete(() =>
-                {
-                    // 移动完成后切换到下一个动作
-                    if (!string.IsNullOrEmpty(EndAction))
+            if (moveTweener == null || !moveTweener.IsActive())
+            {
+                moveTweener = aiData.transform.DOMove(targetPosition, duration)
+                    .SetEase(Ease.Linear) // 线性插值，保持恒定速度
+                    .OnComplete(() =>
                     {
-                        animator.SetTrigger(EndAction);
-                    }
-                });
+                        // 移动完成后切换到下一个动作
+                        if (!string.IsNullOrEmpty(EndAction))
+                        {
+                            animator.SetTrigger(EndAction);
+                        }
+                    });
+            }
+        }
+        else
+        {
+            // 如果目标位置为空，停止移动并执行其他操作
+            Debug.Log("目标位置为空，停止移动");
+            if (moveTweener != null && moveTweener.IsActive())
+            {
+                moveTweener.Kill(); // 停止当前的移动
+                moveTweener = null; // 清空 Tweener 引用
+            }
+
+            // 可根据需要在这里添加状态转换或其他处理
         }
     }
-
 
     // 在退出状态时停止移动
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -68,6 +82,7 @@ public class MoveToTarget : StateMachineBehaviour
         if (moveTweener != null && moveTweener.IsActive())
         {
             moveTweener.Kill();
+            moveTweener = null; // 清空 Tweener 引用
         }
     }
 }
