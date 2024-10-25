@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1796192599394278758}
   - component: {fileID: 6736376101760325724}
   - component: {fileID: 3476111700405653781}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 1704456678149721375}
   - component: {fileID: -4340789704907051662}
   - component: {fileID: 628217264340798710}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: "\u661F\u77F3_Test"
   m_TagString: StarStone
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 8208728646424182729}
   - component: {fileID: 6162083615102720517}
   - component: {fileID: 5465472395749547699}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,7 +391,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &6162083615102720517
 MonoBehaviour:
@@ -432,4 +432,4 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 14335
