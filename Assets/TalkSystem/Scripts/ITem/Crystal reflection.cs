@@ -7,8 +7,8 @@ using UnityEngine;
 public class Crystalreflection: MonoBehaviour
 {
     private PlayerLittleState Player;
-
     private LittleStateMovement LightBall;
+
 
     private BoxCollider2D boxCollider2D;
 
@@ -21,6 +21,9 @@ public class Crystalreflection: MonoBehaviour
 
     private void Start()
     {
+
+        Player = GameObject.Find("Circle").GetComponent<PlayerLittleState>();
+        LightBall = GameObject.Find("Circle").GetComponent<LittleStateMovement>();
         EventCenter.Instance.AddEventListener<object>("IsDashValue", (object obj) =>
         {
             PlayerMove player = obj as PlayerMove; // ½« obj ×ª»»Îª PlayerMove
@@ -33,9 +36,6 @@ public class Crystalreflection: MonoBehaviour
 
     private void Update()
     {
-        Player=GameObject.Find("Circle").GetComponent<PlayerLittleState>();
-        LightBall = GameObject.Find("Circle").GetComponent<LittleStateMovement>();
-
         timer -= Time.deltaTime;
         if (timer < 0)
         {
@@ -43,7 +43,7 @@ public class Crystalreflection: MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
 
-        if (openKey)
+        if (openKey||Player.isLittle)
         {
             GetComponent<Rigidbody2D>().isKinematic = false;
         }
@@ -88,19 +88,19 @@ public class Crystalreflection: MonoBehaviour
                 timer = 0.1f;
                 Vector2 playerMoveDirection = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
                 Vector2 objectMoveDirection = CalculateMoveDirection(playerMoveDirection);
-                GetComponent<Rigidbody2D>().velocity = objectMoveDirection * speed;
+                //GetComponent<Rigidbody2D>().velocity = objectMoveDirection * speed;
             }
         }
     }
 
     public void ReBoundPlayer(int number)
     {
-        if (openKey)
+        if (openKey||Player.isLittle)
         {
             Player.canTransformToLightBall = true;
-            Player.SwitchPlayerState();
-            if (LightBall != null)
+            if (Player.isLittle)
             {
+                LightBall.canMove = true;
                 if (number == 1)
                 { LightBall.isRight = true; }
                 else if (number == 2)
@@ -109,7 +109,22 @@ public class Crystalreflection: MonoBehaviour
                 { LightBall.isUp = true; }
                 else
                 { LightBall.isDown = true; }
+            }
+            else 
+            {
+                Player.SwitchPlayerState();
+                if (LightBall != null)
+                {
+                    if (number == 1)
+                    { LightBall.isRight = true; }
+                    else if (number == 2)
+                    { LightBall.isLeft = true; }
+                    else if (number == 3)
+                    { LightBall.isUp = true; }
+                    else
+                    { LightBall.isDown = true; }
 
+                }
             }
         }
     }
