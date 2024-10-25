@@ -43,14 +43,14 @@ public class Crystalreflection: MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
 
-        if (openKey||Player.isLittle)
-        {
-            GetComponent<Rigidbody2D>().isKinematic = false;
-        }
-        else
-        {
-            GetComponent<Rigidbody2D>().isKinematic = true;
-        }
+        //if (openKey||Player.isLittle)
+        //{
+        //    GetComponent<Rigidbody2D>().isKinematic = false;
+        //}
+        //else
+        //{
+        //    GetComponent<Rigidbody2D>().isKinematic = true;
+        //}
 
     }
 

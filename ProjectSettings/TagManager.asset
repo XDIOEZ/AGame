@@ -18,6 +18,7 @@ TagManager:
   - Canvas
   - BlackStar
   - MovableRock
+  - LittlePlayer
   layers:
   - Default
   - TransparentFX

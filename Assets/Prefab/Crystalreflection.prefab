@@ -147,8 +147,8 @@ MonoBehaviour:
   Left: 0
   Up: 1
   Down: 0
-  speed: 5
-  timer: 0
+  speed: 0.5
+  timer: 2
 --- !u!1 &3194138620005382579
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,7 +248,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3194138620005382579}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -472,8 +472,8 @@ MonoBehaviour:
   Left: 0
   Up: 0
   Down: 1
-  speed: 5
-  timer: 0
+  speed: 0.5
+  timer: 2
 --- !u!1 &6405886096595350346
 GameObject:
   m_ObjectHideFlags: 0
@@ -621,8 +621,8 @@ MonoBehaviour:
   Left: 0
   Up: 0
   Down: 0
-  speed: 5
-  timer: 0
+  speed: 0.5
+  timer: 2
 --- !u!1 &8591186315399349025
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,5 +770,5 @@ MonoBehaviour:
   Left: 1
   Up: 0
   Down: 0
-  speed: 5
-  timer: 0.3
+  speed: 0.5
+  timer: 2
