@@ -127,10 +127,10 @@ MonoBehaviour:
   initialGravityScale: 0
   initialDrag: 0
   offset: {x: 0, y: 0}
-  detectionRange: 0
+  detectionRange: 0.55
   detectionObjects:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   isContact: 0
   canTransformToLightBall: 0
   isLightBallState: 0
@@ -416,11 +416,15 @@ MonoBehaviour:
   isJumping: 0
   jumpCount: 1
   isGrounded: 0
+  dianjingshi: 0
   jumpTimer: 0
   isMoving: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
+  dianLayer:
+    serializedVersion: 2
+    m_Bits: 64
   groundCheckPoint: {fileID: 0}
   groundCheckRadius: 1.5
   rb2d: {fileID: 0}
@@ -455,7 +459,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff564adb37650ee41ab3b79db4f1793b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetObject: {fileID: 0}
   isInArea: 0
 --- !u!61 &2215664750097549619
 BoxCollider2D:
