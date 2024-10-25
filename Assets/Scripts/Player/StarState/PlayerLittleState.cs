@@ -16,7 +16,7 @@ public class PlayerLittleState : MonoBehaviour
     private SpriteRenderer manSpriteRenderer; // 大人状态的 SpriteRenderer
 
     [SerializeField]
-    private CapsuleCollider2D manCollider; // 大人状态的 CapsuleCollider2D
+    private BoxCollider2D manCollider; // 大人状态的 CapsuleCollider2D
 
     [SerializeField]
     private bool isLittle = false; // 跟踪当前状态，默认为大人状态
@@ -34,7 +34,7 @@ public class PlayerLittleState : MonoBehaviour
 
     [Header("状态")]
     public bool isContact; // 接触
-    public bool canTransformToLightBall = false; // 满足变成光球条件
+    public bool canTransformToLightBall = true; // 满足变成光球条件
     public bool isLightBallState = false; // 光球态
 
     public void Check()
@@ -89,7 +89,6 @@ public class PlayerLittleState : MonoBehaviour
             isLightBallState = true;
         }
     }
-
     // 玩家切换为大人状态
     public void ChangeToBig()
     {
@@ -113,7 +112,12 @@ public class PlayerLittleState : MonoBehaviour
     void Update()
     {
         Check();
-        SwitchPlayerState(); // 切换状态
+        SwitchPlayerState(); // 切换状
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            Debug.Log("切换状态");
+            SwitchPlayerState();
+        }
     }
 
     public void ChangeToBigAboutGravity()

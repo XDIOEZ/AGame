@@ -38,7 +38,10 @@ public class PlayerData_Temp : MonoBehaviour
             EventCenter.Instance.EventTrigger("PlayerDead");
             Debug.Log("Player Dead");
         });
-
+        EventCenter.Instance.AddEventListener("PlayerDead", () =>
+        {
+            health = 0;
+        });
     }
     /// <summary>
     /// 更改玩家的血量
@@ -52,6 +55,11 @@ public class PlayerData_Temp : MonoBehaviour
 
     }
 
+    void Update()
+    {
+        PlayerDeadCheck();
+
+    }
     /// <summary>
     /// 更改玩家的弹药
     /// </summary>
@@ -82,9 +90,10 @@ public class PlayerData_Temp : MonoBehaviour
     }
     public void PlayerDeadCheck()
     {
-        Debug.Log("Player Dead");
+        
         if (health <= 0)
         {
+            Debug.Log("Player Dead");
             ifDead = true;
             EventCenter.Instance.EventTrigger("PlayerDead");
         }

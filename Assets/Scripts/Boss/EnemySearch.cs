@@ -87,7 +87,7 @@ public class EnemySearch : StateMachineBehaviour
         }
         else //在此添加一个条件,避免清除随机标识位置
         {
-           
+           aiData.enemyTargetPosition = null; // 赋值给 enemyTargetPosition
             return false; // 没有找到敌人
         }
     }

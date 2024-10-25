@@ -121,8 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 761453b8ac34ea9439608b50e16b841d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manSpriteRenderer: {fileID: 0}
-  manCollider: {fileID: 0}
+  manSpriteRenderer: {fileID: 7530361243481807019}
+  manCollider: {fileID: 2215664750097549619}
   isLittle: 0
   initialGravityScale: 0
   initialDrag: 0
@@ -455,7 +455,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff564adb37650ee41ab3b79db4f1793b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetObject: {fileID: 0}
   isInArea: 0
 --- !u!61 &2215664750097549619
 BoxCollider2D:
