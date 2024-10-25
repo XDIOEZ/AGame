@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class LightStarStone : MonoBehaviour
 {
-    public GameObject targetObject;//获取物体，物体为星石上的Canvas组件
+    
     PlayerData_Temp playerData;
+    StarStone starStone;
 
     //判定条件
     [SerializeField] bool isInArea;//判断是否到达星石的判断区域
@@ -13,6 +14,7 @@ public class LightStarStone : MonoBehaviour
     private void Awake()
     {
         playerData = GetComponent<PlayerData_Temp>();
+
     }
 
 
@@ -24,10 +26,12 @@ public class LightStarStone : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F))
             {
 
-               if (targetObject != null)    //如果targetObject没有销毁执行以下函数
+               if (starStone.ga )    //如果targetObject没有销毁执行以下函数
                 {
+                    Destroy(starStone.ga);
+
                     playerData.ChangeLightEnergyLimation();
-                    Destroy(targetObject);
+
                     playerData.ammo = playerData.lightEnergyLimation;
                 }
             }
@@ -38,6 +42,7 @@ public class LightStarStone : MonoBehaviour
         if (collision.CompareTag("StarStone"))
         {
             isInArea = true;
+            starStone = collision.GetComponent<StarStone>();
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

@@ -534,8 +534,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4393518748687702332, guid: ff0a0e82578379c4fb2f19453c96ce6c, type: 3}
+      propertyPath: dashSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393518748687702332, guid: ff0a0e82578379c4fb2f19453c96ce6c, type: 3}
       propertyPath: jumpSpeed
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393518748687702332, guid: ff0a0e82578379c4fb2f19453c96ce6c, type: 3}
+      propertyPath: isLockingMove
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5142273683306260280, guid: ff0a0e82578379c4fb2f19453c96ce6c, type: 3}
       propertyPath: m_LocalPosition.x
