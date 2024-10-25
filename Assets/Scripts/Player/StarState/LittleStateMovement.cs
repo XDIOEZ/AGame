@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Direction
+{
+    Up,
+    Down,
+    Left,
+    Right,
+}
+
 /// <summary>
 /// LittleStateMovement类控制小人状态下玩家的移动行为。
 /// <para>使用说明：</para>
@@ -41,6 +49,8 @@ public class LittleStateMovement : MonoBehaviour
         playerLittleState = GetComponent<PlayerLittleState>(); // 获取 PlayerLittleState 组件
         // 获取父对象的 PlayerMove 组件
         playerMove = GetComponentInParent<PlayerMove>();
+
+        EventCenter.Instance.AddEventListener<Direction>("光球移动", OnLightBallMove);
     }
 
     void OnEnable()
@@ -120,5 +130,25 @@ public class LittleStateMovement : MonoBehaviour
         Rigidbody2D rb2D = GetComponentInParent<Rigidbody2D>(); // 获取父对象的 Rigidbody2D 组件
         // 使用 Rigidbody2D 进行平移，根据移动方向和速度
         rb2D.velocity = moveDirection * moveSpeed;
+    }
+
+    private void OnLightBallMove(Direction direction)
+    {
+        switch (direction)
+        {
+            case Direction.Up:
+                isUp = true;
+                break;
+            case Direction.Down:
+                isDown = true;
+                break;
+            case Direction.Left:
+                isLeft = true;
+                break;
+            case Direction.Right:
+                isRight = true;
+                break;
+        }
+        canMove = true; // 允许移动
     }
 }

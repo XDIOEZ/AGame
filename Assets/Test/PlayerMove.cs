@@ -27,11 +27,13 @@ public class PlayerMove : MonoBehaviour
     public int jumpCount = 1;             // 跳跃次数，默认为1次跳跃
 
     public bool isGrounded;               // 玩家是否在地面上
+    public bool dianjingshi;              // 玩家是否在电晶石上
     public float jumpTimer;               // 跳跃计时器
     public bool isMoving;                 // 是否正在移动
 
     [Header("检测设置")]
     public LayerMask groundLayer = 1 << 8; // 地面层，用于射线检测
+    public LayerMask dianLayer = 1 << 8;   // 电晶石层
     public Transform groundCheckPoint;     // 射线起点，通常放在玩家脚下的位置
     public float groundCheckRadius = 1.5f; // 射线检测的距离，可以微调
     public Rigidbody2D rb2d;
@@ -181,9 +183,11 @@ public class PlayerMove : MonoBehaviour
         if (jumpTimer <= 0)
         {
             RaycastHit2D hit = Physics2D.Raycast(groundCheckPoint.position, Vector2.down, groundCheckRadius, groundLayer);
+            RaycastHit2D dit = Physics2D.Raycast(groundCheckPoint.position, Vector2.down, groundCheckRadius, dianLayer);
             isGrounded = hit.collider != null;
+            dianjingshi = dit.collider != null;
 
-            if (isGrounded)
+            if (isGrounded||dianjingshi)
             {
                 jumpCount = 1; // 恢复跳跃次数
                 dashCount = 1; // 恢复冲刺次数

@@ -1,91 +1,116 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
-public class Crystalreflection : MonoBehaviour
+public class Crystalreflection: MonoBehaviour
 {
-    public float pushForce = 10f; // 推力大小
-    private float Timer;
-    public float moveDuration = 0.5f;
-    private bool isMoving = false;
-    private bool dashKey;
+    private PlayerLittleState Player;
 
-    private PlayerMove Player;
+    private LittleStateMovement LightBall;
 
-    private Rigidbody2D rb;
+    private BoxCollider2D boxCollider2D;
 
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
+    private float timer=0;
+
+    private bool openKey;
+
+    public float speed; // 物体的移动速度
+
 
     private void Start()
     {
         EventCenter.Instance.AddEventListener<object>("IsDashValue", (object obj) =>
         {
-            Player = obj as PlayerMove; // 将 obj 转换为 PlayerMove
-            if (Player != null)
+            PlayerMove player = obj as PlayerMove; // 将 obj 转换为 PlayerMove
+            if (player != null)
             {
-                dashKey = Player.isDashing;
+                openKey = player.isDashing;
             }
         });
     }
 
-
     private void Update()
     {
-        Timer -= Time.deltaTime;
+        Player=GameObject.Find("Circle").GetComponent<PlayerLittleState>();
+        LightBall = GameObject.Find("Circle").GetComponent<LittleStateMovement>();
+
+        timer -= Time.deltaTime;
+        if (timer < 0)
+        {
+            boxCollider2D = GetComponent<BoxCollider2D>();
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        }
+
+        if (openKey)
+        {
+            GetComponent<Rigidbody2D>().isKinematic = false;
+        }
+        else
+        {
+            GetComponent<Rigidbody2D>().isKinematic = true;
+        }
+
+    }
+
+    private Vector2 CalculateMoveDirection(Vector2 playerMoveDirection)
+    {
+        Vector2 moveDirection = Vector2.zero;
+
+        if (playerMoveDirection.x > 0 && Math.Abs(playerMoveDirection.y) < Math.Abs(playerMoveDirection.x))
+        {
+            moveDirection.x = 1;
+        }
+        else if (playerMoveDirection.x < 0 && Math.Abs(playerMoveDirection.y) < Math.Abs(playerMoveDirection.x))
+        {
+            moveDirection.x = -1;
+        }
+        else if (playerMoveDirection.y > 0 && Math.Abs(playerMoveDirection.y) > Math.Abs(playerMoveDirection.x))
+        {
+            moveDirection.y = 1;
+        }
+        else if (playerMoveDirection.y < 0 && Math.Abs(playerMoveDirection.y) > Math.Abs(playerMoveDirection.x))
+        {
+            moveDirection.y = -1;
+        }
+        Debug.Log(moveDirection);
+        return moveDirection;
     }
 
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (dashKey)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            // 检查是否是主角
-            if (collision.collider.CompareTag("Player"))
+            if (openKey)
             {
-                // 获取碰撞的接触点
-                ContactPoint2D contact = collision.contacts[0];
-
-                // 计算推力方向
-                Vector2 pushDirection = contact.point - (Vector2)transform.position;
-
-                // 根据推力方向来决定移动方向
-                if (Mathf.Abs(pushDirection.x) > Mathf.Abs(pushDirection.y))
-                {
-                    // 如果推力方向在水平方向，则只应用水平方向的推力
-                    pushDirection.y = 0f;
-                }
-                else
-                {
-                    // 如果推力方向在垂直方向，则只应用垂直方向的推力
-                    pushDirection.x = 0f;
-                }
-
-                // 应用推力并开始协程
-                rb.AddForce(pushDirection.normalized * pushForce, ForceMode2D.Impulse);
-                StartCoroutine(MoveForDuration(moveDuration));
+                timer = 0.1f;
+                Vector2 playerMoveDirection = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
+                Vector2 objectMoveDirection = CalculateMoveDirection(playerMoveDirection);
+                GetComponent<Rigidbody2D>().velocity = objectMoveDirection * speed;
             }
         }
     }
 
-    private IEnumerator MoveForDuration(float duration)
+    public void ReBoundPlayer(int number)
     {
-        isMoving = true;
-        rb.isKinematic = false; // 禁用物理引擎的影响
-
-        float timer = 0f;
-        while (timer < duration)
+        if (openKey)
         {
-            timer += Time.deltaTime;
-            yield return null;
+            Player.canTransformToLightBall = true;
+            Player.SwitchPlayerState();
+            if (LightBall != null)
+            {
+                if (number == 1)
+                { LightBall.isRight = true; }
+                else if (number == 2)
+                { LightBall.isLeft = true; }
+                else if (number == 3)
+                { LightBall.isUp = true; }
+                else
+                { LightBall.isDown = true; }
+
+            }
         }
-
-        // 停止移动
-        rb.velocity = Vector2.zero;
-        rb.isKinematic = true; // 启用物理引擎的影响
-
-        isMoving = false;
     }
 }
