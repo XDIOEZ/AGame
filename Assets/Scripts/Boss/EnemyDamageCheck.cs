@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDamageCheck :EnemyHurt
+public class EnemyDamageCheck :MonoBehaviour
 {
     public int hp;
-    public override void EnemyDead()
+    public  void EnemyDead()
     {
         hp--;
         Debug.Log("BossHp--");
@@ -17,10 +17,18 @@ public class EnemyDamageCheck :EnemyHurt
     {
         
     }
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Light_Bullet"))
+        {
+            Debug.Log("×Óµ¯»÷ÖÐµÐÈË: EnemyHurt.cs: OnTriggerEnter2D: Bullet");
+            Destroy(other.gameObject);
+            EnemyDead();
+        }
+    }
 
-
-    // Update is called once per frame
-    void Update()
+        // Update is called once per frame
+        void Update()
     {
 
         if (hp<=0)

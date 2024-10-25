@@ -39,7 +39,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EndAction: 
-  speedRange: {x: 5, y: 5}
+  speedRange: {x: 4, y: 4}
   moveSpeed: 0
 --- !u!206 &-9038296205464943069
 BlendTree:
@@ -800,7 +800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EndAction: 
-  speedRange: {x: 5, y: 5}
+  speedRange: {x: 3, y: 3}
   moveSpeed: 0
 --- !u!1101 &7623353426877757760
 AnimatorStateTransition:
