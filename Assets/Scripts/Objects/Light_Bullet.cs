@@ -54,7 +54,15 @@ public class Light_Bullet : MonoBehaviour
             case "Enemy":
                 if (collision != null)
                 {
-                    collision.GetComponent<EnemyHurt>().EnemyDestroy();
+                    // 尝试获取collision对象上的EnemyHurt组件  
+                    // 如果找到了组件，TryGetComponent将返回true，并将组件存储在out参数中  
+                    // 如果没有找到，TryGetComponent将返回false，并且out参数将被设置为null（或者保持未修改状态）  
+                    if (collision.TryGetComponent<EnemyHurt>(out EnemyHurt enemyHurtComponent))
+                    {
+                        // 如果成功获取到EnemyHurt组件，则调用其EnemyDestroy方法  
+                        enemyHurtComponent.EnemyDestroy();
+                    }
+                    // 如果collision不为null但未能获取到EnemyHurt组件，则可以在这里添加额外的处理逻辑（如果需要）  
                 }
                 break;
             default:
