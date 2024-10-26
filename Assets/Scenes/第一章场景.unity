@@ -794,6 +794,7 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 7530361243481807019, guid: ff0a0e82578379c4fb2f19453c96ce6c, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -810,6 +811,8 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 3
       objectReference: {fileID: 0}
+=======
+>>>>>>> af54393957604ce9419700c4df6655a672612949
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
