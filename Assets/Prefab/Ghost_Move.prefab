@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8680909411621433089}
   - component: {fileID: 3867539692812341183}
   - component: {fileID: 2741193290405792945}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Ghost_Move
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -46,14 +46,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0975e8d46ef64207a735ebb24f06051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
   playerTag: Player
   moveAudio: 
   idleAudio: 
   deathAudio: OnDead
   moveSpeed: 2
-  wanderRange: 10
-  chaseRange: 10
+  wanderRange: 5
+  chaseRange: 5
   chaseSpeed: 4
   wanderTimeLimit: 3
   searchInterval: 0.5
@@ -106,7 +105,7 @@ GameObject:
   - component: {fileID: 5905502608812197890}
   - component: {fileID: 4086261386763523705}
   - component: {fileID: 2635983633291414894}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Bat
   m_TagString: Enemy
   m_Icon: {fileID: 0}

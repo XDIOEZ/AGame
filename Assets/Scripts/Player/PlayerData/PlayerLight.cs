@@ -11,15 +11,15 @@ public class PlayerLight : MonoBehaviour
 
     private void Start()
     {
+        lightEnergyLimation = playerData.lightEnergyLimation;
         UpdateLightFalloff();
-        
+        SetLightRadius(playerData.lightEnergyLimation);
     }
 
     private void Update()
     {
         lightEnergyLimation = playerData.lightEnergyLimation;
         UpdateLightFalloff();
-        SetLightRadius(playerData.lightEnergyLimation);
     }
 
     private void UpdateLightFalloff()
