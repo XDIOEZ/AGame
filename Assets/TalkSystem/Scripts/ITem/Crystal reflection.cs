@@ -6,15 +6,15 @@ using UnityEngine;
 
 public class Crystalreflection: MonoBehaviour
 {
-    private PlayerLittleState Player;
-    private LittleStateMovement LightBall;
+    public PlayerLittleState Player;
+    public LittleStateMovement LightBall;
 
 
     private BoxCollider2D boxCollider2D;
 
     private float timer=0;
 
-    private bool openKey;
+    public bool openKey;
 
     public float speed; // 物体的移动速度
 
@@ -40,43 +40,43 @@ public class Crystalreflection: MonoBehaviour
         if (timer < 0)
         {
             boxCollider2D = GetComponent<BoxCollider2D>();
-            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            //GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
 
-        //if (openKey||Player.isLittle)
-        //{
-        //    GetComponent<Rigidbody2D>().isKinematic = false;
-        //}
-        //else
-        //{
-        //    GetComponent<Rigidbody2D>().isKinematic = true;
-        //}
+        if (openKey||Player.isLittle)
+        {
+            GetComponent<Rigidbody2D>().isKinematic = false;
+        }
+        else
+        {
+            GetComponent<Rigidbody2D>().isKinematic = true;
+        }
 
     }
 
-    private Vector2 CalculateMoveDirection(Vector2 playerMoveDirection)
-    {
-        Vector2 moveDirection = Vector2.zero;
+    //private Vector2 CalculateMoveDirection(Vector2 playerMoveDirection)
+    //{
+    //    Vector2 moveDirection = Vector2.zero;
 
-        if (playerMoveDirection.x > 0 && Math.Abs(playerMoveDirection.y) < Math.Abs(playerMoveDirection.x))
-        {
-            moveDirection.x = 1;
-        }
-        else if (playerMoveDirection.x < 0 && Math.Abs(playerMoveDirection.y) < Math.Abs(playerMoveDirection.x))
-        {
-            moveDirection.x = -1;
-        }
-        else if (playerMoveDirection.y > 0 && Math.Abs(playerMoveDirection.y) > Math.Abs(playerMoveDirection.x))
-        {
-            moveDirection.y = 1;
-        }
-        else if (playerMoveDirection.y < 0 && Math.Abs(playerMoveDirection.y) > Math.Abs(playerMoveDirection.x))
-        {
-            moveDirection.y = -1;
-        }
-        Debug.Log(moveDirection);
-        return moveDirection;
-    }
+    //    if (playerMoveDirection.x > 0 && Math.Abs(playerMoveDirection.y) < Math.Abs(playerMoveDirection.x))
+    //    {
+    //        moveDirection.x = 1;
+    //    }
+    //    else if (playerMoveDirection.x < 0 && Math.Abs(playerMoveDirection.y) < Math.Abs(playerMoveDirection.x))
+    //    {
+    //        moveDirection.x = -1;
+    //    }
+    //    else if (playerMoveDirection.y > 0 && Math.Abs(playerMoveDirection.y) > Math.Abs(playerMoveDirection.x))
+    //    {
+    //        moveDirection.y = 1;
+    //    }
+    //    else if (playerMoveDirection.y < 0 && Math.Abs(playerMoveDirection.y) > Math.Abs(playerMoveDirection.x))
+    //    {
+    //        moveDirection.y = -1;
+    //    }
+    //    Debug.Log(moveDirection);
+    //    return moveDirection;
+    //}
 
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -85,9 +85,9 @@ public class Crystalreflection: MonoBehaviour
         {
             if (openKey)
             {
-                timer = 0.1f;
+                timer = 1f;
                 Vector2 playerMoveDirection = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
-                Vector2 objectMoveDirection = CalculateMoveDirection(playerMoveDirection);
+               // Vector2 objectMoveDirection = CalculateMoveDirection(playerMoveDirection);
                 //GetComponent<Rigidbody2D>().velocity = objectMoveDirection * speed;
             }
         }
