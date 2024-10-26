@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1814844641516829995}
   - component: {fileID: 527574393936752919}
   - component: {fileID: 3263185944991289581}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,10 +147,14 @@ MonoBehaviour:
   Left: 0
   Up: 1
   Down: 0
+<<<<<<< HEAD
+  brother: []
+=======
   brother:
   - {fileID: 8591186315399349025}
   - {fileID: 6405886096595350346}
   - {fileID: 3470521548029864981}
+>>>>>>> 371df2853fe9e591791953f287ff7a3c17bcaeba
   speed: 0.1
   timer: 0.1
 --- !u!1 &3194138620005382579
@@ -166,7 +170,7 @@ GameObject:
   - component: {fileID: 645025012887321222}
   - component: {fileID: 6879607972839640812}
   - component: {fileID: 1301259538049252706}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Crystalreflection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,8 +186,13 @@ Transform:
   m_GameObject: {fileID: 3194138620005382579}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
+  m_LocalPosition: {x: 20.237, y: 18.18, z: 0}
+  m_LocalScale: {x: 2.0656557, y: 2.0656557, z: 1.3862531}
+=======
   m_LocalPosition: {x: 20.12, y: 18.324, z: 0}
   m_LocalScale: {x: 1.3862531, y: 1.3862531, z: 1.3862531}
+>>>>>>> 371df2853fe9e591791953f287ff7a3c17bcaeba
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2207733642267057154}
@@ -230,8 +239,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -691844137
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -5177388603050735206, guid: 8884154dfe85442a3a3578be807dbcdf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -344,7 +353,7 @@ GameObject:
   - component: {fileID: 2666627837250075531}
   - component: {fileID: 2275783181381725742}
   - component: {fileID: 3283134944940190101}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -479,10 +488,14 @@ MonoBehaviour:
   Left: 0
   Up: 0
   Down: 1
+<<<<<<< HEAD
+  brother: []
+=======
   brother:
   - {fileID: 8591186315399349025}
   - {fileID: 6405886096595350346}
   - {fileID: 1228211395999494123}
+>>>>>>> 371df2853fe9e591791953f287ff7a3c17bcaeba
   speed: 0.1
   timer: 0.1
 --- !u!1 &6405886096595350346
@@ -497,7 +510,7 @@ GameObject:
   - component: {fileID: 5651048225649568360}
   - component: {fileID: 7121643138021021069}
   - component: {fileID: 7197665315609726998}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -632,10 +645,14 @@ MonoBehaviour:
   Left: 0
   Up: 0
   Down: 0
+<<<<<<< HEAD
+  brother: []
+=======
   brother:
   - {fileID: 8591186315399349025}
   - {fileID: 1228211395999494123}
   - {fileID: 3470521548029864981}
+>>>>>>> 371df2853fe9e591791953f287ff7a3c17bcaeba
   speed: 0.1
   timer: 0.1
 --- !u!1 &8591186315399349025
@@ -650,7 +667,7 @@ GameObject:
   - component: {fileID: 8896026743728623800}
   - component: {fileID: 2596937949926506254}
   - component: {fileID: 1792978962068715022}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -785,9 +802,13 @@ MonoBehaviour:
   Left: 1
   Up: 0
   Down: 0
+<<<<<<< HEAD
+  brother: []
+=======
   brother:
   - {fileID: 6405886096595350346}
   - {fileID: 1228211395999494123}
   - {fileID: 3470521548029864981}
+>>>>>>> 371df2853fe9e591791953f287ff7a3c17bcaeba
   speed: 0.1
   timer: 0.1
