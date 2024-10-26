@@ -71,10 +71,11 @@ public class PlayerMove : MonoBehaviour
         }
 
         // ³å´Ì
-        if (Input.GetKeyDown(KeyCode.LeftShift)|| Input.GetKeyDown(KeyCode.K) && dashCount > 0 && !isDashing && !isLockingDash)
+        if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.K)) && dashCount > 0 && !isDashing && !isLockingDash)
         {
             Dash();
         }
+
 
         // ³å´Ì×´Ì¬¸üÐÂ
         EventCenter.Instance.EventTrigger<object>("IsDashValue", this);

@@ -4915,7 +4915,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 27.43, y: 21.05, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.1125, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2720285557192159646}
@@ -4989,6 +4989,8 @@ MonoBehaviour:
   contactTime: 1
   disappearTime: 3
   fadeSpeed: 1
+  EffectOne: {fileID: 3400505731339732759}
+  EffectTwo: {fileID: 1680580148388216808}
 --- !u!61 &3072392747669445881
 BoxCollider2D:
   m_ObjectHideFlags: 0

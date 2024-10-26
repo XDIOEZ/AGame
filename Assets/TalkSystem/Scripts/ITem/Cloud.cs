@@ -12,14 +12,12 @@ public class Cloud : MonoBehaviour
     private float contactTimer = 0f;
     private bool effeckey=true;
 
-    private ParticleSystem EffectOne;
-    private ParticleSystem EffectTwo;
+    public ParticleSystem EffectOne;
+    public ParticleSystem EffectTwo;
 
 
     private void Start()
     {
-        EffectOne = GameObject.Find("CloudDieEffect01").gameObject.GetComponentInParent<ParticleSystem>();
-        EffectTwo = GameObject.Find("CloudDieEffect02").gameObject.GetComponentInParent<ParticleSystem>();
     }
 
 
