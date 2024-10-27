@@ -46,18 +46,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0975e8d46ef64207a735ebb24f06051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
   playerTag: Player
   moveAudio: 
   idleAudio: 
   deathAudio: OnDead
-  moveSpeed: 2
-  wanderRange: 5
-  chaseRange: 5
+  moveSpeed: 0.5
+  wanderRange: 10
+  chaseRange: 10
   chaseSpeed: 4
   wanderTimeLimit: 3
   searchInterval: 0.5
   biasTowardsInitialPositionDistance: 3
-  defaultIdleTime: 0
+  defaultIdleTime: 999
   maxIdleTimeRandom: 0
 --- !u!58 &2741193290405792945
 CircleCollider2D:
