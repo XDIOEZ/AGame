@@ -25,7 +25,7 @@ public class CameraController : MonoBehaviour
 
         BackGround.position += new Vector3(moveAmount.x, moveAmount.y, 0f);
 
-        foreGround.position += new Vector3(-moveAmount.x * 0.5f, -moveAmount.y * 0.5f, 0f);
+        foreGround.position += new Vector3(-moveAmount.x , moveAmount.y , 0f);
 
         lastPos = transform.position;
 
