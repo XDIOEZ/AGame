@@ -211,6 +211,11 @@ MonoBehaviour:
   m_MaximumFOV: 60
   m_MinimumOrthoSize: 1
   m_MaximumOrthoSize: 5000
+--- !u!4 &326932428 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4084738436045058042, guid: 930d15c4ec392914d894c6802c3e0e6c, type: 3}
+  m_PrefabInstance: {fileID: 6814483383924945375}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &375227916
 GameObject:
   m_ObjectHideFlags: 0
@@ -20808,6 +20813,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1342551485}
   BackGround: {fileID: 623048043}
+  foreGround: {fileID: 326932428}
 --- !u!1001 &6814483383924945375
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20816,13 +20822,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4084738436045058042, guid: 930d15c4ec392914d894c6802c3e0e6c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -77.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4084738436045058042, guid: 930d15c4ec392914d894c6802c3e0e6c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.6
+      objectReference: {fileID: 0}
     - target: {fileID: 4552092218329290909, guid: 930d15c4ec392914d894c6802c3e0e6c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5
+      value: 79.55
       objectReference: {fileID: 0}
     - target: {fileID: 4552092218329290909, guid: 930d15c4ec392914d894c6802c3e0e6c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.33
+      value: 3.4
       objectReference: {fileID: 0}
     - target: {fileID: 4552092218329290909, guid: 930d15c4ec392914d894c6802c3e0e6c, type: 3}
       propertyPath: m_LocalPosition.z
