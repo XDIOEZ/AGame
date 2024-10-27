@@ -15,6 +15,10 @@ public class ShotBullet_Test : MonoBehaviour
     Vector2 Bulletdirection; //子弹方向
     PlayerData_Temp bulletData;//获取PlayerData_Temp组件
     float force=500f;//发射子弹的力
+    public float coolDownTime=1;
+
+    public  bool isCanShot = true;
+   
 
     public string OnShoot = "OnShoot";
     
@@ -39,8 +43,9 @@ public class ShotBullet_Test : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J)&&bulletData.ammo>0)//按下J键时判断射击条件与射击角度
+        if (Input.GetKeyDown(KeyCode.J)&&bulletData.ammo>0&&isCanShot)//按下J键时判断射击条件与射击角度
         {
+            
             MusicMgr.Instance.PlaySound(OnShoot, false);
             
             if (Input.GetKey(KeyCode.W))
@@ -62,6 +67,11 @@ public class ShotBullet_Test : MonoBehaviour
                 Shot();
                
             }
+
+            isCanShot = false;
+
+            StartCoroutine(nameof(ShotTimeCountor));
+
 
         }
     }
@@ -86,4 +96,14 @@ public class ShotBullet_Test : MonoBehaviour
         Light_Bullet bullet = ga.GetComponent<Light_Bullet>();
         bullet.Lunch(new Vector2(0, -1), force);
     }
+
+    IEnumerator ShotTimeCountor()
+    {
+        yield return new WaitForSeconds(coolDownTime);
+
+        isCanShot = true;
+    }
+
+
+
 }
