@@ -9,13 +9,14 @@ public class RecordPoint : MonoBehaviour
 
     public bool isRecorded;
     public PlayerData_Temp player;
-
+    RecordPoint[] recordPoints;
 
 
     private void Start()
     {
         // 获取场景中所有带有 "Player" 标签的物体
         GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
+
 
         // 遍历这些物体并尝试获取 PlayerData_Temp 组件
         foreach (GameObject obj in playerObjects)
@@ -29,6 +30,9 @@ public class RecordPoint : MonoBehaviour
             }
         }
 
+        //获取场景中所有带有RePoint的物体的RecordPoint组件
+
+        recordPoints = FindObjectsOfType<RecordPoint>();
         // 如果遍历完成后 player 仍然为空，则输出警告信息
         if (player == null)
         {
@@ -54,6 +58,11 @@ public class RecordPoint : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            //将列表中所有记录点的isRecorded设置为false
+            foreach (RecordPoint recordPoint in recordPoints)
+            {
+                recordPoint.isRecorded = false;
+            }
             Debug.Log("进入触发器");
             StartCoroutine(nameof(TimerCountorCorotine));
             isRecorded = true;
@@ -92,7 +101,7 @@ public class RecordPoint : MonoBehaviour
     {
         blackCover.SetActive(true);
         player.transform.position = transform.position;
-        player.ammo = player.lightEnergyLimation;
+        player.ammo = 5;
         player.health = 1;
         yield return new WaitForSeconds(1);
         blackCover.SetActive(false);

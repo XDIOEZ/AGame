@@ -51,14 +51,14 @@ MonoBehaviour:
   moveAudio: 
   idleAudio: 
   deathAudio: OnDead
-  moveSpeed: 0.5
-  wanderRange: 10
+  moveSpeed: 1
+  wanderRange: 15
   chaseRange: 10
   chaseSpeed: 4
   wanderTimeLimit: 3
   searchInterval: 0.5
   biasTowardsInitialPositionDistance: 3
-  defaultIdleTime: 999
+  defaultIdleTime: 1
   maxIdleTimeRandom: 0
 --- !u!58 &2741193290405792945
 CircleCollider2D:

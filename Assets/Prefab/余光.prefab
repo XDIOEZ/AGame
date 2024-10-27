@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2402828a3307c3a4db5a0166b6211505, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energy: 1
+  energy: 2
 --- !u!58 &8495158346236760337
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -247,7 +247,7 @@ MonoBehaviour:
   m_ComponentVersion: 1
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.523
+  m_FalloffIntensity: 0.792
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_LightVolumeIntensity: 1
