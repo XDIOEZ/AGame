@@ -21,9 +21,9 @@ public class CameraController : MonoBehaviour
     {
         transform.position = new Vector3(target.position.x, target.position.y, target.position.z);//相机跟随玩家位置
 
-        Vector2 moveAmount = new Vector2(transform.position.x - lastPos.x, 0);
+        Vector2 moveAmount = new Vector2(transform.position.x - lastPos.x, transform.position.y-lastPos.y);
 
-        BackGround.position += new Vector3(moveAmount.x, moveAmount.y, 0f);
+        BackGround.position += new Vector3(moveAmount.x, moveAmount.y/2, 0f);
 
         //foreGround.position += new Vector3(-moveAmount.x * 0.5f, -moveAmount.y * 0.5f, 0f);
 
