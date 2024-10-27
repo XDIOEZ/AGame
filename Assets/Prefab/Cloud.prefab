@@ -4989,6 +4989,8 @@ MonoBehaviour:
   contactTime: 0
   disappearTime: 1
   fadeSpeed: 0.3
+  EffectOne: {fileID: 3400505731339732759}
+  EffectTwo: {fileID: 1680580148388216808}
 --- !u!61 &3072392747669445881
 BoxCollider2D:
   m_ObjectHideFlags: 0
