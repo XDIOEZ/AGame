@@ -484,8 +484,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7
-  dashSpeed: 15
-  jumpSpeed: 18
+  dashSpeed: 17
+  jumpSpeed: 15
   XDashSpeedFactor: 1
   YDashSpeedFactor: 1
   VerticalSpeedCorrectionValue: 0.2
