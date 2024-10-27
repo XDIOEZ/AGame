@@ -14,7 +14,7 @@ public class LoopBackGround : MonoBehaviour
 
     private void Start()
     {
-        //mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         mapWidth = GetComponent<SpriteRenderer>().sprite.bounds.size.x;
 
         totalMapWidth = mapWidth * mapNums;
