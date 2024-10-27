@@ -1049,7 +1049,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0.08409559, y: -0.00000004391015, z: 0.0000000037057764, w: 0.9964577}
-  m_LocalPosition: {x: -78.12241, y: -2.9049382, z: -9.583311}
+  m_LocalPosition: {x: -78.11749, y: -2.9049673, z: -9.583316}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2216,6 +2216,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -5.0569715
       objectReference: {fileID: 0}
+    - target: {fileID: 6599270421327018112, guid: 80ddfd755aa10444d8823c082f0d9b6f, type: 3}
+      propertyPath: fadeImage
+      value: 
+      objectReference: {fileID: 49321035}
     - target: {fileID: 6599270421327018112, guid: 80ddfd755aa10444d8823c082f0d9b6f, type: 3}
       propertyPath: nextSceneName
       value: "\u7B2C\u4E8C\u7AE0\u573A\u666F"
