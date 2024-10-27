@@ -5102,7 +5102,7 @@ GameObject:
   - component: {fileID: 5651543320624139656}
   m_Layer: 8
   m_Name: Ghost_PTP
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5140,7 +5140,7 @@ MonoBehaviour:
   Moved: {fileID: 8279190425386633828}
   defaultIdleTime: 0
   maxIdleTimeRandom: 0
-  moveSpeed: 2
+  moveSpeed: 3
   moveStrategy: {fileID: 11400000, guid: 35fd153256a1c4827a0b949d988dab6b, type: 2}
   moveAudio: 
   idleAudio: 
