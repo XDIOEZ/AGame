@@ -7,14 +7,13 @@ public class TittleScreen : MonoBehaviour
 {
     public void NewGame()
     {
-        SceneManager.LoadScene("第一张场景");
+        // SceneManager.LoadScene("第一张场景");
     }
 
     public void Continue()
     {
-        Debug.Log("TODO: 读取保存的场景名称，加载对应场景");
-        //TODO: 读取保存的场景名称，加载对应场景
-        // SceneManager.LoadScene("SavedSceneName");
+        string lastScene = PlayerPrefs.GetString("LastScene");
+        SceneManager.LoadScene(lastScene);
     }
 
     public void Quit()
