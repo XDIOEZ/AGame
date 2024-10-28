@@ -879,6 +879,10 @@ PrefabInstance:
       value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4393518748687702332, guid: ff0a0e82578379c4fb2f19453c96ce6c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393518748687702332, guid: ff0a0e82578379c4fb2f19453c96ce6c, type: 3}
       propertyPath: isLockingMove
       value: 0
       objectReference: {fileID: 0}
