@@ -235,13 +235,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: "UI\u5F15\u5BFC_02"
       objectReference: {fileID: 0}
+    - target: {fileID: 7190161191499311798, guid: b906ba37989f2bc44b9e2fc973220002, type: 3}
+      propertyPath: m_Size.x
+      value: 10.162223
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190161191499311798, guid: b906ba37989f2bc44b9e2fc973220002, type: 3}
+      propertyPath: m_Size.y
+      value: 5.4098845
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190161191499311798, guid: b906ba37989f2bc44b9e2fc973220002, type: 3}
+      propertyPath: m_Offset.x
+      value: -2.8705258
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190161191499311798, guid: b906ba37989f2bc44b9e2fc973220002, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.21116483
+      objectReference: {fileID: 0}
     - target: {fileID: 7364525643398525375, guid: b906ba37989f2bc44b9e2fc973220002, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 92.56
+      value: 110.81
       objectReference: {fileID: 0}
     - target: {fileID: 7364525643398525375, guid: b906ba37989f2bc44b9e2fc973220002, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.48
+      value: -1.48
       objectReference: {fileID: 0}
     - target: {fileID: 7364525643398525375, guid: b906ba37989f2bc44b9e2fc973220002, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1841,7 +1857,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u80FD\u4E0D\u80FD\u505A\u5230\u63A7\u5236\u65B9\u5411\u7684\u51B2\u523A\u5462\uFF1F"
+  m_Text: "\u80FD\u4E0D\u80FD\u505A\u5230\u63A7\u5236\u65B9\u5411\u7684\u51B2\u523A\u5462\uFF1F(WSAD+Shift)"
 --- !u!1 &1467726744
 GameObject:
   m_ObjectHideFlags: 0
