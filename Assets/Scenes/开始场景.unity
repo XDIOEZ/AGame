@@ -25298,7 +25298,6 @@ MonoBehaviour:
   target: {fileID: 1342551485}
   BackGround: {fileID: 623048043}
   foreGround: {fileID: 326932428}
-
 --- !u!114 &1917436732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25314,7 +25313,7 @@ MonoBehaviour:
   bgWidth: 19.2
   bgHeight: 10.8
   smoothSpeed: 0.125
-  mainCamera: {fileID: 1917436727}s
+  mainCamera: {fileID: 1917436727}
   backgroundLayers:
   - {fileID: 2124336263}
   - {fileID: 1793180951}
@@ -25608,4 +25607,3 @@ SceneRoots:
   - {fileID: 164806960}
   - {fileID: 8342332296255879653}
   - {fileID: 4859966237885077347}
-  - {fileID: 2544131467125418688}
