@@ -468,7 +468,6 @@ GameObject:
   - component: {fileID: 949501685051525200}
   - component: {fileID: 877953006851356965}
   - component: {fileID: 2215664750097549619}
-  - component: {fileID: 2218471620558516020}
   - component: {fileID: 7227148203471392869}
   m_Layer: 3
   m_Name: PlayerRemake
@@ -710,21 +709,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.5937045}
   m_EdgeRadius: 0
---- !u!114 &2218471620558516020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6851822341427866402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfa44d356121193428d7ea7ddfd7d38e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fallThreshold: -10
-  resetDelay: 1.5
-  fadeImage: {fileID: 0}
 --- !u!114 &7227148203471392869
 MonoBehaviour:
   m_ObjectHideFlags: 0

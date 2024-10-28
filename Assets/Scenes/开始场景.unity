@@ -224,6 +224,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 476583308}
     - target: {fileID: 9743836434450587, guid: b906ba37989f2bc44b9e2fc973220002, type: 3}
+      propertyPath: uiElement
+      value: 
+      objectReference: {fileID: 1417164943}
+    - target: {fileID: 9743836434450587, guid: b906ba37989f2bc44b9e2fc973220002, type: 3}
       propertyPath: displayText
       value: 
       objectReference: {fileID: 1417164947}
@@ -288,6 +292,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 476583308}
+    - target: {fileID: 9743836434450587, guid: b906ba37989f2bc44b9e2fc973220002, type: 3}
+      propertyPath: uiElement
+      value: 
+      objectReference: {fileID: 565990530}
     - target: {fileID: 9743836434450587, guid: b906ba37989f2bc44b9e2fc973220002, type: 3}
       propertyPath: displayText
       value: 
@@ -788,6 +796,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 476583308}
+    - target: {fileID: 9743836434450587, guid: b906ba37989f2bc44b9e2fc973220002, type: 3}
+      propertyPath: uiElement
+      value: 
+      objectReference: {fileID: 802110988}
     - target: {fileID: 9743836434450587, guid: b906ba37989f2bc44b9e2fc973220002, type: 3}
       propertyPath: displayText
       value: 

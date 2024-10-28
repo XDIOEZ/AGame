@@ -553,6 +553,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 469517048}
     - target: {fileID: 9743836434450587, guid: b906ba37989f2bc44b9e2fc973220002, type: 3}
+      propertyPath: uiElement
+      value: 
+      objectReference: {fileID: 2004243819}
+    - target: {fileID: 9743836434450587, guid: b906ba37989f2bc44b9e2fc973220002, type: 3}
       propertyPath: displayText
       value: 
       objectReference: {fileID: 2004243820}
@@ -875,6 +879,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2218471620558516020, guid: ff0a0e82578379c4fb2f19453c96ce6c, type: 3}
+      propertyPath: fadeImage
+      value: 
+      objectReference: {fileID: 49321035}
     - target: {fileID: 4245915170115100963, guid: ff0a0e82578379c4fb2f19453c96ce6c, type: 3}
       propertyPath: "\u63A5\u89E6"
       value: 0
