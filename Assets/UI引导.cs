@@ -14,7 +14,7 @@ public class ShowTextOnEnter : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         // 检测到主角进入
         if (other.gameObject == player)
@@ -23,7 +23,7 @@ public class ShowTextOnEnter : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         // 检测到主角离开
         if (other.gameObject == player)
