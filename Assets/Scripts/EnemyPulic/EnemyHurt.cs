@@ -27,11 +27,8 @@ public abstract class EnemyHurt : MonoBehaviour
             if (other.TryGetComponent(out PlayerData_Temp playerData))
             {
                 EventCenter.GetInstance().EventTrigger("PlayerDead");
-# if UNITY_EDITOR
                 Debug.Log("玩家受伤: EnemyHurt.cs: OnTriggerEnter2D: Player");
-# else
-                playerData.ChangeHealth(damage);
-# endif
+                playerData.ChangeHealth(-damage);
             }
             else
             {
