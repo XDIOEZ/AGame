@@ -304,6 +304,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: "UI\u5F15\u5BFC_01"
       objectReference: {fileID: 0}
+    - target: {fileID: 7190161191499311798, guid: b906ba37989f2bc44b9e2fc973220002, type: 3}
+      propertyPath: m_Size.x
+      value: 6.9809647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190161191499311798, guid: b906ba37989f2bc44b9e2fc973220002, type: 3}
+      propertyPath: m_Size.y
+      value: 3.806989
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190161191499311798, guid: b906ba37989f2bc44b9e2fc973220002, type: 3}
+      propertyPath: m_Offset.x
+      value: 3.1021118
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190161191499311798, guid: b906ba37989f2bc44b9e2fc973220002, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.49551046
+      objectReference: {fileID: 0}
     - target: {fileID: 7364525643398525375, guid: b906ba37989f2bc44b9e2fc973220002, type: 3}
       propertyPath: m_LocalPosition.x
       value: 46.72
