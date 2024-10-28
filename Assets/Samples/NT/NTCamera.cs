@@ -12,14 +12,14 @@ public class NTCamera : MonoBehaviour
     public Camera mainCamera;
     public List<Transform> backgroundLayers = new List<Transform>();
     public float[] backgroundParallaxFactors;
-    private Transform player;
+    // private Transform player;
 
     void Start()
     {
         if (mainCamera == null)
             mainCamera = Camera.main;
 
-        StartCoroutine(UpdatePlayerPosition());
+        // StartCoroutine(UpdatePlayerPosition());
 
         backgroundParallaxFactors = new float[backgroundLayers.Count];
         for (int i = 0; i < backgroundLayers.Count; i++)
@@ -30,26 +30,26 @@ public class NTCamera : MonoBehaviour
 
     void Update()
     {
-        if (player == null)
-            return;
+        // if (player == null)
+        //     return;
 
-        Vector3 desiredPosition = player.position;
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-        transform.position = smoothedPosition;
+        // Vector3 desiredPosition = player.position;
+        // Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+        // transform.position = smoothedPosition;
 
         MoveBackgroundLayers();
     }
 
-    IEnumerator UpdatePlayerPosition()
-    {
-        while (player == null)
-        {
-            player =
-                GameObject.FindGameObjectWithTag("Player")?.transform
-                ?? GameObject.Find("Eye")?.transform;
-            yield return new WaitForSeconds(0.2f);
-        }
-    }
+    // IEnumerator UpdatePlayerPosition()
+    // {
+    //     while (player == null)
+    //     {
+    //         player =
+    //             GameObject.FindGameObjectWithTag("Player")?.transform
+    //             ?? GameObject.Find("Eye")?.transform;
+    //         yield return new WaitForSeconds(0.2f);
+    //     }
+    // }
 
     void MoveBackgroundLayers(Vector3 deltaPosition = new Vector3())
     {
@@ -58,7 +58,7 @@ public class NTCamera : MonoBehaviour
             Vector3 offsetPosition = new Vector3(
                 transform.position.x * backgroundParallaxFactors[i] % bgWidth,
                 transform.position.y * backgroundParallaxFactors[i] % bgHeight,
-                0f
+                -1f
             );
             backgroundLayers[i].localPosition = -offsetPosition;
         }
