@@ -713,8 +713,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-  m_Center: {x: 0.0027999878, y: -0.0044994354, z: 0}
-  m_Extent: {x: 53.8523, y: 53.852303, z: 0}
+    m_Center: {x: -0.005399704, y: 0.00289917, z: 0}
+    m_Extent: {x: 53.8491, y: 53.8518, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -1013,7 +1013,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0.08409559, y: -0.00000004391015, z: 0.0000000037057764, w: 0.9964577}
-  m_LocalPosition: {x: 163.89355, y: 16.802011, z: -9.582129}
+  m_LocalPosition: {x: 163.8879, y: 16.802011, z: -9.582129}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1865,8 +1865,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-  m_Center: {x: -0.0017499924, y: -0.0051498413, z: 0}
-  m_Extent: {x: 20.50325, y: 20.49925, z: 0}
+    m_Center: {x: -0.0006504059, y: 0.0035505295, z: 0}
+    m_Extent: {x: 20.50795, y: 20.502449, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -1955,7 +1955,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 25
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -1963,10 +1963,10 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u56E0\u4E3A\u5149\u7684\u7167\u5C04\uFF0C\u5F71\u5B50\u6709\u4E86\u5F62\u72B6\u3002"
+  m_Text: "\u56E0\u4E3A\u5149\u7684\u7167\u5C04\uFF0C\u5F71\u5B50\u6709\u4E86\u5F62\u72B6\u3002(J)"
 --- !u!222 &973574904
 CanvasRenderer:
   m_ObjectHideFlags: 0
