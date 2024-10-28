@@ -39,7 +39,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EndAction: 
-  speedRange: {x: 4, y: 4}
+  speedRange: {x: 8, y: 8}
   moveSpeed: 0
 --- !u!206 &-9038296205464943069
 BlendTree:
@@ -682,12 +682,12 @@ MonoBehaviour:
     attackCoolDownTime: 0
     releaseDistanceRange: {x: 0, y: 3}
   - skillName: Skill_1
-    coolDownTime: 10
+    coolDownTime: 5
     triggerProbability: 0.25
     attackCoolDownTime: 0
     releaseDistanceRange: {x: 2, y: 10}
   - skillName: Skill_2
-    coolDownTime: 30
+    coolDownTime: 20
     triggerProbability: 0.25
     attackCoolDownTime: 0
     releaseDistanceRange: {x: 4, y: 16}
@@ -734,8 +734,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EndAction: 
-  speedRange: {x: 0, y: 0}
-  moveSpeed: 0
+  speedRange: {x: 8, y: 8}
+  moveSpeed: 8
 --- !u!114 &4414338642086739949
 MonoBehaviour:
   m_ObjectHideFlags: 1
