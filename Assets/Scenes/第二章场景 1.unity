@@ -714,12 +714,17 @@ MonoBehaviour:
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Center: {x: 0.002149582, y: 0.002500534, z: 0}
     m_Extent: {x: 53.85105, y: 53.8537, z: 0}
 =======
     m_Center: {x: -0.0016002655, y: 0.0016498566, z: 0}
     m_Extent: {x: 53.8479, y: 53.852547, z: 0}
 >>>>>>> b7fe4f5800b2f34278b3453346b170c82f4d2f4f
+=======
+    m_Center: {x: -0.0025501251, y: 0.00024986267, z: 0}
+    m_Extent: {x: 53.853348, y: 53.84485, z: 0}
+>>>>>>> parent of 90a7367 (BGM)
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -764,10 +769,6 @@ PrefabInstance:
     - target: {fileID: 4393518748687702332, guid: ff0a0e82578379c4fb2f19453c96ce6c, type: 3}
       propertyPath: jumpSpeed
       value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 4393518748687702332, guid: ff0a0e82578379c4fb2f19453c96ce6c, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5142273683306260280, guid: ff0a0e82578379c4fb2f19453c96ce6c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1871,12 +1872,17 @@ MonoBehaviour:
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Center: {x: -0.0003004074, y: 0.0013504028, z: 0}
     m_Extent: {x: 20.503899, y: 20.50515, z: 0}
 =======
     m_Center: {x: -0.0013999939, y: -0.004149437, z: 0}
     m_Extent: {x: 20.4988, y: 20.49965, z: 0}
 >>>>>>> b7fe4f5800b2f34278b3453346b170c82f4d2f4f
+=======
+    m_Center: {x: -0.0024499893, y: 0.0051498413, z: 0}
+    m_Extent: {x: 20.50055, y: 20.50185, z: 0}
+>>>>>>> parent of 90a7367 (BGM)
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

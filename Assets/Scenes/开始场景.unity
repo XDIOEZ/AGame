@@ -25299,6 +25299,7 @@ MonoBehaviour:
   BackGround: {fileID: 623048043}
   foreGround: {fileID: 326932428}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1001 &2544131467125418688
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25462,6 +25463,8 @@ SpriteRenderer:
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 >>>>>>> b7fe4f5800b2f34278b3453346b170c82f4d2f4f
+=======
+>>>>>>> parent of 90a7367 (BGM)
 --- !u!1001 &4859966237885077347
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25667,4 +25670,3 @@ SceneRoots:
   - {fileID: 164806960}
   - {fileID: 8342332296255879653}
   - {fileID: 4859966237885077347}
-  - {fileID: 2544131467125418688}
