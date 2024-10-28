@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class ShowGamePanel : MonoBehaviour
 {
+    public GameObject gamePanel;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            UIManager.Instance.ShowPanel<GameMenuPanel>("GameMenuPanel");
+            Debug.Log("Escape key pressed");
+            gamePanel.SetActive(!gamePanel.activeSelf);
         }
     }
 }

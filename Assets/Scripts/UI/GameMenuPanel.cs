@@ -4,19 +4,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameMenuPanel : BasePanel
+public class GameMenuPanel : MonoBehaviour
 {
     private void Start()
     {
         HideMe();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            gameObject.SetActive(!gameObject.activeSelf);
-        }
     }
 
     public void ContinueButtonClick()
@@ -28,5 +20,10 @@ public class GameMenuPanel : BasePanel
     {
         PlayerPrefs.SetString("LastScene", SceneManager.GetActiveScene().name);
         SceneManager.LoadScene("开始场景");
+    }
+
+    private void HideMe()
+    {
+        gameObject.SetActive(false);
     }
 }
