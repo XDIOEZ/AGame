@@ -1,35 +1,30 @@
 using UnityEngine;
-using UnityEngine.UI;
 
-public class ShowTextOnEnter : MonoBehaviour
+public class ShowUIOnTrigger : MonoBehaviour
 {
-    public GameObject player;         // 主角对象
-    public Text displayText;          // 要显示的文字
+    public GameObject uiElement; // 拖拽你的UI元素到这里
 
     private void Start()
     {
-        if (displayText != null)
-        {
-            displayText.gameObject.SetActive(false);  // 开始时隐藏文字
-        }
+        // 确保UI初始隐藏
+        uiElement.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // 检测到主角进入
-        if (other.gameObject == player)
+        // 检查进入触发器的物体是否是主角
+        if (other.CompareTag("Player")) // 确保主角有 "Player" 标签
         {
-            displayText.gameObject.SetActive(true);   // 显示文字
+            uiElement.SetActive(true); // 显示UI
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        // 检测到主角离开
-        if (other.gameObject == player)
+        // 退出触发器时隐藏UI
+        if (other.CompareTag("Player"))
         {
-            displayText.gameObject.SetActive(false);  // 隐藏文字
+            uiElement.SetActive(false); // 隐藏UI
         }
     }
-
 }
