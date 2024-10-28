@@ -327,6 +327,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u661F\u77F3_Test (1)"
       objectReference: {fileID: 0}
+    - target: {fileID: 8208728646424182729, guid: bb251c186d9574242a7fbc27d4d046a1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -477,6 +481,10 @@ PrefabInstance:
     - target: {fileID: 6418052982432081636, guid: bb251c186d9574242a7fbc27d4d046a1, type: 3}
       propertyPath: m_Name
       value: "\u661F\u77F3_Test"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8208728646424182729, guid: bb251c186d9574242a7fbc27d4d046a1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -875,6 +883,10 @@ PrefabInstance:
       value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4393518748687702332, guid: ff0a0e82578379c4fb2f19453c96ce6c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393518748687702332, guid: ff0a0e82578379c4fb2f19453c96ce6c, type: 3}
       propertyPath: isLockingMove
       value: 0
       objectReference: {fileID: 0}
@@ -1122,7 +1134,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0.08409559, y: -0.00000004391015, z: 0.0000000037057764, w: 0.9964577}
-  m_LocalPosition: {x: -78.11749, y: -2.9049673, z: -9.583316}
+  m_LocalPosition: {x: -73.74224, y: -2.9200318, z: -9.5858755}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1284,6 +1296,10 @@ PrefabInstance:
     - target: {fileID: 6418052982432081636, guid: bb251c186d9574242a7fbc27d4d046a1, type: 3}
       propertyPath: m_Name
       value: "\u661F\u77F3_Test (2)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8208728646424182729, guid: bb251c186d9574242a7fbc27d4d046a1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
