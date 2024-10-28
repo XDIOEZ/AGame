@@ -715,6 +715,7 @@ MonoBehaviour:
   m_LocalBounds:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Center: {x: 0.002149582, y: 0.002500534, z: 0}
     m_Extent: {x: 53.85105, y: 53.8537, z: 0}
 =======
@@ -725,6 +726,10 @@ MonoBehaviour:
     m_Center: {x: -0.0025501251, y: 0.00024986267, z: 0}
     m_Extent: {x: 53.853348, y: 53.84485, z: 0}
 >>>>>>> parent of 90a7367 (BGM)
+=======
+    m_Center: {x: -0.0028495789, y: 0.004299164, z: 0}
+    m_Extent: {x: 53.85505, y: 53.8526, z: 0}
+>>>>>>> fd7a43df5df1207f8ffd63f2f27617be0cde6f70
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -1019,7 +1024,11 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0.08409559, y: -0.00000004391015, z: 0.0000000037057764, w: 0.9964577}
+<<<<<<< HEAD
   m_LocalPosition: {x: 163.8879, y: 16.802011, z: -9.582129}
+=======
+  m_LocalPosition: {x: 168.99908, y: 16.802633, z: -9.582022}
+>>>>>>> fd7a43df5df1207f8ffd63f2f27617be0cde6f70
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1873,6 +1882,7 @@ MonoBehaviour:
   m_LocalBounds:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Center: {x: -0.0003004074, y: 0.0013504028, z: 0}
     m_Extent: {x: 20.503899, y: 20.50515, z: 0}
 =======
@@ -1883,6 +1893,10 @@ MonoBehaviour:
     m_Center: {x: -0.0024499893, y: 0.0051498413, z: 0}
     m_Extent: {x: 20.50055, y: 20.50185, z: 0}
 >>>>>>> parent of 90a7367 (BGM)
+=======
+    m_Center: {x: 0.00024986267, y: -0.003250122, z: 0}
+    m_Extent: {x: 20.50695, y: 20.50485, z: 0}
+>>>>>>> fd7a43df5df1207f8ffd63f2f27617be0cde6f70
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
