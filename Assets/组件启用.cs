@@ -9,7 +9,7 @@ public class ToggleComponent : MonoBehaviour
     {
         if (targetComponent != null)
         {
-            targetComponent.enabled = !targetComponent.enabled;
+            targetComponent.enabled = true;
         }
     }
 }
